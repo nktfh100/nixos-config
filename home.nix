@@ -1,10 +1,10 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 {
   home.stateVersion = "23.05";
   home.username = "nktfh100";
 
-  home.packages = with pkgs; [      
+  home.packages = with pkgs; [
     # General
     htop
     wget
@@ -29,14 +29,15 @@
 
     # Dev
     docker
-    
+
     # Coding
     neovim
 
     # Coding language specific
 
     # Nix
-    nixfmt # Format nix files
+    rnix-lsp
+    direnv
 
     # JS/TS
     nodejs_18
@@ -58,8 +59,10 @@
     enable = true;
     shellAliases = {
       la = "ls -a";
-      nix-rebuild-home = "sudo nixos-rebuild switch --flake '/etc/nixos#nktfh100-home'";
-      nix-rebuild-lab = "sudo nixos-rebuild switch --flake '/etc/nixos#nktfh100-lab'";
+      nix-rebuild-home =
+        "git add . && sudo nixos-rebuild switch --flake '.#nktfh100-home'";
+      nix-rebuild-lab =
+        "git add . && sudo nixos-rebuild switch --flake '.#nktfh100-lab'";
       nix-code = "cd /etc/nixos && code .";
       py = "python";
       dcb = "docker compose build";
@@ -67,6 +70,7 @@
       dcud = "docker compose up";
       dcd = "docker compose down";
       dc = "docker compose";
+      nix-garbage = "nix-env --delete-generations old && nix-collect-garbage -d";
     };
   };
 
@@ -77,6 +81,26 @@
     extraConfig.credential.helper = "store";
   };
 
+  programs.vscode = {
+    enable = true;
+    enableUpdateCheck = false;
+    userSettings = {
+      "nix.enableLanguageServer" = true;
+      "[nix]"."editor.tabSize" = 2;
+      "files.encoding" = "utf8";
+      "files.trimTrailingWhitespace" = true;
+      "editor.formatOnType" = true;
+      # "editor.fontFamily" = "";
+    };
+  };
+
+  home.file.".vscode/argv.json".text = ''
+    {
+      "disable-hardware-acceleration": true,
+      "enable-crash-reporter": false,
+    }
+  '';
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       "gtk-theme" = "Adwaita-dark";
@@ -85,11 +109,12 @@
     "org/gnome/desktop/background" = {
       "picture-uri-dark" = "/etc/nixos/wallpaper.svg";
     };
-    "org/gnome/shell" = {
-      "favorite-apps" = "['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop']";
-    };
     "org/gnome/desktop/wm/preferences" = {
       "button-layout" = ":minimize,maximize,close";
+    };
+    "org/gnome/shell" = {
+      "favorite-apps" =
+        "['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']";
     };
   };
 
