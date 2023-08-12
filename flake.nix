@@ -14,7 +14,7 @@
       system = "x86_64-linux";
       modules = [
         ./common.nix
-        ./hosts/home-pc.nix
+        ./hosts/home-pc/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -27,7 +27,7 @@
       system = "x86_64-linux";
       modules = [
         ./common.nix
-        ./hosts/lab-pc.nix
+        ./hosts/lab-pc/configuration.nix
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;

@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -114,17 +112,17 @@
     };
   };
 
-  # boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
-  #   pname = "distro-grub-themes";
-  #   version = "3.1";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "AdisonCavani";
-  #     repo = "distro-grub-themes";
-  #     rev = "v3.1";
-  #     hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
-  #   };
-  #   installPhase = "cp -r customize/nixos $out";
-  # };
+  boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
+    pname = "distro-grub-themes";
+    version = "3.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "AdisonCavani";
+      repo = "distro-grub-themes";
+      rev = "v3.1";
+      hash = "sha256-ZcoGbbOMDDwjLhsvs77C7G7vINQnprdfI37a9ccrmPs=";
+    };
+    installPhase = "cp -r customize/nixos $out";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
