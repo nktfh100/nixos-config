@@ -124,6 +124,7 @@
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
       button-layout = ":minimize,maximize,close";
+      num-workspaces = 1;
     };
     "org/gnome/shell" = {
       favorite-apps = [
@@ -137,9 +138,6 @@
       gtk-theme = "orchis";
       color-scheme = "prefer-dark";
       enable-hot-corners = true;
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      workspace-names = [ "Main" ];
     };
     "org/gnome/desktop/background" = {
       picture-uri = "file:///etc/nixos/wallpaper.svg";
