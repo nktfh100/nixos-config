@@ -66,7 +66,7 @@
       dcud = "docker compose up";
       dcd = "docker compose down";
       dc = "docker compose";
-      nix-garbage = "nix-env --delete-generations old && nix-collect-garbage -d";
+      nix-garbage = "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
     };
   };
 
@@ -89,8 +89,9 @@
       "[nix]"."editor.tabSize" = 2;
       "files.encoding" = "utf8";
       "files.trimTrailingWhitespace" = true;
-      "editor.formatOnType" = true;
-      "editor.fontFamily" = "'Comic Code Ligatures', 'Fira Code'"; #Comic Code Ligatures";
+      "editor.formatOnSave" = true;
+      "editor.fontFamily" = "'ComicCodeLigatures Nerd Font'";
+      "editor.fontLigatures" = true;
     };
   };
 

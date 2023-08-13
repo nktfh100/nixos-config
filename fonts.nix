@@ -1,16 +1,18 @@
-{ lib, fetchzip }:
+{ lib, fetchFromGitHub }:
 
-fetchzip {
+fetchFromGitHub {
   name = "nktfh100-fonts";
 
-  url = "https://github.com/nktfh100/nixos-config/raw/76ce60e6cb482c7dc69eb37c5206cd5da38d0474/fonts.zip";
+  owner = "nktfh100";
+  repo = "nixos-config";
+  rev = "76d000b607b61852c11fc08d292fc737b66b5d4f";
 
   postFetch = ''
     mkdir -p $out/share/fonts/truetype
-    unzip -P 12345678 -j $downloadedFile \*.ttf -d $out/share/fonts/truetype
+    unzip -P 12345678 -j $out/fonts.zip \*.ttf -d $out/share/fonts/truetype
   '';
 
-  sha256 = "";
+  sha256 = "sha256-A8Vb1y9GyhJjbf+t0Cp0upramg6MiHNQX+XSs7/YMtk=";
 
   meta = with lib; {
     homepage = "";

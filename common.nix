@@ -91,11 +91,9 @@ in
     fontDir.enable = true;
     fonts = with pkgs; [
       fira-code
-      fira-code-symbols
-      # nktfh100-fonts
+      nktfh100-fonts
     ];
   };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -167,7 +165,6 @@ in
       favorite-apps=['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
     '';
 
-    # Override GNOME defaults to disable GNOME tour, and enable reize buttons
     extraGSettingsOverrides = ''
       [org.gnome.desktop.interface]
       gtk-theme='Adwaita-dark'
