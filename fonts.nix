@@ -3,7 +3,7 @@
 fetchzip {
   name = "nktfh100-fonts";
 
-  url = "https://github.com/nktfh100/";
+  url = "https://github.com/nktfh100/nixos-config/raw/76ce60e6cb482c7dc69eb37c5206cd5da38d0474/fonts.zip";
 
   postFetch = ''
     mkdir -p $out/share/fonts/truetype

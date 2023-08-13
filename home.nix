@@ -20,10 +20,6 @@
     ffmpeg_6
     obs-studio
 
-    # File managment
-    unzip
-    unrar
-
     # Social
     discord
 
@@ -94,7 +90,7 @@
       "files.encoding" = "utf8";
       "files.trimTrailingWhitespace" = true;
       "editor.formatOnType" = true;
-      "editor.fontFamily" = "Fira Code"; #Comic Code Ligatures";
+      "editor.fontFamily" = "'Comic Code Ligatures', 'Fira Code'"; #Comic Code Ligatures";
     };
   };
 
@@ -105,23 +101,6 @@
       "enable-crash-reporter": false,
     }
   '';
-
-  # dconf.settings = {
-  #   "org/gnome/desktop/interface" = {
-  #     "gtk-theme" = "Adwaita-dark";
-  #     "color-scheme" = "prefer-dark";
-  #   };
-  #   "org/gnome/desktop/background" = {
-  #     "picture-uri-dark" = "/etc/nixos/wallpaper.svg";
-  #   };
-  #   "org/gnome/desktop/wm/preferences" = {
-  #     "button-layout" = ":minimize,maximize,close";
-  #   };
-  #   "org/gnome/shell" = {
-  #     "favorite-apps" =
-  #       "['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']";
-  #   };
-  # };
 
   programs.home-manager.enable = true;
 }

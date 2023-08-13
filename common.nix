@@ -90,10 +90,9 @@ in
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      corefonts
       fira-code
       fira-code-symbols
-      nktfh100-fonts
+      # nktfh100-fonts
     ];
   };
 
@@ -110,6 +109,11 @@ in
     vscode
 
     git
+
+    # File managment
+    zip
+    unzip
+    unrar
 
     gparted
     ntfs3g # NTFS support for gparted
@@ -171,6 +175,9 @@ in
 
       [org.gnome.desktop.background]
       picture-uri-dark='file:///etc/nixos/wallpaper.svg'
+
+      [org.gnome.desktop.screensaver]
+      picture-uri='file:///etc/nixos/wallpaper.svg'
 
       [org.gnome.desktop.wm.preferences]
       button-layout=':minimize,maximize,close'
