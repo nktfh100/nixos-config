@@ -78,7 +78,10 @@
     enable = true;
     userName = "nktfh100";
     userEmail = "nktfh100@gmail.com";
-    extraConfig.credential.helper = "store";
+    extraConfig = {
+      credential.helper = "store";
+      http.postBuffer = "524288000";
+    };
   };
 
   programs.vscode = {
@@ -86,14 +89,16 @@
     enableUpdateCheck = false;
     userSettings = {
       "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "rnix-lsp";
       "[nix]"."editor.tabSize" = 2;
       "files.encoding" = "utf8";
       "files.trimTrailingWhitespace" = true;
       "editor.formatOnType" = true;
-      # "editor.fontFamily" = "";
+      "editor.fontFamily" = "Fira Code"; #Comic Code Ligatures";
     };
   };
 
+  # To fix vscode blank screen
   home.file.".vscode/argv.json".text = ''
     {
       "disable-hardware-acceleration": true,
@@ -101,22 +106,22 @@
     }
   '';
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      "gtk-theme" = "Adwaita-dark";
-      "color-scheme" = "prefer-dark";
-    };
-    "org/gnome/desktop/background" = {
-      "picture-uri-dark" = "/etc/nixos/wallpaper.svg";
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      "button-layout" = ":minimize,maximize,close";
-    };
-    "org/gnome/shell" = {
-      "favorite-apps" =
-        "['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']";
-    };
-  };
+  # dconf.settings = {
+  #   "org/gnome/desktop/interface" = {
+  #     "gtk-theme" = "Adwaita-dark";
+  #     "color-scheme" = "prefer-dark";
+  #   };
+  #   "org/gnome/desktop/background" = {
+  #     "picture-uri-dark" = "/etc/nixos/wallpaper.svg";
+  #   };
+  #   "org/gnome/desktop/wm/preferences" = {
+  #     "button-layout" = ":minimize,maximize,close";
+  #   };
+  #   "org/gnome/shell" = {
+  #     "favorite-apps" =
+  #       "['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']";
+  #   };
+  # };
 
   programs.home-manager.enable = true;
 }

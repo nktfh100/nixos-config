@@ -1,5 +1,8 @@
 { config, pkgs, lib, nixpkgs, ... }:
 
+let
+  nktfh100-fonts = pkgs.callPackage ./fonts.nix { };
+in
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -71,16 +74,29 @@
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
+  # Define user accounts. Set password hash via `mkpasswd -m sha-512`
+  users.users.root = {
+    initialHashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
+  };
+
   users.users.nktfh100 = {
     isNormalUser = true;
     description = "Malachi";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
+    hashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
-  # fonts.fonts = with pkgs; [
-  #   comic-mono
-  # ];
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      corefonts
+      fira-code
+      fira-code-symbols
+      nktfh100-fonts
+    ];
+  };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -89,12 +105,13 @@
   boot.kernel.sysctl = { "net.ipv4.ip_unprivileged_port_start" = 80; };
 
   environment.systemPackages = with pkgs; [
-    # General
     firefox
-    gparted
-    git
+
     vscode
 
+    git
+
+    gparted
     ntfs3g # NTFS support for gparted
   ];
 
@@ -117,6 +134,47 @@
       enable = true;
       setSocketVariable = true;
     };
+  };
+
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-tour
+  ]) ++ (with pkgs.gnome; [
+    gnome-music
+    gnome-weather
+    gnome-clocks
+    gnome-contacts
+    gnome-characters
+    epiphany
+    geary
+    totem
+    tali
+    iagno
+    hitori
+    atomix
+  ]);
+
+
+  # Override gnome settings
+  services.xserver.desktopManager.gnome = {
+    favoriteAppsOverride = ''
+      [org.gnome.shell]
+      favorite-apps=['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
+    '';
+
+    # Override GNOME defaults to disable GNOME tour, and enable reize buttons
+    extraGSettingsOverrides = ''
+      [org.gnome.desktop.interface]
+      gtk-theme='Adwaita-dark'
+      color-scheme='prefer-dark'
+
+      [org.gnome.desktop.background]
+      picture-uri-dark='file:///etc/nixos/wallpaper.svg'
+
+      [org.gnome.desktop.wm.preferences]
+      button-layout=':minimize,maximize,close'
+    '';
   };
 
   # This value determines the NixOS release from which the default
