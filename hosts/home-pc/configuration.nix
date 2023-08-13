@@ -26,6 +26,12 @@
     # Enable the nvidia settings menu
     nvidiaSettings = true;
 
+    # Fix graphical corruption on suspend/resume
+    powerManagement.enable = true;
+
+    # Fix screen tearing
+    forceFullCompositionPipeline = true;
+
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };

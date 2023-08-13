@@ -51,6 +51,10 @@
     python311Packages.black # Formatter
   ];
 
+  programs.home-manager.enable = true;
+
+  programs.command-not-found.enable = true;
+
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -73,7 +77,7 @@
   programs.git = {
     enable = true;
     userName = "nktfh100";
-    userEmail = "nktfh100@gmail.com";
+    userEmail = "me@nktfh100.com";
     extraConfig = {
       credential.helper = "store";
       http.postBuffer = "524288000";
@@ -103,5 +107,46 @@
     }
   '';
 
-  programs.home-manager.enable = true;
+  gtk = {
+    enable = true;
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "orchis";
+      package = pkgs.orchis-theme;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = ":minimize,maximize,close";
+    };
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "firefox.desktop"
+        "org.gnome.Console.desktop"
+        "org.gnome.Nautilus.desktop"
+        "spotify.desktop"
+      ];
+    };
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "orchis";
+      color-scheme = "prefer-dark";
+      enable-hot-corners = true;
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      workspace-names = [ "Main" ];
+    };
+    "org/gnome/desktop/background" = {
+      picture-uri = "file:///etc/nixos/wallpaper.svg";
+      picture-uri-dark = "file:///etc/nixos/wallpaper.svg";
+    };
+    "org/gnome/desktop/screensaver" = {
+      picture-uri = "file:///etc/nixos/wallpaper.svg";
+    };
+  };
 }

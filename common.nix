@@ -67,6 +67,7 @@ in
   # services.xserver.libinput.enable = true;
 
   nix = {
+    settings.experimental-features = [ "flakes" "nix-command" ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -90,7 +91,6 @@ in
   fonts = {
     fontDir.enable = true;
     fonts = with pkgs; [
-      fira-code
       nktfh100-fonts
     ];
   };
@@ -156,30 +156,6 @@ in
     hitori
     atomix
   ]);
-
-
-  # Override gnome settings
-  services.xserver.desktopManager.gnome = {
-    favoriteAppsOverride = ''
-      [org.gnome.shell]
-      favorite-apps=['firefox.desktop', 'org.gnome.Console.desktop', 'org.gnome.Nautilus.desktop', 'spotify.desktop']
-    '';
-
-    extraGSettingsOverrides = ''
-      [org.gnome.desktop.interface]
-      gtk-theme='Adwaita-dark'
-      color-scheme='prefer-dark'
-
-      [org.gnome.desktop.background]
-      picture-uri-dark='file:///etc/nixos/wallpaper.svg'
-
-      [org.gnome.desktop.screensaver]
-      picture-uri='file:///etc/nixos/wallpaper.svg'
-
-      [org.gnome.desktop.wm.preferences]
-      button-layout=':minimize,maximize,close'
-    '';
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
