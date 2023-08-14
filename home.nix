@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  theme = "Orchis-Dark";
+in
 {
   home.stateVersion = "23.05";
   home.username = "nktfh100";
@@ -49,6 +52,11 @@
     python311Packages.flake8 # Linter
     python311Packages.mypy # Pyton static types
     python311Packages.black # Formatter
+
+    # GNOME
+    # gnome3.gnome-tweaks
+    gnomeExtensions.user-themes
+    orchis-theme
   ];
 
   programs.home-manager.enable = true;
@@ -115,10 +123,7 @@
       package = pkgs.papirus-icon-theme;
     };
 
-    theme = {
-      name = "orchis";
-      package = pkgs.orchis-theme;
-    };
+    theme = { name = "${theme}"; };
   };
 
   dconf.settings = {
@@ -133,18 +138,25 @@
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];
+      disable-user-extensions = false;
+      enabled-extensions =
+        [ "user-theme@gnome-shell-extensions.gcampax.github.com" ];
     };
     "org/gnome/desktop/interface" = {
-      gtk-theme = "orchis";
+      gtk-theme = "${theme}";
       color-scheme = "prefer-dark";
       enable-hot-corners = true;
     };
+    "org/gnome/shell/extensions/user-theme" = { name = "${theme}"; };
     "org/gnome/desktop/background" = {
       picture-uri = "file:///etc/nixos/wallpaper.svg";
       picture-uri-dark = "file:///etc/nixos/wallpaper.svg";
     };
     "org/gnome/desktop/screensaver" = {
       picture-uri = "file:///etc/nixos/wallpaper.svg";
+    };
+    "org/gnome/mutter" = {
+      center-new-windows = true;
     };
   };
 }
