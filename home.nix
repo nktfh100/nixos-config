@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
-let
-  theme = "Orchis-Dark";
-in
-{
+let theme = "Orchis-Dark";
+in {
   home.stateVersion = "23.05";
   home.username = "nktfh100";
 
@@ -35,8 +33,7 @@ in
     # Coding language specific
 
     # Nix
-    rnix-lsp
-    direnv
+    nixfmt
 
     # JS/TS
     nodejs_18
@@ -78,7 +75,8 @@ in
       dcud = "docker compose up";
       dcd = "docker compose down";
       dc = "docker compose";
-      nix-garbage = "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
+      nix-garbage =
+        "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
     };
   };
 
@@ -96,14 +94,16 @@ in
     enable = true;
     enableUpdateCheck = false;
     userSettings = {
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "rnix-lsp";
-      "[nix]"."editor.tabSize" = 2;
       "files.encoding" = "utf8";
       "files.trimTrailingWhitespace" = true;
       "editor.formatOnSave" = true;
       "editor.fontFamily" = "'ComicCodeLigatures Nerd Font'";
       "editor.fontLigatures" = true;
+      "[nix]"."editor.tabSize" = 2;
+      "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
+      "prettier.tabWidth" = 4;
+      "prettier.useTabs" = true;
     };
   };
 
@@ -155,8 +155,6 @@ in
     "org/gnome/desktop/screensaver" = {
       picture-uri = "file:///etc/nixos/wallpaper.svg";
     };
-    "org/gnome/mutter" = {
-      center-new-windows = true;
-    };
+    "org/gnome/mutter" = { center-new-windows = true; };
   };
 }
