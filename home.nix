@@ -52,8 +52,11 @@ in {
 
     # GNOME
     # gnome3.gnome-tweaks
-    gnomeExtensions.user-themes
     orchis-theme
+
+    # GNOME extensions
+    gnomeExtensions.user-themes
+    gnomeExtensions.vitals
   ];
 
   programs.home-manager.enable = true;
@@ -139,8 +142,10 @@ in {
         "spotify.desktop"
       ];
       disable-user-extensions = false;
-      enabled-extensions =
-        [ "user-theme@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "Vitals@CoreCoding.com"
+      ];
     };
     "org/gnome/desktop/interface" = {
       gtk-theme = "${theme}";
