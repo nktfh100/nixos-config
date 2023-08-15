@@ -18,7 +18,7 @@ in {
 
     # Video/Audio
     vlc
-    ffmpeg_6
+    audacity
     obs-studio
 
     # Social
@@ -102,11 +102,12 @@ in {
       "editor.formatOnSave" = true;
       "editor.fontFamily" = "'ComicCodeLigatures Nerd Font'";
       "editor.fontLigatures" = true;
+      "prettier.tabWidth" = 4;
+      "prettier.useTabs" = true;
       "[nix]"."editor.tabSize" = 2;
       "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
-      "prettier.tabWidth" = 4;
-      "prettier.useTabs" = true;
+      "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
     };
   };
 

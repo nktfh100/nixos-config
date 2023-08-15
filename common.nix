@@ -1,9 +1,7 @@
 { config, pkgs, lib, nixpkgs, ... }:
 
-let
-  nktfh100-fonts = pkgs.callPackage ./fonts.nix { };
-in
-{
+let nktfh100-fonts = pkgs.callPackage ./fonts.nix { };
+in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -45,7 +43,7 @@ in
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
+    layout = "us,il";
     xkbVariant = "";
   };
 
@@ -78,21 +76,21 @@ in
   users.mutableUsers = false;
   # Define user accounts. Set password hash via `mkpasswd -m sha-512`
   users.users.root = {
-    initialHashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
+    initialHashedPassword =
+      "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
   users.users.nktfh100 = {
     isNormalUser = true;
     description = "Malachi";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-    hashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
+    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
+    hashedPassword =
+      "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
-      nktfh100-fonts
-    ];
+    fonts = with pkgs; [ nktfh100-fonts ];
   };
 
   # Allow unfree packages
@@ -103,9 +101,8 @@ in
 
   environment.systemPackages = with pkgs; [
     firefox
-
+    ffmpeg_6-full
     vscode
-
     git
 
     # File managment
@@ -140,22 +137,21 @@ in
 
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    gnome-music
-    gnome-weather
-    gnome-clocks
-    gnome-contacts
-    gnome-characters
-    epiphany
-    geary
-    totem
-    tali
-    iagno
-    hitori
-    atomix
-  ]);
+  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
+    ++ (with pkgs.gnome; [
+      gnome-music
+      gnome-weather
+      gnome-clocks
+      gnome-contacts
+      gnome-characters
+      epiphany
+      geary
+      totem
+      tali
+      iagno
+      hitori
+      atomix
+    ]);
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
