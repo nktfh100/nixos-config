@@ -27,7 +27,6 @@ in {
     # Dev
     docker
     gh # Github CLI
-    act # Run github actions locally
 
     # Coding
     neovim

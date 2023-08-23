@@ -1,6 +1,8 @@
 { config, pkgs, lib, nixpkgs, ... }:
 
-let nktfh100-fonts = pkgs.callPackage ./fonts.nix { };
+let
+  nktfh100-fonts = pkgs.callPackage ./custom/fonts.nix { };
+  act-new = pkgs.callPackage ./custom/act.nix { };
 in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -112,6 +114,8 @@ in {
 
     gparted
     ntfs3g # NTFS support for gparted
+
+    act-new # Run github actions locally
   ];
 
   # Enable the OpenSSH daemon.
