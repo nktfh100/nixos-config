@@ -46,10 +46,18 @@ in {
     # Python
     python311
 
+    poetry # Python dependency management
+    pre-commit # pre-commit hooks
+
     # Python packages
     python311Packages.flake8 # Linter
-    python311Packages.mypy # Pyton static types
     python311Packages.black # Formatter
+
+    # Hive stuff
+    #mypy # Pyton static types
+    #python311Packages.psycopg2
+    postgresql # Required for psycopg2..
+    gcc13 # Required for psycopg2..
 
     # GNOME
     # gnome3.gnome-tweaks
@@ -109,6 +117,7 @@ in {
       "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
       "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
+      "[yaml]"."editor.defaultFormatter" = "redhat.vscode-yaml";
     };
   };
 
