@@ -35,5 +35,5 @@ Steps:
     mv /etc/nixos/hardware-configuration.nix /etc/nixos/hosts/$PC-pc/
 
     # Rebuild
-    cd /etc/nixos && git add . && sudo nixos-rebuild switch --flake '.#nktfh100-$pc'
+    cd /etc/nixos && git add . && sudo nixos-rebuild switch --flake .#nktfh100-$PC
     ```
