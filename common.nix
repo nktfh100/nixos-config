@@ -6,8 +6,8 @@ let
 in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.configurationLimit = 3;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
