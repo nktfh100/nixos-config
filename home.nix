@@ -58,6 +58,7 @@ in {
     #python311Packages.psycopg2
     postgresql # Required for psycopg2..
     gcc13 # Required for psycopg2..
+    mypy
 
     # GNOME
     # gnome3.gnome-tweaks
@@ -110,7 +111,7 @@ in {
       "files.trimTrailingWhitespace" = true;
       "editor.formatOnSave" = true;
       "editor.fontFamily" = "'ComicCodeLigatures Nerd Font'";
-      "editor.fontLigatures" = true;
+      "editor.fontLigatures" = false;
       "prettier.tabWidth" = 4;
       "prettier.useTabs" = true;
       "[nix]"."editor.tabSize" = 2;
