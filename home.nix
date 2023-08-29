@@ -46,7 +46,7 @@ in {
     # Python
     python311
 
-    poetry # Python dependency management
+    #poetry # Python dependency management
     pre-commit # pre-commit hooks
 
     # Python packages
@@ -87,6 +87,7 @@ in {
       dcu = "docker compose up";
       dcud = "docker compose up";
       dcd = "docker compose down";
+      dcsa = "docker stop $(docker ps -a -q)";
       dc = "docker compose";
       nix-garbage =
         "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";

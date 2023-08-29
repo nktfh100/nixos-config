@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixpkgs, ... }:
+{ config, pkgs, unstable, lib, nixpkgs, ... }:
 
 let
   nktfh100-fonts = pkgs.callPackage ./custom/fonts.nix { };
@@ -116,6 +116,7 @@ in {
     ntfs3g # NTFS support for gparted
 
     act-new # Run github actions locally
+    unstable.poetry # Python dependency management
   ];
 
   # Enable the OpenSSH daemon.
