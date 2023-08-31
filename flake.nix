@@ -21,6 +21,7 @@
           };
         };
       in [
+        defaults
         ./common.nix
         ./hosts/home-pc/configuration.nix
         home-manager.nixosModules.home-manager
