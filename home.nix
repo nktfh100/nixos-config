@@ -108,6 +108,7 @@ in {
     enable = true;
     enableUpdateCheck = false;
     userSettings = {
+      "update.mode" = "none";
       "files.encoding" = "utf8";
       "files.trimTrailingWhitespace" = true;
       "editor.formatOnSave" = true;
@@ -120,6 +121,8 @@ in {
       "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
       "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
       "[yaml]"."editor.defaultFormatter" = "redhat.vscode-yaml";
+      "[typescriptreact]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
   };
 
