@@ -1,13 +1,16 @@
 { config, pkgs, unstable, lib, nixpkgs, ... }:
 
-let
-  nktfh100-fonts = pkgs.callPackage ./custom/fonts.nix { };
-  act-new = pkgs.callPackage ./custom/act.nix { };
-in {
+{
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    timeout = 10;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+      netbootxyz.enable = true;
+    };
+    efi.canTouchEfiVariables = true;
+  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -37,16 +40,16 @@ in {
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    excludePackages = [ pkgs.xterm ];
+    # Configure keymap in X11
     layout = "us,il";
-    xkbVariant = "";
+    # Enable the GNOME Desktop Environment.
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -62,9 +65,6 @@ in {
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   nix = {
     settings.experimental-features = [ "flakes" "nix-command" ];
@@ -92,7 +92,7 @@ in {
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ nktfh100-fonts ];
+    fonts = with pkgs; [ (pkgs.callPackage ./fonts.nix { }) ];
   };
 
   # Allow unfree packages
@@ -115,7 +115,7 @@ in {
     gparted
     ntfs3g # NTFS support for gparted
 
-    act-new # Run github actions locally
+    unstable.act # Run github actions locally
     unstable.poetry # Python dependency management
   ];
 
@@ -139,8 +139,6 @@ in {
       setSocketVariable = true;
     };
   };
-
-  services.xserver.excludePackages = [ pkgs.xterm ];
 
   environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
     ++ (with pkgs.gnome; [

@@ -77,11 +77,9 @@ in {
     enable = true;
     shellAliases = {
       la = "ls -a";
-      nix-rebuild-home =
-        "git add . && sudo nixos-rebuild switch --flake '.#nktfh100-home'";
-      nix-rebuild-lab =
-        "git add . && sudo nixos-rebuild switch --flake '.#nktfh100-lab'";
-      nix-code = "cd /etc/nixos && code .";
+      nix-code = "code /etc/nixos";
+      nix-garbage =
+        "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
       py = "python";
       dcb = "docker compose build";
       dcu = "docker compose up";
@@ -89,9 +87,15 @@ in {
       dcd = "docker compose down";
       dcsa = "docker stop $(docker ps -a -q)";
       dc = "docker compose";
-      nix-garbage =
-        "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
     };
+    bashrcExtra = ''
+      nix-rebuild() {
+        local flake_name="nktfh100-$1"
+        local rebuild_subcommand=$2
+
+        cd /etc/nixos && git add . && sudo nixos-rebuild "$rebuild_subcommand" --flake ".#$flake_name" && cd -
+      }
+    '';
   };
 
   programs.git = {

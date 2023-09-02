@@ -37,3 +37,8 @@ Steps:
     # Rebuild
     cd /etc/nixos && sudo nixos-rebuild switch --flake .#nktfh100-$PC
     ```
+* Reset layout
+    ```
+    gsettings reset org.gnome.desktop.input-sources xkb-options
+    gsettings reset org.gnome.desktop.input-sources sources
+    ```
