@@ -21,7 +21,42 @@
         "type": "github"
       }
     },
+    "minegrub-theme": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1693940974,
+        "narHash": "sha256-Ec9oSAHyHjbgJKoI34ZAt8Xzwg+NGowQxD9XF1S4gno=",
+        "owner": "nktfh100",
+        "repo": "minegrub-theme",
+        "rev": "0da1f9982b6e21c9e0e9e7c24a9026d3df354a90",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nktfh100",
+        "ref": "fix-flake",
+        "repo": "minegrub-theme",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1689850295,
+        "narHash": "sha256-fUYf6WdQlhd2H+3aR8jST5dhFH1d0eE22aes8fNIfyk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5df4d78d54f7a34e9ea1f84a22b4fd9baebc68d0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1692986144,
         "narHash": "sha256-M4VFpy7Av9j+33HF5nIGm0k2+DXXW4qSSKdidIKg5jY=",
@@ -40,7 +75,8 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "minegrub-theme": "minegrub-theme",
+        "nixpkgs": "nixpkgs_2",
         "unstable": "unstable"
       }
     },

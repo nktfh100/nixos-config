@@ -14,6 +14,7 @@
       configurationLimit = 10;
       efiSupport = true;
       device = "nodev";
+      minegrub-theme.enable = true;
     };
   };
 

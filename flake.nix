@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    minegrub-theme.url = "github:nktfh100/minegrub-theme/fix-flake";
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, unstable, home-manager, minegrub-theme, ... }@inputs: {
 
     nixosConfigurations.nktfh100-home = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -29,6 +30,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.users.nktfh100 = ./home.nix;
         }
+        minegrub-theme.nixosModules.default
       ];
     };
 
@@ -49,6 +51,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.users.nktfh100 = ./home.nix;
         }
+        minegrub-theme.nixosModules.default
       ];
     };
 
