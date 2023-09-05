@@ -4,12 +4,17 @@
   # Bootloader.
   boot.loader = {
     timeout = 10;
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
-      netbootxyz.enable = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
     };
-    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      useOSProber = true;
+      configurationLimit = 10;
+      efiSupport = true;
+      device = "nodev";
+    };
   };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
