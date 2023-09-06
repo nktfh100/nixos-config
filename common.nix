@@ -89,9 +89,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Allow rootless docker to bind port 80
-  boot.kernel.sysctl = { "net.ipv4.ip_unprivileged_port_start" = 80; };
-
   environment.systemPackages = with pkgs; [
     firefox
     ffmpeg_6-full
