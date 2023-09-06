@@ -8,11 +8,12 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    minegrub-theme.url = "github:nktfh100/minegrub-theme/nixos-fix-splash";
   };
 
-  outputs = { nixpkgs, unstable, home-manager, ... }@inputs: {
+  outputs = { home-manager, ... }@inputs: {
 
-    nixosConfigurations.nktfh100-home = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nktfh100-home = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = let
         defaults = { pkgs, ... }: {
@@ -32,7 +33,7 @@
       ];
     };
 
-    nixosConfigurations.nktfh100-lab = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nktfh100-lab = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = let
         defaults = { pkgs, ... }: {
@@ -49,6 +50,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.users.nktfh100 = ./home.nix;
         }
+        inputs.minegrub-theme.nixosModules.default
       ];
     };
 

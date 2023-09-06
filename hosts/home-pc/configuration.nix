@@ -1,7 +1,10 @@
 { inputs, lib, config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/grub-theme/distro-grub-themes.nix
+  ];
 
   networking.hostName = "nktfh100-home";
 
