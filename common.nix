@@ -3,6 +3,11 @@
 {
   imports = [ ./modules/boot.nix ];
 
+  home-manager.useGlobalPkgs = true;
+  home-manager.users.nktfh100 = ./home.nix;
+
+  nixpkgs.config.allowUnfree = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -36,9 +41,6 @@
     excludePackages = [ pkgs.xterm ];
     # Configure keymap in X11
     layout = "us,il";
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
   };
@@ -86,14 +88,11 @@
     fonts = with pkgs; [ (pkgs.callPackage ./fonts.nix { }) ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-    firefox
-    ffmpeg_6-full
-    vscode
+    unstable.firefox
+    unstable.vscode
     git
+    ffmpeg_6-full
 
     # File managment
     zip
@@ -127,22 +126,6 @@
       setSocketVariable = true;
     };
   };
-
-  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
-    ++ (with pkgs.gnome; [
-      gnome-music
-      gnome-weather
-      gnome-clocks
-      gnome-contacts
-      gnome-characters
-      epiphany
-      geary
-      totem
-      tali
-      iagno
-      hitori
-      atomix
-    ]);
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

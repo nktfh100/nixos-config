@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
-let theme = "Orchis-Dark";
-in {
+{
   home.stateVersion = "23.05";
   home.username = "nktfh100";
 
@@ -59,14 +58,6 @@ in {
     postgresql # Required for psycopg2..
     gcc13 # Required for psycopg2..
     mypy
-
-    # GNOME
-    # gnome3.gnome-tweaks
-    orchis-theme
-
-    # GNOME extensions
-    gnomeExtensions.user-themes
-    gnomeExtensions.vitals
   ];
 
   programs.home-manager.enable = true;
@@ -93,7 +84,7 @@ in {
         local flake_name="nktfh100-$1"
         local rebuild_subcommand=$2
 
-        cd /etc/nixos && git add . && sudo nixos-rebuild "$rebuild_subcommand" --flake ".#$flake_name" && cd -
+        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name"
       }
     '';
   };
@@ -137,49 +128,4 @@ in {
       "enable-crash-reporter": false,
     }
   '';
-
-  gtk = {
-    enable = true;
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    theme = { name = "${theme}"; };
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = ":minimize,maximize,close";
-      num-workspaces = 1;
-    };
-    "org/gnome/shell" = {
-      favorite-apps = [
-        "firefox.desktop"
-        "org.gnome.Console.desktop"
-        "org.gnome.Nautilus.desktop"
-        "spotify.desktop"
-      ];
-      disable-user-extensions = false;
-      enabled-extensions = [
-        "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "Vitals@CoreCoding.com"
-      ];
-    };
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "${theme}";
-      color-scheme = "prefer-dark";
-      enable-hot-corners = true;
-    };
-    "org/gnome/shell/extensions/user-theme" = { name = "${theme}"; };
-    "org/gnome/desktop/background" = {
-      picture-uri = "file:///etc/nixos/wallpaper.svg";
-      picture-uri-dark = "file:///etc/nixos/wallpaper.svg";
-    };
-    "org/gnome/desktop/screensaver" = {
-      picture-uri = "file:///etc/nixos/wallpaper.svg";
-    };
-    "org/gnome/mutter" = { center-new-windows = true; };
-  };
 }
