@@ -13,32 +13,25 @@
 
   outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
     let
-      defaults = { pkgs, ... }: {
-        _module.args.unstable = import unstable {
-          inherit (pkgs.stdenv.targetPlatform) system;
-          config.allowUnfree = true;
-        };
-      };
+      commonModules = [
+        ({ pkgs, ... }: {
+          _module.args.unstable = import unstable {
+            inherit (pkgs.stdenv.targetPlatform) system;
+            config.allowUnfree = true;
+          };
+        })
+        home-manager.nixosModules.home-manager
+        inputs.minegrub-theme.nixosModules.default
+      ];
     in {
       nixosConfigurations.nktfh100-home = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          defaults
-          home-manager.nixosModules.home-manager
-          inputs.minegrub-theme.nixosModules.default
-          ./hosts/home-pc/configuration.nix
-        ];
+        modules = commonModules ++ [ ./hosts/home-pc/configuration.nix ];
       };
 
       nixosConfigurations.nktfh100-lab = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          defaults
-          home-manager.nixosModules.home-manager
-          inputs.minegrub-theme.nixosModules.default
-          ./hosts/lab-pc/configuration.nix
-        ];
+        modules = commonModules ++ [ ./hosts/lab-pc/configuration.nix ];
       };
-
     };
 }
