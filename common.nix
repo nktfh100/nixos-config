@@ -1,7 +1,13 @@
 { config, pkgs, unstable, lib, nixpkgs, ... }:
 
 {
-  imports = [ ./modules/boot.nix ];
+  imports = [
+    ./modules/boot.nix
+    ./modules/gnome.nix
+    ./modules/vscode.nix
+    ./modules/alacritty
+    ./modules/neovim
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.nktfh100 = ./home.nix;
@@ -85,7 +91,7 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ (pkgs.callPackage ./fonts.nix { }) ];
+    fonts = with pkgs; [ (pkgs.callPackage ./pkgs/fonts { }) ];
   };
 
   environment.systemPackages = with pkgs; [

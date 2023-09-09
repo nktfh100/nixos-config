@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
-    ../../modules/gnome.nix
     (import ../../modules/grub-theme/minegrub.nix { options-count = 4; })
   ];
 

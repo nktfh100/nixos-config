@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
-    ../../modules/gnome.nix
     ../../modules/nvidia.nix
     ../../modules/grub-theme/distro-grub-themes.nix
   ];

@@ -7,6 +7,7 @@ fetchFromGitHub {
   repo = "nixos-config";
   rev = "76d000b607b61852c11fc08d292fc737b66b5d4f";
 
+  # TODO
   postFetch = ''
     mkdir -p $out/share/fonts/truetype
     unzip -P 12345678 -j $out/fonts.zip \*.ttf -d $out/share/fonts/truetype
