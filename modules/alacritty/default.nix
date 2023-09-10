@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 {
-  home-manager.users.nktfh100.home.sessionVariables.TERMINAL = "alacritty";
+  environment.sessionVariables.TERMINAL = "alacritty";
+  environment.sessionVariables.WINIT_UNIX_BACKEND = "x11";
 
   home-manager.users.nktfh100.programs.alacritty = {
     enable = true;

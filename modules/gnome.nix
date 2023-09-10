@@ -1,6 +1,6 @@
 
 
-{ config, pkgs, ... }:
+{ config, pkgs, unstable, ... }:
 
 let
   theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
@@ -17,20 +17,22 @@ in {
     desktopManager.gnome.enable = true;
   };
 
-  home-manager.users.nktfh100.home.packages = with pkgs; [
-    gnome3.gnome-tweaks
-    gnome3.dconf-editor
-    catppuccin-gtk
+  home-manager.users.nktfh100.home.packages = with pkgs;
+    [
+      gnome3.gnome-tweaks
+      gnome3.dconf-editor
+      catppuccin-gtk
 
-    gtk-engine-murrine
-    gnome.gnome-themes-extra
-    gtk3
-
-    # GNOME extensions
-    gnomeExtensions.user-themes
-    gnomeExtensions.vitals
-    gnomeExtensions.blur-my-shell
-  ];
+      gtk-engine-murrine
+      gnome.gnome-themes-extra
+      gtk3
+    ] ++ (with pkgs.gnomeExtensions; [
+      # GNOME extensions
+      user-themes
+      vitals
+      unstable.gnomeExtensions.blur-my-shell
+      unstable.gnomeExtensions.burn-my-windows
+    ]) ++ [ ];
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
@@ -76,6 +78,7 @@ in {
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "Vitals@CoreCoding.com"
         "blur-my-shell@aunetx"
+        "burn-my-windows@schneegans.github.com"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -99,11 +102,29 @@ in {
       show-processor = true;
       show-network = true;
     };
+    "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      whitelist = [ "Code" "Alacritty" ];
+    };
+    "org/gnome/shell/extensions/burn-my-windows" = {
+      active-profile =
+        "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
+    };
     "org/gnome/desktop/sound".event-sounds = false;
     "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
   };
 
-  environment.gnome.excludePackages = (with pkgs; [ gnome-tour gnome-console ])
+  home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text =
+    ''
+      [burn-my-windows-profile]
+      fire-enable-effect=false
+      incinerate-enable-effect=true
+      incinerate-scale=0.90000000000000002
+      incinerate-color='rgb(138,173,244)'
+      incinerate-animation-time=1073
+      incinerate-turbulence=0.31
+    '';
+
+  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
     ++ (with pkgs.gnome; [
       gnome-music
       gnome-weather

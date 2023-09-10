@@ -21,6 +21,7 @@
       "[typescriptreact]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "workbench.colorTheme" = "Catppuccin Macchiato";
+      "glassit.alpha" = 204;
     };
   };
 
