@@ -69,7 +69,7 @@ in {
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
-        "Alacritty.desktop"
+        "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
       ];
@@ -103,7 +103,7 @@ in {
       show-network = true;
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
-      whitelist = [ "Code" "Alacritty" ];
+      whitelist = [ "Code" "kitty" ];
     };
     "org/gnome/shell/extensions/burn-my-windows" = {
       active-profile =

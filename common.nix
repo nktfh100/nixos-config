@@ -5,7 +5,7 @@
     ./modules/boot.nix
     ./modules/gnome.nix
     ./modules/vscode.nix
-    ./modules/alacritty
+    ./modules/kitty
     ./modules/neovim
   ];
 
@@ -91,7 +91,10 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ (pkgs.callPackage ./pkgs/fonts { }) ];
+    fonts = with pkgs; [ 
+        (pkgs.callPackage ./pkgs/fonts { }) 
+        (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    ];
   };
 
   environment.systemPackages = with pkgs; [
