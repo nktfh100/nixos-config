@@ -13,6 +13,9 @@
     lua
     lua-language-server
     go
+    nixfmt # Format nix
+
+    cargo
 
     isort # Sort imports
     nodePackages.prettier # JS/TS formatter

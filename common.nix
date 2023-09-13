@@ -5,6 +5,7 @@
     ./modules/boot.nix
     ./modules/gnome.nix
     ./modules/vscode.nix
+    ./modules/docker.nix
     ./modules/kitty
     ./modules/neovim
   ];
@@ -84,16 +85,16 @@
   users.users.nktfh100 = {
     isNormalUser = true;
     description = "Malachi";
-    extraGroups = [ "networkmanager" "wheel" "docker" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" ];
     hashedPassword =
       "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [ 
-        (pkgs.callPackage ./pkgs/fonts { }) 
-        (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    fonts = with pkgs; [
+      (pkgs.callPackage ./pkgs/fonts { })
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
   };
 
@@ -123,18 +124,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  virtualisation.docker = {
-    enable = true;
-    autoPrune = {
-      enable = true;
-      dates = "weekly";
-    };
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -9,6 +9,7 @@ require("mason-lspconfig").setup({
 		"marksman",
 		"pylsp",
 		"yamlls",
+		"rnix",
 	},
 	automatic_installation = true,
 })
@@ -80,6 +81,11 @@ lspconfig.cssls.setup({
 })
 
 lspconfig.jsonls.setup({
+	on_attach = on_attach_save,
+	capabilities = capabilities,
+})
+
+lspconfig.rnix.setup({
 	on_attach = on_attach_save,
 	capabilities = capabilities,
 })

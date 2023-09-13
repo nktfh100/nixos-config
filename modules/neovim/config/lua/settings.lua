@@ -39,7 +39,7 @@ opt.updatetime = 50
 
 opt.confirm = true -- Confirm to save changes before exiting
 opt.autowrite = true -- Enable auto write
-opt.cursorline = true -- Highlight the current line
+opt.cursorline = false -- Dont highlight the current line
 
 opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows right of current

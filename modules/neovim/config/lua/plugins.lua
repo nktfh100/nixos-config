@@ -16,7 +16,7 @@ local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
-	use({"catppuccin/nvim", as = "catppuccin"})
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	use("nvim-tree/nvim-web-devicons")
 	use("nvim-lua/plenary.nvim")
@@ -107,8 +107,10 @@ return require("packer").startup(function(use)
 
 	-- Format
 	use({
-		'stevearc/conform.nvim',
-		config = function() require('conform').setup() end
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup()
+		end,
 	})
 
 	-- Emmet
@@ -161,10 +163,28 @@ return require("packer").startup(function(use)
 		config = function()
 			require("transparent").setup({
 				groups = {
-					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-					'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-					'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-					'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+					"Normal",
+					"NormalNC",
+					"Comment",
+					"Constant",
+					"Special",
+					"Identifier",
+					"Statement",
+					"PreProc",
+					"Type",
+					"Underlined",
+					"Todo",
+					"String",
+					"Function",
+					"Conditional",
+					"Repeat",
+					"Operator",
+					"Structure",
+					"LineNr",
+					"NonText",
+					"SignColumn",
+					"CursorLineNr",
+					"EndOfBuffer",
 				},
 			})
 		end,
