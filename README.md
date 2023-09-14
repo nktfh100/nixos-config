@@ -35,7 +35,7 @@ Steps:
     mv /etc/nixos/hardware-configuration.nix /etc/nixos/hosts/$PC-pc/
 
     # Rebuild
-    cd /etc/nixos && sudo nixos-rebuild --install-bootloader switch --flake .#nktfh100-$PC
+    sudo nixos-rebuild --install-bootloader switch --flake /etc/nixos#nktfh100-$PC
     ```
 * Reset layout
     ```
