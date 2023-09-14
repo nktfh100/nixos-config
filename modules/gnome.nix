@@ -122,6 +122,7 @@ in {
       incinerate-color='rgb(138,173,244)'
       incinerate-animation-time=1073
       incinerate-turbulence=0.31
+      profile-high-priority=true
     '';
 
   environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
