@@ -30,6 +30,7 @@ in {
       # GNOME extensions
       user-themes
       vitals
+      gtile
       unstable.gnomeExtensions.blur-my-shell
       unstable.gnomeExtensions.burn-my-windows
     ]) ++ [ ];
@@ -79,6 +80,7 @@ in {
         "Vitals@CoreCoding.com"
         "blur-my-shell@aunetx"
         "burn-my-windows@schneegans.github.com"
+        "gTile@vibou"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -109,8 +111,20 @@ in {
       active-profile =
         "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
     };
+    "org/gnome/shell/extensions/gtile" = {
+      global-presets = true;
+      grid-sizes = "2x2,2x1,1x2";
+      target-presets-to-monitor-of-mouse = true;
+    };
     "org/gnome/desktop/sound".event-sounds = false;
     "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
+    "org/gnome/mutter" = { edge-tiling = true; };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
+      {
+        name = "Open kitty terminal";
+        command = "kitty";
+        binding = "<Control>t";
+      };
   };
 
   home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text =
