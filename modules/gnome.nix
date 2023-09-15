@@ -124,7 +124,7 @@ in {
     };
     "org/gnome/shell/extensions/gtile" = {
       global-presets = true;
-      grid-sizes = "2x2,2x1,1x2";
+      grid-sizes = "3x3,2x2";
       target-presets-to-monitor-of-mouse = true;
     };
     "org/gnome/shell/extensions/just-perfection" = {
@@ -164,6 +164,10 @@ in {
       maximize = [ "<Super>w" ];
       minimize = [ "<Super>q" ];
       unmaximize = [ "<Super>s" ];
+      move-to-monitor-up = [ "<Shift><Super>w" "<Shift><Super>Up" ];
+      move-to-monitor-down = [ "<Shift><Super>s" "<Shift><Super>Down" ];
+      move-to-monitor-left = [ "<Shift><Super>a" "<Shift><Super>Left" ];
+      move-to-monitor-right = [ "<Shift><Super>d" "<Shift><Super>Right" ];
     };
     "org/gnome/shell/keybindings" = { toggle-overview = [ ]; };
   };
