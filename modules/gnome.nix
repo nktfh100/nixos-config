@@ -32,9 +32,14 @@ in {
       user-themes
       vitals
       gtile
-      unstable.gnomeExtensions.blur-my-shell
-      unstable.gnomeExtensions.burn-my-windows
-    ]) ++ [ ];
+      just-perfection
+      media-controls
+      wallpaper-switcher
+    ]) ++ (with unstable.gnomeExtensions; [
+      useless-gaps
+      blur-my-shell
+      burn-my-windows
+    ]);
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
@@ -71,6 +76,7 @@ in {
     "org/gnome/shell" = {
       favorite-apps = [
         "firefox.desktop"
+        "code.desktop"
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
@@ -82,6 +88,10 @@ in {
         "blur-my-shell@aunetx"
         "burn-my-windows@schneegans.github.com"
         "gTile@vibou"
+        "just-perfection-desktop@just-perfection"
+        "mediacontrols@cliffniff.github.com"
+        "useless-gaps@pimsnel.com"
+        "WallpaperSwitcher@Rishu"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -117,7 +127,27 @@ in {
       grid-sizes = "2x2,2x1,1x2";
       target-presets-to-monitor-of-mouse = true;
     };
-    "org/gnome/desktop/sound".event-sounds = false;
+    "org/gnome/shell/extensions/just-perfection" = {
+      app-menu = false;
+      activities-button = false;
+      panel-notification-icon = false;
+      clock-menu-position = 2;
+    };
+    "org/gnome/shell/extensions/mediacontrols" = {
+      show-seek-back = false;
+      show-seek-forward = false;
+      show-seperators = false;
+      show-sources-menu = false;
+    };
+    "org/gnome/shell/extensions/useless-gaps" = {
+      no-gap-when-maximized = true;
+      gap-size = 10;
+    };
+    "org/gnome/shell/extensions/WallpaperSwitcher" = {
+      wallpaper-path = "/etc/nixos/wallpapers";
+      frequency = 36000; # 10 hours
+    };
+    "org/gnome/desktop/sound" = { event-sounds = false; };
     "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
     "org/gnome/mutter" = { edge-tiling = true; };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
@@ -126,6 +156,16 @@ in {
         command = "kitty";
         binding = "<Control>t";
       };
+    "org/gnome/mutter/keybindings" = {
+      toggle-tiled-left = [ "<Super>a" ];
+      toggle-tiled-right = [ "<Super>d" ];
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      maximize = [ "<Super>w" ];
+      minimize = [ "<Super>q" ];
+      unmaximize = [ "<Super>s" ];
+    };
+    "org/gnome/shell/keybindings" = { toggle-overview = [ ]; };
   };
 
   home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text =
