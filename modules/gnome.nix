@@ -15,6 +15,7 @@ in {
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
+    displayManager.gdm.wayland = false;
   };
 
   home-manager.users.nktfh100.home.packages = with pkgs;

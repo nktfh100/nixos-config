@@ -24,12 +24,4 @@
       "glassit.alpha" = 204;
     };
   };
-
-  # To fix vscode blank screen
-  home-manager.users.nktfh100.home.file.".vscode/argv.json".text = ''
-    {
-      "disable-hardware-acceleration": true,
-      "enable-crash-reporter": false,
-    }
-  '';
 }
