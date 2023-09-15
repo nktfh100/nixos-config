@@ -1,7 +1,15 @@
 
 # NixOS Config
 
-My personal NixOS configuration files I use for all my linux machines.
+My personal NixOS configuration files.
+
+Catppuccin themed!
+
+# Images
+
+![](assets/screenshot_1.png)
+![](assets/screenshot_2.png)
+
 
 # Install
 

@@ -20,8 +20,9 @@
       "[yaml]"."editor.defaultFormatter" = "redhat.vscode-yaml";
       "[typescriptreact]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-      "workbench.colorTheme" = "Catppuccin Macchiato";
       "glassit.alpha" = 204;
+      "workbench.colorTheme" = "Catppuccin Macchiato";
+      "workbench.iconTheme" = "catppuccin-macchiato";
     };
   };
 }

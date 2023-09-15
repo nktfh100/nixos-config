@@ -117,6 +117,7 @@ in {
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       whitelist = [ "Code" "kitty" ];
     };
+    "org/gnome/shell/extensions/blur-my-shell" = { hacks-level = 3; };
     "org/gnome/shell/extensions/burn-my-windows" = {
       active-profile =
         "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
