@@ -8,6 +8,7 @@
     ./modules/docker.nix
     ./modules/kitty
     ./modules/neovim
+    ./modules/spicetify.nix
   ];
 
   home-manager.useGlobalPkgs = true;

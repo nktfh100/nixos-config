@@ -10,7 +10,6 @@
     wget
     neofetch
     bitwarden
-    spotify
     google-chrome
 
     qbittorrent
