@@ -34,7 +34,6 @@ in {
       gtile
       just-perfection
       media-controls
-      wallpaper-switcher
     ]) ++ (with unstable.gnomeExtensions; [
       useless-gaps
       blur-my-shell
@@ -142,10 +141,6 @@ in {
     "org/gnome/shell/extensions/useless-gaps" = {
       no-gap-when-maximized = true;
       gap-size = 10;
-    };
-    "org/gnome/shell/extensions/WallpaperSwitcher" = {
-      wallpaper-path = "/etc/nixos/wallpapers";
-      frequency = 36000; # 10 hours
     };
     "org/gnome/desktop/sound" = { event-sounds = false; };
     "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
