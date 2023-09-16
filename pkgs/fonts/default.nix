@@ -12,7 +12,7 @@ fetchFromGitHub {
     unzip -P 12345678 -j $out/pkgs/fonts/fonts.zip \*.ttf -d $out/share/fonts/truetype
   '';
 
-  sha256 = "sha256-A8Vb1y9GyhJjbf+t0Cp0upramg6MiHNQX+XSs7/YMtk=";
+  sha256 = "sha256-O9GXuyQIgXSKYhvhv7/LNvlLirxBesWAnU/qJrBwwgg=";
 
   meta = with lib; {
     homepage = "";
