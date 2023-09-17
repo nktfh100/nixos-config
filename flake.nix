@@ -42,5 +42,11 @@
         modules = commonModules ++ [ ./hosts/gamma/configuration.nix ];
         specialArgs = specialArgs;
       };
+
+      nixosConfigurations.nktfh100-delta = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = commonModules ++ [ ./hosts/delta/configuration.nix ];
+        specialArgs = specialArgs;
+      };
     };
 }
