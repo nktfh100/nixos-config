@@ -22,7 +22,7 @@ Steps:
     ```
 * Set PC variable
     ```
-    # "lab" or "home"
+    # Based on hosts folder
     PC=""
     ```
 * Run install script:
@@ -40,10 +40,10 @@ Steps:
     cp -R /tmp/nixos /etc
 
     # Move new hardware-configuration file to the appropriate location for this machine
-    mv /etc/nixos/hardware-configuration.nix /etc/nixos/hosts/$PC-pc/
+    mv /etc/nixos/hardware-configuration.nix /etc/nixos/hosts/$PC/
 
     # Rebuild
-    sudo nixos-rebuild --install-bootloader switch --flake /etc/nixos#nktfh100-$PC
+    cd /etc/nixos && git add . && sudo nixos-rebuild switch --flake .#nktfh100-$PC
     ```
 * Reset layout
     ```

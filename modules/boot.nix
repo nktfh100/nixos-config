@@ -5,14 +5,11 @@
     timeout = 10;
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi";
+      efiSysMountPoint = "/boot";
     };
-    grub = {
+    systemd-boot = {
       enable = true;
-      useOSProber = true;
       configurationLimit = 10;
-      efiSupport = true;
-      device = "nodev";
     };
   };
 }

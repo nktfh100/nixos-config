@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    minegrub-theme.url = "github:nktfh100/minegrub-theme/nixos-fix-splash";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
@@ -23,19 +22,24 @@
           };
         })
         home-manager.nixosModules.home-manager
-        inputs.minegrub-theme.nixosModules.default
       ];
       specialArgs = { inherit spicetify-nix; };
     in {
-      nixosConfigurations.nktfh100-home = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nktfh100-alpha = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = commonModules ++ [ ./hosts/home-pc/configuration.nix ];
+        modules = commonModules ++ [ ./hosts/alpha/configuration.nix ];
         specialArgs = specialArgs;
       };
 
-      nixosConfigurations.nktfh100-lab = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nktfh100-beta = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = commonModules ++ [ ./hosts/lab-pc/configuration.nix ];
+        modules = commonModules ++ [ ./hosts/beta/configuration.nix ];
+        specialArgs = specialArgs;
+      };
+
+      nixosConfigurations.nktfh100-gamma = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = commonModules ++ [ ./hosts/gamma/configuration.nix ];
         specialArgs = specialArgs;
       };
     };
