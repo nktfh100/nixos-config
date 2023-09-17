@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./modules/boot.nix
+    ./modules/boot
     ./modules/gnome.nix
     ./modules/vscode.nix
     ./modules/docker.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   boot.loader = {
@@ -7,7 +7,7 @@
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
-    systemd-boot = {
+    systemd-boot = lib.mkDefault {
       enable = true;
       configurationLimit = 10;
     };
