@@ -1,6 +1,6 @@
 
 
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, unstable, lib, ... }:
 
 let
   theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
@@ -90,7 +90,6 @@ in {
         "just-perfection-desktop@just-perfection"
         "mediacontrols@cliffniff.github.com"
         "useless-gaps@pimsnel.com"
-        "WallpaperSwitcher@Rishu"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -99,11 +98,12 @@ in {
       enable-hot-corners = true;
     };
     "org/gnome/shell/extensions/user-theme" = { name = theme; };
-    "org/gnome/desktop/background" = {
+    "org/gnome/desktop/background" = lib.mkDefault {
       picture-uri = wallpaper;
       picture-uri-dark = wallpaper;
     };
-    "org/gnome/desktop/screensaver" = { picture-uri = wallpaper; };
+    "org/gnome/desktop/screensaver" =
+      lib.mkDefault { picture-uri = wallpaper; };
     "org/gnome/mutter" = { center-new-windows = true; };
     "org/gnome/shell/extensions/vitals" = {
       show-storage = false;

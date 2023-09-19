@@ -3,7 +3,7 @@
 {
   boot.loader = {
     timeout = 10;
-    efi = {
+    efi = lib.mkDefault {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
