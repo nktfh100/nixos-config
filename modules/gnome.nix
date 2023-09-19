@@ -146,6 +146,11 @@ in {
     "org/gnome/desktop/sound" = { event-sounds = false; };
     "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
     "org/gnome/mutter" = { edge-tiling = true; };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
       {
         name = "Open kitty terminal";
