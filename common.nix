@@ -4,7 +4,7 @@
   imports = [
     ./modules/boot
     ./modules/gnome.nix
-    ./modules/vscode.nix
+    ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
     ./modules/neovim
@@ -101,7 +101,6 @@
 
   environment.systemPackages = with pkgs; [
     unstable.firefox
-    unstable.vscode
     git
     ffmpeg_6-full
 
