@@ -34,6 +34,9 @@
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
