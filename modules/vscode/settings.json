@@ -42,5 +42,6 @@
         "plaintext": false,
         "markdown": true,
         "scminput": false
-    }
+    },
+    "importSorter.generalConfiguration.sortOnBeforeSave": true
 }
