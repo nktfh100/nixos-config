@@ -54,6 +54,11 @@
     postgresql # Required for psycopg2..
     gcc13 # Required for psycopg2..
     mypy
+
+    # Go
+    go
+    gopls # Go language server
+    delve # Go debugger
   ];
 
   programs.home-manager.enable = true;
