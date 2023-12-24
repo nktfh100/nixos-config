@@ -43,5 +43,6 @@
         "markdown": true,
         "scminput": false
     },
-    "importSorter.generalConfiguration.sortOnBeforeSave": true
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "terminal.integrated.env.linux": {}
 }

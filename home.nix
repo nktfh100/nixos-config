@@ -59,6 +59,8 @@
     go
     gopls # Go language server
     delve # Go debugger
+
+    stremio # Media center
   ];
 
   programs.home-manager.enable = true;
