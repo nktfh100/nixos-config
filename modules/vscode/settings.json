@@ -44,5 +44,6 @@
         "scminput": false
     },
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
-    "terminal.integrated.env.linux": {}
+    "terminal.integrated.env.linux": {},
+    "console-ninja.featureSet": "Community"
 }
