@@ -155,7 +155,7 @@ in {
       {
         name = "Open kitty terminal";
         command = "kitty";
-        binding = "<Control><Shift>t";
+        binding = "<Super><Shift>t";
       };
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ "<Super>a" ];
