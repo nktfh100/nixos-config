@@ -59,6 +59,7 @@
     go
     gopls # Go language server
     delve # Go debugger
+    wails # Build desktop apps with Go
 
     stremio # Media center
   ];

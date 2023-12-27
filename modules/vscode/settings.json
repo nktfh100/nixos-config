@@ -45,5 +45,8 @@
     },
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
     "terminal.integrated.env.linux": {},
-    "console-ninja.featureSet": "Community"
+    "console-ninja.featureSet": "Community",
+    "workbench.editorAssociations": {
+        "*.db": "sqlite-viewer.option"
+    }
 }
