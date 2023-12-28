@@ -93,7 +93,7 @@
 
   fonts = {
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (pkgs.callPackage ./pkgs/fonts { })
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];

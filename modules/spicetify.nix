@@ -7,8 +7,8 @@ in {
   programs.spicetify = {
     enable = true;
     spotifyPackage = unstable.spotify;
-    theme = spicePkgs.themes.catppuccin-macchiato;
-    colorScheme = "blue";
+    theme = spicePkgs.themes.catppuccin;
+    colorScheme = "macchiato";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay

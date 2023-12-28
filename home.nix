@@ -25,6 +25,7 @@
     # Dev
     docker
     gh # Github CLI
+    gnumake # Make
 
     # Coding language specific
 
@@ -51,9 +52,8 @@
     # Hive stuff
     #mypy # Pyton static types
     #python311Packages.psycopg2
-    postgresql # Required for psycopg2..
-    gcc13 # Required for psycopg2..
-    mypy
+    # postgresql # Required for psycopg2..
+    # gcc13 # Required for psycopg2..
 
     # Go
     go
@@ -74,7 +74,7 @@
       la = "ls -a";
       nix-code = "code /etc/nixos";
       nix-garbage =
-        "sudo nix-env --delete-generations old && sudo nix-collect-garbage -d";
+        "sudo nix-env --delete-generations old && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
       py = "python";
       dcb = "docker compose build";
       dcu = "docker compose up";
