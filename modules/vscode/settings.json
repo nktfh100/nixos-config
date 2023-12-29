@@ -45,5 +45,6 @@
     },
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
     "terminal.integrated.env.linux": {},
-    "console-ninja.featureSet": "Community"
+    "console-ninja.featureSet": "Community",
+    "editor.minimap.enabled": false
 }
