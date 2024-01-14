@@ -12,7 +12,7 @@ in {
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
-      genre
+      # genre # https://github.com/the-argus/spicetify-nix/issues/50
       songStats
       wikify
       featureShuffle

@@ -64,6 +64,11 @@
     stremio # Media center
   ];
 
+  # https://github.com/nix-community/home-manager/issues/4879
+  manual.html.enable = false;
+  manual.manpages.enable = false;
+  manual.json.enable = false;
+
   programs.home-manager.enable = true;
 
   programs.command-not-found.enable = true;
