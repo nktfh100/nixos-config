@@ -6,7 +6,7 @@
     ../../common.nix
     ../../modules/nvidia.nix
     (import ../../modules/wallpaper.nix {
-      wallpaper = "file:///etc/nixos/wallpapers/wallhaven-j3m8y5.png";
+      wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
     })
   ];
 
