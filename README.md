@@ -8,7 +8,6 @@ Catppuccin themed!
 # Images
 
 ![](assets/screenshot_1.png)
-![](assets/screenshot_2.png)
 
 
 # Install

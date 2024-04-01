@@ -7,7 +7,6 @@
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
-    ./modules/neovim
     ./modules/spicetify.nix
     ./modules/zoxide.nix
   ];
