@@ -42,24 +42,14 @@
     # Python
     python311
 
-    #poetry # Python dependency management
-    pre-commit # pre-commit hooks
-
     # Python packages
     python311Packages.flake8 # Linter
     python311Packages.black # Formatter
-
-    # Hive stuff
-    #mypy # Pyton static types
-    #python311Packages.psycopg2
-    # postgresql # Required for psycopg2..
-    # gcc13 # Required for psycopg2..
 
     # Go
     go
     gopls # Go language server
     delve # Go debugger
-    wails # Build desktop apps with Go
 
     stremio # Media center
   ];
