@@ -104,6 +104,8 @@
     git
     ffmpeg_6-full
 
+    pavucontrol # PulseAudio volume control
+
     # File managment
     zip
     unzip
