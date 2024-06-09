@@ -34,11 +34,8 @@ in {
       gtile
       just-perfection
       media-controls
-    ]) ++ (with unstable.gnomeExtensions; [
-      useless-gaps
       blur-my-shell
-      burn-my-windows
-    ]);
+    ]) ++ (with unstable.gnomeExtensions; [ useless-gaps burn-my-windows ]);
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
