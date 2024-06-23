@@ -123,6 +123,8 @@ in {
       global-presets = true;
       grid-sizes = "3x3,2x2";
       target-presets-to-monitor-of-mouse = true;
+      moveresize-enabled = false;
+      show-toggle-tiling = [ "<Shift><Alt>a" ];
     };
     "org/gnome/shell/extensions/just-perfection" = {
       app-menu = false;
