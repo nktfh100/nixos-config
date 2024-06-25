@@ -3,11 +3,21 @@
 { config, pkgs, unstable, lib, ... }:
 
 let
-  theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
-  catppuccin = pkgs.catppuccin-gtk.override {
+  theme = "catppuccin-macchiato-standard-blue-dark+default";
+  catppuccin = (pkgs.catppuccin-gtk.overrideAttrs {
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "gtk";
+      rev = "v1.0.3";
+      fetchSubmodules = true;
+      hash = "sha256-q5/VcFsm3vNEw55zq/vcM11eo456SYE5TQA3g2VQjGc=";
+    };
+
+    postUnpack = "";
+  }).override {
     accents = [ "blue" ];
-    size = "standard";
     variant = "macchiato";
+    size = "standard";
   };
   wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
 in {
@@ -17,6 +27,8 @@ in {
     desktopManager.gnome.enable = true;
     displayManager.gdm.wayland = false;
   };
+
+  # home-manager.backupFileExtension = "hm-backup";
 
   home-manager.users.nktfh100.home.packages = with pkgs;
     [
@@ -112,6 +124,8 @@ in {
       show-network = true;
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      blur = true;
+      dynamic-opacity = false;
       whitelist = [ "Code" "kitty" ];
     };
     "org/gnome/shell/extensions/blur-my-shell" = { hacks-level = 3; };
