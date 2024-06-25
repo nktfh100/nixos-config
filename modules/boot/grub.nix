@@ -6,6 +6,7 @@
     grub = {
       enable = true;
       useOSProber = true;
+      efiSupport = true;
       configurationLimit = 10;
     };
   };

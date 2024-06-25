@@ -15,8 +15,5 @@
   environment.systemPackages = with pkgs; [ telegram-desktop ];
 
   boot.loader.efi = { efiSysMountPoint = "/boot/efi"; };
-  boot.loader.grub = {
-    efiSupport = true;
-    device = "nodev";
-  };
+  boot.loader.grub = { device = "nodev"; };
 }
