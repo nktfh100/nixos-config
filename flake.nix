@@ -9,10 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:the-argus/spicetify-nix";
+    minegrub-theme.url =
+      "github:nktfh100/minegrub-world-sel-theme/nixos-support";
   };
 
-  outputs =
-    { self, nixpkgs, unstable, home-manager, spicetify-nix, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, spicetify-nix
+    , minegrub-theme, ... }@inputs:
     let
       commonModules = [
         ({ pkgs, ... }: {
@@ -22,6 +24,7 @@
           };
         })
         home-manager.nixosModules.home-manager
+        minegrub-theme.nixosModules.default
       ];
       specialArgs = { inherit spicetify-nix; };
     in {
