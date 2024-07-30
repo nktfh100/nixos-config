@@ -1,26 +1,11 @@
 
 
-{ config, pkgs, unstable, lib, ... }:
+{ config, pkgs, unstable, lib, catppuccin, ... }:
 
-let
-  theme = "catppuccin-macchiato-standard-blue-dark+default";
-  catppuccin = (pkgs.catppuccin-gtk.overrideAttrs {
-    src = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "gtk";
-      rev = "v1.0.3";
-      fetchSubmodules = true;
-      hash = "sha256-q5/VcFsm3vNEw55zq/vcM11eo456SYE5TQA3g2VQjGc=";
-    };
-
-    postUnpack = "";
-  }).override {
-    accents = [ "blue" ];
-    variant = "macchiato";
-    size = "standard";
-  };
-  wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
+let wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
 in {
+  imports = [ ./gnome-catppuccin.nix ];
+
   services.xserver = {
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
@@ -34,7 +19,6 @@ in {
     [
       gnome3.gnome-tweaks
       gnome3.dconf-editor
-      catppuccin-gtk
 
       gtk-engine-murrine
       gnome.gnome-themes-extra
@@ -51,30 +35,8 @@ in {
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
-
-    theme = {
-      name = theme;
-      package = catppuccin;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders;
-    };
-
-    # cursorTheme = {
-    #   name = "Catppuccin-Macchiato-Mauve-Cursors";
-    #   package = pkgs.catppuccin-cursors.macchiatoMauve;
-    # };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-      gtk-key-theme-name = theme;
-      gtk-icon-theme-name = "Papirus-Dark";
-    };
+    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
   };
-
-  home-manager.users.nktfh100.home.sessionVariables.GTK_THEME = theme;
 
   home-manager.users.nktfh100.dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
@@ -102,11 +64,9 @@ in {
       ];
     };
     "org/gnome/desktop/interface" = {
-      gtk-theme = theme;
       color-scheme = "prefer-dark";
       enable-hot-corners = true;
     };
-    "org/gnome/shell/extensions/user-theme" = { name = theme; };
     "org/gnome/desktop/background" = lib.mkDefault {
       picture-uri = wallpaper;
       picture-uri-dark = wallpaper;

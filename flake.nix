@@ -8,22 +8,28 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     minegrub-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, spicetify-nix
-    , minegrub-theme, ... }@inputs:
+  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs:
     let
       commonModules = [
         ({ pkgs, ... }: {
-          _module.args.unstable = import unstable {
+          _module.args.unstable = import inputs.unstable {
             inherit (pkgs.stdenv.targetPlatform) system;
             config.allowUnfree = true;
           };
         })
-        home-manager.nixosModules.home-manager
-        minegrub-theme.nixosModules.default
+        inputs.home-manager.nixosModules.home-manager
+        inputs.minegrub-theme.nixosModules.default
+        inputs.catppuccin.nixosModules.catppuccin
+        {
+          home-manager.users.nktfh100 = {
+            imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
+          };
+        }
       ];
       specialArgs = { inherit spicetify-nix; };
     in {
