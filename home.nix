@@ -77,8 +77,10 @@
       nix-rebuild() {
         local flake_name="nktfh100-$1"
         local rebuild_subcommand=$2
+        shift 2
+        local extra_args="$@"
 
-        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name"
+        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name" $extra_args
       }
     '';
   };
