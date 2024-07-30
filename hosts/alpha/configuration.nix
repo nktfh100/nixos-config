@@ -14,20 +14,22 @@
 
   networking.hostName = "nktfh100-alpha";
 
-  boot.loader.grub = {
-    device = "nodev";
-    minegrub-world-sel = {
-      enable = true;
-      customIcons = [{
-        name = "nixos";
-        lineTop = "NixOS (23/11/2023, 23:03)";
-        lineBottom = "Survival Mode, No Cheats, Version: 23.11";
-        # imgName = "";
-        # customImg = builtins.path {
-        #   path = ../../nixos-icon.png;
-        #   name = "nixos-img";
-        # };
-      }];
+  boot = {
+    loader.grub = {
+      device = "nodev";
+      minegrub-world-sel = {
+        enable = true;
+        customIcons = [{
+          name = "nixos";
+          lineTop = "NixOS (23/11/2023, 23:03)";
+          lineBottom = "Survival Mode, No Cheats, Version: 23.11";
+          imgName = "bedrock";
+          # customImg = builtins.path {
+          #   path = ../../nixos-icon.png;
+          #   name = "nixos-img";
+          # };
+        }];
+      };
     };
   };
 
