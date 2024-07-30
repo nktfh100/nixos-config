@@ -3,7 +3,7 @@
 {
   imports = [
     ./modules/boot
-    ./modules/gnome.nix
+    ./modules/gnome
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
@@ -48,7 +48,7 @@
     enable = true;
     excludePackages = [ pkgs.xterm ];
     # Configure keymap in X11
-    layout = "us,il";
+    xkb.layout = "us,il";
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
   };

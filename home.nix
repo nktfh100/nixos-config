@@ -30,7 +30,7 @@
     # Coding language specific
 
     # Nix
-    nixfmt
+    nixfmt-classic
 
     # JS/TS
     nodejs_18
