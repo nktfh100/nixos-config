@@ -1,4 +1,4 @@
-{ lib, fetchFromGitHub }:
+{ pkgs, lib, fetchFromGitHub }:
 
 fetchFromGitHub {
   name = "nktfh100-fonts";
@@ -13,6 +13,8 @@ fetchFromGitHub {
   '';
 
   sha256 = "sha256-O9GXuyQIgXSKYhvhv7/LNvlLirxBesWAnU/qJrBwwgg=";
+
+  nativeBuildInputs = [ pkgs.unzip ];
 
   meta = with lib; {
     homepage = "";

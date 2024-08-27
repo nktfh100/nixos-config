@@ -50,6 +50,7 @@ in {
         "kitty.desktop"
         "org.gnome.Nautilus.desktop"
         "spotify.desktop"
+        "smartcode-stremio.desktop"
       ];
       disable-user-extensions = false;
       enabled-extensions = [

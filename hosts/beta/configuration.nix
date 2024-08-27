@@ -1,19 +1,20 @@
 { pkgs, ... }:
 
+# Or old laptop
 {
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
     ../../modules/boot/grub.nix
-    (import ../../modules/wallpaper.nix {
-      wallpaper = "file:///etc/nixos/wallpapers/at.jpeg";
-    })
   ];
 
   networking.hostName = "nktfh100-beta";
 
-  environment.systemPackages = with pkgs; [ telegram-desktop ];
+  # environment.systemPackages = with pkgs; [  ];
 
-  boot.loader.efi = { efiSysMountPoint = "/boot/efi"; };
-  boot.loader.grub = { device = "nodev"; };
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot =
+    true; # powers up the default Bluetooth controller on boot
+
+  home-manager.users.nktfh100.home.packages = with pkgs; [ zoom-us slack ];
 }

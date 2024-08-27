@@ -54,6 +54,13 @@
     stremio # Media center
   ];
 
+  # Make firefox the default browser
+  xdg.mimeApps.defaultApplications = {
+    "text/html" = ["firefox.desktop"];
+    "x-scheme-handler/http" = ["firefox.desktop"];
+    "x-scheme-handler/https" = ["firefox.desktop"];
+  };
+
   programs.home-manager.enable = true;
 
   programs.command-not-found.enable = true;
@@ -88,7 +95,7 @@
   programs.git = {
     enable = true;
     userName = "nktfh100";
-    userEmail = "me@nktfh100.com";
+    userEmail = "me@malachi.io";
     extraConfig = {
       credential.helper = "store";
       http.postBuffer = "524288000";
