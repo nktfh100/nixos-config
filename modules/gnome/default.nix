@@ -31,7 +31,13 @@ in {
       just-perfection
       media-controls
       blur-my-shell
-    ]) ++ (with unstable.gnomeExtensions; [ useless-gaps burn-my-windows ]);
+    ]) ++ (with unstable.gnomeExtensions;
+      [
+        # useless-gaps - Not working anymore
+        burn-my-windows
+      ]);
+
+  # TODO add app indicator (tray) extension
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
@@ -61,7 +67,8 @@ in {
         "gTile@vibou"
         "just-perfection-desktop@just-perfection"
         "mediacontrols@cliffniff.github.com"
-        "useless-gaps@pimsnel.com"
+        # "useless-gaps@pimsnel.com"
+        "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -78,11 +85,10 @@ in {
     "org/gnome/shell/extensions/vitals" = {
       show-storage = false;
       show-voltage = false;
-      show-memory = true;
-      show-fan = true;
-      show-temperature = true;
-      show-processor = true;
-      show-network = true;
+      show-fan = false;
+      show-network = false;
+      hot-sensors =
+        [ "_processor_usage_" "_memory_usage_" "__temperature_avg__" ];
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur = true;
