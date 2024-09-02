@@ -33,18 +33,18 @@
     nixfmt-classic
 
     # JS/TS
-    nodejs_18
+    nodejs_20
     yarn
 
     # Global npm packages
     nodePackages_latest.vercel
 
     # Python
-    python311
+    python312
 
     # Python packages
-    python311Packages.flake8 # Linter
-    python311Packages.black # Formatter
+    python312Packages.flake8 # Linter
+    python312Packages.black # Formatter
 
     # Go
     go
@@ -56,9 +56,9 @@
 
   # Make firefox the default browser
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
 
   programs.home-manager.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 # New gaming pc
 {
@@ -19,4 +19,5 @@
     true; # powers up the default Bluetooth controller on boot
 
   home-manager.users.nktfh100.home.packages = with pkgs; [ zoom-us slack ];
+
 }

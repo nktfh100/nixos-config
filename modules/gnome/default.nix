@@ -88,14 +88,14 @@ in {
       show-fan = false;
       show-network = false;
       hot-sensors =
-        [ "_processor_usage_" "_memory_usage_" "__temperature_avg__" ];
+        [ "_processor_usage_" "_memory_usage_" "_temperature_processor_0_" ];
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur = true;
       dynamic-opacity = false;
       whitelist = [ "Code" "kitty" ];
     };
-    "org/gnome/shell/extensions/blur-my-shell" = { hacks-level = 3; };
+    "org/gnome/shell/extensions/blur-my-shell" = { hacks-level = 1; };
     "org/gnome/shell/extensions/burn-my-windows" = {
       active-profile =
         "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
@@ -114,10 +114,16 @@ in {
       clock-menu-position = 2;
     };
     "org/gnome/shell/extensions/mediacontrols" = {
-      show-seek-back = false;
-      show-seek-forward = false;
-      show-seperators = false;
+      show-control-icons-seek-backward = false;
+      show-control-icons-seek-forward = false;
+      show-separators = false;
       show-sources-menu = false;
+      scroll-labels = false;
+      blacklisted-players = [
+        "google-chrome.desktop"
+        "chrome-agimnkijcaahngcdmfeangaknmldooml-Default.desktop"
+        "firefox.desktop"
+      ];
     };
     "org/gnome/shell/extensions/useless-gaps" = {
       no-gap-when-maximized = true;
