@@ -11,6 +11,7 @@
     "workbench.colorTheme": "Catppuccin Macchiato",
     "workbench.iconTheme": "catppuccin-macchiato",
     "files.associations": {
+        ".env": "dotenv",
         ".env*": "dotenv"
     },
     "[javascript]": {
@@ -48,9 +49,9 @@
     },
     "github.copilot.enable": {
         "*": true,
-        "plaintext": true,
         "markdown": true,
         "scminput": false,
+        "plaintext": false,
         "dotenv": false,
         "json": false
     },
