@@ -10,6 +10,9 @@
     "update.mode": "none",
     "workbench.colorTheme": "Catppuccin Macchiato",
     "workbench.iconTheme": "catppuccin-macchiato",
+    "files.associations": {
+        ".env*": "dotenv"
+    },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -47,7 +50,9 @@
         "*": true,
         "plaintext": true,
         "markdown": true,
-        "scminput": false
+        "scminput": false,
+        "dotenv": false,
+        "json": false
     },
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
     "terminal.integrated.env.linux": {},

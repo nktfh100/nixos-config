@@ -99,6 +99,8 @@
     ];
   };
 
+  services.teamviewer.enable = true;
+
   environment.systemPackages = with pkgs; [
     unstable.firefox
     git
@@ -116,6 +118,8 @@
 
     unstable.act # Run github actions locally
     unstable.poetry # Python dependency management
+
+    unstable.teamviewer
   ];
 
   # Enable the OpenSSH daemon.
