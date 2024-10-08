@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-# Or old laptop
+# Work laptop
 {
   imports = [
     ./hardware-configuration.nix
