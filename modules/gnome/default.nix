@@ -31,13 +31,11 @@ in {
       just-perfection
       media-controls
       blur-my-shell
-    ]) ++ (with unstable.gnomeExtensions;
-      [
-        # useless-gaps - Not working anymore
-        burn-my-windows
-      ]);
-
-  # TODO add app indicator (tray) extension
+    ]) ++ (with unstable.gnomeExtensions; [
+      # useless-gaps - Not working anymore
+      appindicator
+      burn-my-windows
+    ]);
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
@@ -67,6 +65,7 @@ in {
         "gTile@vibou"
         "just-perfection-desktop@just-perfection"
         "mediacontrols@cliffniff.github.com"
+        "appindicatorsupport@rgcjonas.gmail.com"
         # "useless-gaps@pimsnel.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
       ];
