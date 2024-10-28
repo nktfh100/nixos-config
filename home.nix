@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.stateVersion = "23.05";
+  home.stateVersion = "24.05";
   home.username = "nktfh100";
 
   home.packages = with pkgs; [
