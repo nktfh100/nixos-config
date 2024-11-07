@@ -116,10 +116,9 @@
     gparted
     ntfs3g # NTFS support for gparted
 
-    unstable.act # Run github actions locally
-    unstable.poetry # Python dependency management
+    # unstable.act # Run github actions locally
+    # unstable.poetry # Python dependency management
 
-    jetbrains.webstorm
     # unstable.teamviewer
   ];
 

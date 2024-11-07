@@ -12,6 +12,8 @@
     bitwarden
     google-chrome
 
+    psmisc # To use fuser
+
     qbittorrent
 
     # Video/Audio
@@ -26,6 +28,7 @@
     docker
     gh # Github CLI
     gnumake # Make
+    jetbrains.webstorm
 
     # Coding language specific
 
@@ -88,6 +91,10 @@
         local extra_args="$@"
 
         cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name" $extra_args
+      }
+
+      kill-port() {
+        sudo fuser -k $1/tcp
       }
     '';
   };
