@@ -14,8 +14,6 @@
 
     psmisc # To use fuser
 
-    qbittorrent
-
     # Video/Audio
     vlc
     audacity
@@ -28,7 +26,9 @@
     docker
     gh # Github CLI
     gnumake # Make
+
     jetbrains.webstorm
+    jetbrains.pycharm-community-bin
 
     # Coding language specific
 
