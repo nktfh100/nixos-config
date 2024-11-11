@@ -7,19 +7,37 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    neovim-unwrapped
-    wl-clipboard
+    unstable.neovim
 
-    lua
+    wl-clipboard # Clipboard integration
+
+    # Formatters
+    nixfmt-rfc-style # Nix
+    black # Python
+    prettierd # JS/TS
+    shfmt # Shell
+    stylua # Lua
+
+    # LSP
     lua-language-server
-    nixfmt # Format nix
+    # my.logseqlsp
+    nixd
+    nil
 
-    nodePackages.prettier # JS/TS formatter
-
-    gcc # C compiler
-
+    # Tools
+    cmake
+    fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
+    fzf
+    gcc
+    git
+    gnumake
+    nodejs
+    sqlite
+    tree-sitter
+    luarocks
     # Required by telescope
     ripgrep
     fd
   ];
+
 }

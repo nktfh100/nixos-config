@@ -33,7 +33,7 @@
     # Coding language specific
 
     # Nix
-    nixfmt-classic
+    # nixfmt-classic
 
     # JS/TS
     nodejs_20
