@@ -9,6 +9,7 @@
     ./modules/kitty
     # ./modules/spicetify.nix
     ./modules/zoxide.nix
+    ./modules/neovim
   ];
 
   home-manager.useGlobalPkgs = true;
