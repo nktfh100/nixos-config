@@ -24,6 +24,8 @@
     nixd
     nil
 
+    lua
+
     # Tools
     cmake
     fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0

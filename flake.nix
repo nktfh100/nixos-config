@@ -9,19 +9,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    # spicetify-nix.url = "github:Gerg-L/spicetify-nix"; # Doesn't work
+    # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     minegrub-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
   };
 
-  outputs = { self, nixpkgs, spicetify-nix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      # spicetify-nix,
+      ...
+    }@inputs:
     let
       commonModules = [
-        ({ pkgs, ... }: {
-          _module.args.unstable = import inputs.unstable {
-            inherit (pkgs.stdenv.targetPlatform) system;
-            config.allowUnfree = true;
-          };
-        })
+        (
+          { pkgs, ... }:
+          {
+            _module.args.unstable = import inputs.unstable {
+              inherit (pkgs.stdenv.targetPlatform) system;
+              config.allowUnfree = true;
+            };
+          }
+        )
         inputs.home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         inputs.catppuccin.nixosModules.catppuccin
@@ -31,8 +41,11 @@
           };
         }
       ];
-      specialArgs = { inherit spicetify-nix; };
-    in {
+      specialArgs = {
+        # inherit spicetify-nix;
+      };
+    in
+    {
       nixosConfigurations.nktfh100-alpha = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = commonModules ++ [ ./hosts/alpha/configuration.nix ];

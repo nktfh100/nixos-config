@@ -1,4 +1,11 @@
-{ config, pkgs, unstable, lib, nixpkgs, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  lib,
+  nixpkgs,
+  ...
+}:
 
 {
   imports = [
@@ -7,7 +14,7 @@
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
-    # ./modules/spicetify.nix
+    ./modules/spicetify.nix
     ./modules/zoxide.nix
     ./modules/neovim
   ];
@@ -69,7 +76,10 @@
   };
 
   nix = {
-    settings.experimental-features = [ "flakes" "nix-command" ];
+    settings.experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -80,16 +90,18 @@
   users.mutableUsers = false;
   # Define user accounts. Set password hash via `mkpasswd -m sha-512`
   users.users.root = {
-    initialHashedPassword =
-      "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
+    initialHashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
   users.users.nktfh100 = {
     isNormalUser = true;
     description = "Malachi";
-    extraGroups = [ "networkmanager" "wheel" "audio" ];
-    hashedPassword =
-      "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+    ];
+    hashedPassword = "$6$Zy11DU7hvzxe2Sh0$LBKmavFyJx/f3w22nktPL8/kJ8M/neU8agJFoddJi7rQnbMO0E8CdrqNKZ/XFHi08eWPn5pTuMBLaMMfsSh21.";
   };
 
   fonts = {

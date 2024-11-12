@@ -1,21 +1,33 @@
-{ pkgs, unstable, spicetify-nix, ... }:
+{
+  pkgs,
+  unstable,
+  spicetify-nix,
+  ...
+}:
 
-let spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
-in {
-  imports = [ spicetify-nix.nixosModule ];
+# let
+#   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+# in
+{
 
-  programs.spicetify = {
-    enable = true;
-    spotifyPackage = unstable.spotify;
-    theme = spicePkgs.themes.catppuccin;
-    colorScheme = "macchiato";
+  environment.systemPackages = with pkgs; [ spotify ];
 
-    enabledExtensions = with spicePkgs.extensions; [
-      fullAppDisplay
-      # genre # https://github.com/the-argus/spicetify-nix/issues/50
-      songStats
-      wikify
-      featureShuffle
-    ];
-  };
+  # Spicetify doesnt work anymore :(
+
+  # imports = [ spicetify-nix.nixosModule ];
+
+  # programs.spicetify = {
+  #   enable = true;
+  # spotifyPackage = unstable.spotify;
+  # theme = spicePkgs.themes.catppuccin;
+  # colorScheme = "macchiato";
+
+  #   enabledExtensions = with spicePkgs.extensions; [
+  #     fullAppDisplay
+  #     # genre # https://github.com/the-argus/spicetify-nix/issues/50
+  #     songStats
+  #     wikify
+  #     featureShuffle
+  #   ];
+  # };
 }
