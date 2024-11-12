@@ -1,23 +1,26 @@
 { config, pkgs, ... }:
 
-# New gaming pc
+# Gaming desktop
+let
+  home-assistant-desktop = pkgs.callPackage ../../pkgs/home-assistant-desktop.nix { };
+in
 {
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
-    (import ../../modules/wallpaper.nix {
-      wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
-    })
+    (import ../../modules/wallpaper.nix { wallpaper = "file:///etc/nixos/wallpapers/nix-black.png"; })
   ];
 
   networking.hostName = "nktfh100-alpha";
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot =
-    true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  home-manager.users.nktfh100.home.packages = with pkgs; [ zoom-us slack ];
+  home-manager.users.nktfh100.home.packages = with pkgs; [
+    zoom-us
+    home-assistant-desktop
+  ];
 
 }

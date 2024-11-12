@@ -1,9 +1,16 @@
+{
+  config,
+  pkgs,
+  unstable,
+  lib,
+  catppuccin,
+  ...
+}:
 
-
-{ config, pkgs, unstable, lib, catppuccin, ... }:
-
-let wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
-in {
+let
+  wallpaper = "file:///etc/nixos/wallpapers/nix-black.png";
+in
+{
   imports = [ ./gnome-catppuccin.nix ];
 
   services.xserver = {
@@ -15,7 +22,8 @@ in {
 
   # home-manager.backupFileExtension = "hm-backup";
 
-  home-manager.users.nktfh100.home.packages = with pkgs;
+  home-manager.users.nktfh100.home.packages =
+    with pkgs;
     [
       gnome3.gnome-tweaks
       gnome3.dconf-editor
@@ -23,7 +31,8 @@ in {
       gtk-engine-murrine
       gnome.gnome-themes-extra
       gtk3
-    ] ++ (with pkgs.gnomeExtensions; [
+    ]
+    ++ (with pkgs.gnomeExtensions; [
       # GNOME extensions
       user-themes
       vitals
@@ -31,7 +40,8 @@ in {
       just-perfection
       media-controls
       blur-my-shell
-    ]) ++ (with unstable.gnomeExtensions; [
+    ])
+    ++ (with unstable.gnomeExtensions; [
       # useless-gaps - Not working anymore
       appindicator
       burn-my-windows
@@ -39,7 +49,9 @@ in {
 
   home-manager.users.nktfh100.gtk = {
     enable = true;
-    gtk3.extraConfig = { gtk-application-prefer-dark-theme = true; };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
   };
 
   home-manager.users.nktfh100.dconf.settings = {
@@ -78,26 +90,34 @@ in {
       picture-uri = wallpaper;
       picture-uri-dark = wallpaper;
     };
-    "org/gnome/desktop/screensaver" =
-      lib.mkDefault { picture-uri = wallpaper; };
-    "org/gnome/mutter" = { center-new-windows = true; };
+    "org/gnome/desktop/screensaver" = lib.mkDefault { picture-uri = wallpaper; };
+    "org/gnome/mutter" = {
+      center-new-windows = true;
+    };
     "org/gnome/shell/extensions/vitals" = {
       show-storage = false;
       show-voltage = false;
       show-fan = false;
       show-network = false;
-      hot-sensors =
-        [ "_processor_usage_" "_memory_usage_" "_temperature_processor_0_" ];
+      hot-sensors = [
+        "_processor_usage_"
+        "_memory_usage_"
+        "_temperature_processor_0_"
+      ];
     };
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur = true;
       dynamic-opacity = false;
-      whitelist = [ "Code" "kitty" ];
+      whitelist = [
+        "Code"
+        "kitty"
+      ];
     };
-    "org/gnome/shell/extensions/blur-my-shell" = { hacks-level = 1; };
+    "org/gnome/shell/extensions/blur-my-shell" = {
+      hacks-level = 1;
+    };
     "org/gnome/shell/extensions/burn-my-windows" = {
-      active-profile =
-        "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
+      active-profile = "/home/nktfh100/.config/burn-my-windows/profiles/1694335536777219.conf";
     };
     "org/gnome/shell/extensions/gtile" = {
       global-presets = true;
@@ -128,20 +148,25 @@ in {
       no-gap-when-maximized = true;
       gap-size = 10;
     };
-    "org/gnome/desktop/sound" = { event-sounds = false; };
-    "org/gnome/terminal/legacy" = { theme-variant = "dark"; };
-    "org/gnome/mutter" = { edge-tiling = true; };
+    "org/gnome/desktop/sound" = {
+      event-sounds = false;
+    };
+    "org/gnome/terminal/legacy" = {
+      theme-variant = "dark";
+    };
+    "org/gnome/mutter" = {
+      edge-tiling = true;
+    };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
       ];
     };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" =
-      {
-        name = "Open kitty terminal";
-        command = "kitty";
-        binding = "<Super><Shift>t";
-      };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Open kitty terminal";
+      command = "kitty";
+      binding = "<Super><Shift>t";
+    };
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ "<Super>a" ];
       toggle-tiled-right = [ "<Super>d" ];
@@ -150,27 +175,41 @@ in {
       maximize = [ "<Super>w" ];
       minimize = [ "<Super>q" ];
       unmaximize = [ "<Super>s" ];
-      move-to-monitor-up = [ "<Shift><Super>w" "<Shift><Super>Up" ];
-      move-to-monitor-down = [ "<Shift><Super>s" "<Shift><Super>Down" ];
-      move-to-monitor-left = [ "<Shift><Super>a" "<Shift><Super>Left" ];
-      move-to-monitor-right = [ "<Shift><Super>d" "<Shift><Super>Right" ];
+      move-to-monitor-up = [
+        "<Shift><Super>w"
+        "<Shift><Super>Up"
+      ];
+      move-to-monitor-down = [
+        "<Shift><Super>s"
+        "<Shift><Super>Down"
+      ];
+      move-to-monitor-left = [
+        "<Shift><Super>a"
+        "<Shift><Super>Left"
+      ];
+      move-to-monitor-right = [
+        "<Shift><Super>d"
+        "<Shift><Super>Right"
+      ];
     };
-    "org/gnome/shell/keybindings" = { toggle-overview = [ ]; };
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = [ ];
+    };
   };
 
-  home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text =
-    ''
-      [burn-my-windows-profile]
-      fire-enable-effect=false
-      incinerate-enable-effect=true
-      incinerate-scale=0.90000000000000002
-      incinerate-color='rgb(138,173,244)'
-      incinerate-animation-time=1073
-      incinerate-turbulence=0.31
-      profile-high-priority=true
-    '';
+  home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text = ''
+    [burn-my-windows-profile]
+    fire-enable-effect=false
+    incinerate-enable-effect=true
+    incinerate-scale=0.90000000000000002
+    incinerate-color='rgb(138,173,244)'
+    incinerate-animation-time=1073
+    incinerate-turbulence=0.31
+    profile-high-priority=true
+  '';
 
-  environment.gnome.excludePackages = (with pkgs; [ gnome-tour ])
+  environment.gnome.excludePackages =
+    (with pkgs; [ gnome-tour ])
     ++ (with pkgs.gnome; [
       gnome-music
       gnome-weather
