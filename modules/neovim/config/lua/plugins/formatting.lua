@@ -1,16 +1,21 @@
 return {
     'stevearc/conform.nvim',
-    opts = {},
+    event = { "BufWritePre" },
+    keys = {
+        { "<leader>rf", function()
+            require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })
+            end, desc = "Format code" },
+    },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                javascript = { "prettierd" },
-				typescript = { "prettierd" },
-                typescriptreact = { "prettierd" },
-                javascriptreact = { "prettierd" },
-				json = { "prettierd" },
-				yaml = { "prettierd" },
-				html = { "prettierd" },
+                javascript = { "prettierd", "prettier" },
+				typescript = { "prettierd", "prettier" },
+                typescriptreact = { "prettierd", "prettier" },
+                javascriptreact = { "prettierd", "prettier"},
+				json = { "prettierd", "prettier" },
+				yaml = { "prettierd", "prettier"},
+				html = { "prettierd", "prettier" },
 
 				lua = { "stylua" },
 				nix = { "nixfmt" },

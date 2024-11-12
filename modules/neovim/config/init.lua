@@ -3,9 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("lazy_init")
+require("settings")
 
--- require("settings")
--- require("plugins")
 -- require("mappings")
 
 -- Set theme

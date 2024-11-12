@@ -9,7 +9,9 @@
   environment.systemPackages = with pkgs; [
     unstable.neovim
 
-    wl-clipboard # Clipboard integration
+    xclip # Clipboard integration
+
+    lua5_1
 
     # Formatters
     nixfmt-rfc-style # Nix
@@ -20,11 +22,9 @@
 
     # LSP
     lua-language-server
-    # my.logseqlsp
     nixd
     nil
-
-    lua
+    nodePackages_latest.typescript-language-server
 
     # Tools
     cmake
