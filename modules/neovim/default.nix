@@ -28,6 +28,7 @@
 
     # Tools
     cmake
+    # cargo
     fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
     fzf
     gcc

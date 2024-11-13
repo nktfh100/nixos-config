@@ -1,6 +1,6 @@
 return {
     'stevearc/conform.nvim',
-    event = { "BufWritePre" },
+    lazy = false,
     keys = {
         { "<leader>rf", function()
             require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })

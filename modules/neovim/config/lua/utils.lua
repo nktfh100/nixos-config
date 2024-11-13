@@ -4,15 +4,6 @@ end
 
 local function map(...) return require("which-key").add(...) end
 
--- Open telescope with layout based on the window width
--- M.open_telescope = function(type)
--- 	local layout = "vertical"
--- 	if vim.fn.winwidth("%") >= 200 then
--- 		layout = "horizontal"
--- 	end
--- 	return ":lua require('telescope.builtin')." .. type .. "({layout_strategy='" .. layout .. "'})<CR>"
--- end
-
 -- Remove a single tab from the current line
 local function remove_tab()
 	local line = vim.api.nvim_get_current_line()

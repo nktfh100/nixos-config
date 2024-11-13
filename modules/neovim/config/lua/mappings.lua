@@ -2,6 +2,7 @@ local M = {}
 
 local utils = require("utils")
 
+-- TODO
 local map = vim.keymap.set
 
 local opts = utils.opts
@@ -51,18 +52,6 @@ map("n", "<leader>l", "<C-w>l", opts("Move To The Right Window"))
 -- Paste
 map("v", "p", '"_dP', opts("Paste Without Yanking")) -- Paste over currently selected text without yanking it
 map("n", "<C-p>", ":pu<CR>", opts("Paste In Next Line"))
-
--- Telescope (Search)
-map("n", "<leader>ff", utils.open_telescope("find_files"), opts("Telescope Find Files"))
-map("n", "<leader>fg", utils.open_telescope("live_grep"), opts("Telescope Grep"))
-map("n", "<leader>fb", utils.open_telescope("buffers"), opts("Telescope Buffers"))
-map("n", "<leader>fh", utils.open_telescope("help_tags"), opts("Telescope Help"))
-map(
-	"n",
-	"<leader>fe",
-	utils.open_telescope("current_buffer_fuzzy_find"),
-	opts("Telescope Fuzzy Find In Current Buffer")
-)
 
 -- Hop
 map("n", "f", ':lua require("hop").hint_char1()<CR>', opts("Hop"))
@@ -143,3 +132,4 @@ M.lsp_on_attach = function(_, bufnr)
 end
 
 return M
+
