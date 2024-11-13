@@ -1,6 +1,3 @@
-local function opts(desc)
-	return { desc = desc, noremap = true, silent = true, nowait = true }
-end
 
 local function map(...) return require("which-key").add(...) end
 

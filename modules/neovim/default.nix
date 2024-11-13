@@ -7,7 +7,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    unstable.neovim
+    (unstable.neovim.override { withNodeJs = true; })
 
     xclip # Clipboard integration
 
@@ -25,6 +25,7 @@
     nixd
     nil
     nodePackages_latest.typescript-language-server
+    tailwindcss-language-server
 
     # Tools
     cmake

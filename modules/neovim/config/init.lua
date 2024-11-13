@@ -5,7 +5,7 @@ vim.g.maplocalleader = "\\"
 require("settings")
 require("lazy_init")
 
--- require("mappings")
+require("mappings")
 
 -- Set theme
 vim.cmd("syntax enable")

@@ -89,6 +89,15 @@
         shift 2
         local extra_args="$@"
 
+        if [[ "$flake_name" != "$(hostname)" ]]; then
+            echo "Warning: The flake name '$flake_name' does not match the current hostname '$(hostname)'."
+            read -p "Do you want to proceed? (y/N): " confirmation
+            if [[ "$confirmation" != "y" && "$confirmation" != "Y" ]]; then
+                echo "Aborted."
+                return 1
+            fi
+        fi
+
         cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name" $extra_args
       }
 

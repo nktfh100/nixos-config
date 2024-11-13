@@ -10,7 +10,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader><leader>",
+				"<leader>h",
 				function()
 					require("which-key").show({ global = false })
 				end,
@@ -18,4 +18,29 @@ return {
 			},
 		},
 	},
+	{
+		'smoka7/hop.nvim',
+		version = "v2.7.*",
+		lazy = false,
+		opts = {
+			keys = 'etovxqpdygfblzhckisuran'
+		},
+		keys = {
+			{
+				"f",
+				function()
+					require("hop").hint_char1()
+				end,
+				desc = "Hop",
+			},
+			{
+				"t",
+				function()
+					require("hop").hop_pattern()
+				end,
+				desc = "Hop Pattern Matching",
+			},
+		}
+	},
+	{'wakatime/vim-wakatime', lazy = false}
 }
