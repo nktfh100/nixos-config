@@ -66,6 +66,7 @@ return {
 			}
 		end
 	},
+	-- Status line
 	{
 		'nvim-lualine/lualine.nvim',
 		lazy = false,
@@ -76,7 +77,29 @@ return {
 				}
 			}
 		end,
-
+	},
+	-- Indent lines
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
+	-- Transparent background
+	{
+		"xiyaowong/transparent.nvim",
+		lazy = false,
+		config = function()
+			require("transparent").setup({
+				groups = {
+					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+					'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+					'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+					'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+				},
+			})
+		end,
 	},
     -- Icons
 	{

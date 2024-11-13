@@ -49,6 +49,9 @@ return {
 				tailwindcss = {
 					mason = false,
 				},
+				emmet_language = {
+					mason = false,
+				},
 			},
 		},
 
@@ -91,12 +94,16 @@ return {
 			lspconfig.tailwindcss.setup({
 				capabilities = capabilities,
 			})
+			lspconfig.emmet_language_server.setup({
+				filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss",  "typescriptreact" },
+				capabilities = capabilities
+			})
 
 			utils.map({
 				{ "<leader>r", group = "refactor", icon = "" },
 			})
 
-			-- Setup nvim-cmp
+			-- Setup nvim-cmp for completion
 			local cmp = require("cmp")
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -115,7 +122,6 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					-- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 					-- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<Tab>"] = cmp.mapping.confirm({ select = true }),
 				}),
 				snippet = {

@@ -22,10 +22,11 @@
 
     # LSP
     lua-language-server
-    nixd
-    nil
+    emmet-language-server
     nodePackages_latest.typescript-language-server
     tailwindcss-language-server
+    nixd
+    nil
 
     # Tools
     cmake

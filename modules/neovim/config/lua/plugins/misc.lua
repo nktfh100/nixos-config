@@ -6,7 +6,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
-			preset = "modern", -- helix ?
+			preset = "helix",
 		},
 		keys = {
 			{
@@ -40,6 +40,19 @@ return {
 				end,
 				desc = "Hop Pattern Matching",
 			},
+		}
+	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+	},
+	{
+		'fedepujol/move.nvim',
+		opts = {
+			char = {
+				enable = true
+			}
 		}
 	},
 	{'wakatime/vim-wakatime', lazy = false}
