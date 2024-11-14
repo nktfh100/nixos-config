@@ -1,6 +1,8 @@
 local opt = vim.opt
 local g = vim.g
 
+vim.opt.termguicolors = true
+
 -- Disable netrw (default file explorer) and its plugins
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -37,9 +39,6 @@ opt.undofile = true
 
 -- Disable search highlighting after searching (matches aren't highlighted after you search)
 -- opt.hlsearch = false
-
--- Enable 24-bit RGB color support for better color display in the terminal
--- opt.termguicolors = true
 
 -- Set scroll offset so at least 8 lines remain visible around the cursor when scrolling
 opt.scrolloff = 8

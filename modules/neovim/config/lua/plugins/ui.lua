@@ -1,14 +1,4 @@
 return {
-	-- UI overhaul
-    {
-        "folke/noice.nvim",
-        lazy = false,
-        opts = {},
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
-	},
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false, init = function()
 		require("catppuccin").setup({
@@ -38,12 +28,35 @@ return {
 		})
 	end
 	},
-	-- {
-	-- 	'goolord/alpha-nvim',
-	-- 	config = function ()
-	-- 		require'alpha'.setup(require'alpha.themes.dashboard'.config)
-	-- 	end
-	-- },
+	-- UI overhaul
+    {
+        "folke/noice.nvim",
+        lazy = false,
+        opts = {},
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+	},
+	-- Greeter
+	{
+		'goolord/alpha-nvim',
+		config = function ()
+			require'alpha'.setup(require'alpha.themes.dashboard'.config)
+
+			local alphaDashboard = require("alpha.themes.dashboard")
+
+			alphaDashboard.section.buttons.val = {
+				alphaDashboard.button("f", "󰈞  Find file",require("telescope.builtin").find_files),
+				alphaDashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+				alphaDashboard.button("r", "󰷊  Recently used files", require("telescope.builtin").oldfiles),
+				alphaDashboard.button("t", "  Find text", require("telescope.builtin").live_grep),
+				alphaDashboard.button("q", "󰩈  Quit Neovim", ":qa<CR>"),
+			}
+
+			require("alpha").setup(alphaDashboard.config)
+		end
+	},
 	-- Highlight TODO comments
     {
 		"folke/todo-comments.nvim",

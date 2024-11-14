@@ -78,9 +78,6 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.nil_ls.setup({
-				capabilities = capabilities,
-			})
 			lspconfig.nixd.setup({
 				on_init = function(client, _)
 					-- Turn off semantic tokens until they're more consistent

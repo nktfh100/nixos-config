@@ -26,7 +26,6 @@
     nodePackages_latest.typescript-language-server
     tailwindcss-language-server
     nixd
-    nil
 
     # Tools
     cmake

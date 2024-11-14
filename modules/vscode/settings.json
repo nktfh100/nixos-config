@@ -5,7 +5,7 @@
     "files.encoding": "utf8",
     "files.trimTrailingWhitespace": true,
     "glassit.alpha": 204,
-    "prettier.tabWidth": 4,
+    "prettier.tabWidth": 2,
     "prettier.useTabs": true,
     "update.mode": "none",
     "workbench.colorTheme": "Catppuccin Macchiato",
