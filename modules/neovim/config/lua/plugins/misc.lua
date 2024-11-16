@@ -1,3 +1,5 @@
+local map = require("utils").map
+
 return {
 	{
 		"folke/which-key.nvim",
@@ -18,12 +20,13 @@ return {
 			},
 		},
 	},
+	-- Jump to any character
 	{
-		'smoka7/hop.nvim',
+		"smoka7/hop.nvim",
 		version = "v2.7.*",
 		lazy = false,
 		opts = {
-			keys = 'etovxqpdygfblzhckisuran'
+			keys = "etovxqpdygfblzhckisuran",
 		},
 		keys = {
 			{
@@ -40,20 +43,76 @@ return {
 				end,
 				desc = "Hop Pattern Matching",
 			},
-		}
+		},
 	},
 	{
-		'windwp/nvim-autopairs',
+		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true
+		config = true,
 	},
+	-- Move lines and blocks
 	{
-		'fedepujol/move.nvim',
+		"fedepujol/move.nvim",
 		opts = {
 			char = {
-				enable = true
-			}
-		}
+				enable = true,
+			},
+		},
 	},
-	{'wakatime/vim-wakatime', lazy = false}
+	{
+		"Wansmer/treesj",
+		keys = { {
+			"<space>rm",
+			function()
+				require("treesj").toggle()
+			end,
+			desc = "Toggle Spread",
+		} },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("treesj").setup({})
+		end,
+	},
+	-- Easy commenting
+	{
+		"numToStr/Comment.nvim",
+		opts = {
+			mappings = {
+				basic = true,
+				extra = false,
+			},
+		},
+	},
+	-- Auto close buffers
+	{
+		"chrisgrieser/nvim-early-retirement",
+		event = "VeryLazy",
+		opts = { retirementAgeMins = 15 },
+	},
+	-- Search and replace
+	{
+		"VonHeikemen/searchbox.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		keys = {
+			{
+				"<leader>ss",
+				function()
+					require("searchbox").match_all()
+				end,
+				desc = "Search",
+			},
+			{
+				"<leader>sr",
+				function()
+					require("searchbox").replace()
+				end,
+				desc = "Search And Replace",
+			},
+		},
+		init = function()
+			map({ "<leader>s", group = "Search", icon = "" })
+		end,
+	},
+	-- Time tracking
+	{ "wakatime/vim-wakatime", lazy = false },
 }

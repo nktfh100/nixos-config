@@ -120,4 +120,25 @@ return {
 		end,
 		opts = {},
 	},
+	-- Run and visualize code actions with Telescope.
+	{
+		"rachartier/tiny-code-action.nvim",
+		dependencies = {
+			{"nvim-lua/plenary.nvim"},
+			{"nvim-telescope/telescope.nvim"},
+		},
+		event = "LspAttach",
+		config = function()
+			require('tiny-code-action').setup()
+		end,
+		keys = {
+			{
+				"<leader>a",
+				function()
+					require("tiny-code-action").code_action()
+				end,
+				desc = "Code actions",
+			},
+		},
+	}
 }

@@ -1,3 +1,5 @@
+local utils = require("utils")
+
 return {
 	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false, init = function()
@@ -114,10 +116,59 @@ return {
 			})
 		end,
 	},
+	-- Highlight symbols under cursor
+	{
+		"RRethy/vim-illuminate",
+		event = "BufRead",
+	},
+	-- Highlight on yank
+	{
+		"machakann/vim-highlightedyank",
+		event = "TextYankPost",
+	},
+	-- UI for diagnostics
+	{
+		"folke/trouble.nvim",
+		opts = {
+			focus = true,
+			keys = {
+				o = "jump",
+				["<cr>"] = "jump_close",
+			}
+		},
+		cmd = "Trouble",
+		keys = {
+		  {
+			"<leader>t",
+			"<cmd>Trouble diagnostics toggle<cr>",
+			desc = "Buffer Diagnostics (Trouble)",
+		  }
+		}
+	},
+	-- View definitions, references, and implementations
+	{
+		"dnlhc/glance.nvim",
+		lazy = false,
+		config = function()
+			require('glance').setup({})
+		end,
+		init = function()
+			utils.map({
+				{ "<leader>d", group = "Glance", icon = "" },
+			})
+		end,
+		keys = {
+			{'<leader>dd', '<CMD>Glance definitions<CR>', desc = 'Glance definitions'},
+			{'<leader>dr', '<CMD>Glance references<CR>', desc = 'Glance references'},
+			{'<leader>di', '<CMD>Glance implementations<CR>', desc = 'Glance implementations'},
+			{'<leader>dt', '<CMD>Glance type_definitions<CR>', desc = 'Glance type definitions'},
+		}
+	},
     -- Icons
 	{
 		"echasnovski/mini.icons",
-		opts = {},
+		opts = {
+		},
 		lazy = true,
 		specs = {
 			{ "nvim-tree/nvim-web-devicons", enabled = false, optional = true },

@@ -37,9 +37,6 @@ return {
 				lua_ls = {
 					mason = false,
 				},
-				nil_ls = {
-					mason = false,
-				},
 				nixd = {
 					mason = false,
 				},

@@ -37,8 +37,8 @@ opt.wrap = false
 -- Enable persistent undo, allowing undo history to be saved between sessions
 opt.undofile = true
 
--- Disable search highlighting after searching (matches aren't highlighted after you search)
--- opt.hlsearch = false
+-- Disable search highlighting after searching
+opt.hlsearch = false
 
 -- Set scroll offset so at least 8 lines remain visible around the cursor when scrolling
 opt.scrolloff = 8
@@ -66,6 +66,3 @@ opt.splitbelow = true
 
 -- Open new vertical splits to the right of the current window
 opt.splitright = true
-
--- Allow arrow keys to wrap cursor between lines
--- vim.o.whichwrap = vim.o.whichwrap .. "<,>"
