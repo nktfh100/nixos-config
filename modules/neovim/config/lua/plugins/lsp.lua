@@ -18,7 +18,6 @@ return {
 			"onsails/lspkind.nvim",
 		},
 		keys = {
-			-- TODO
 			-- { "K", require("noice.lsp").hover, desc = "Show documentation" },
 			{
 				"H",
@@ -29,7 +28,11 @@ return {
 			},
 			{ "<C-k>", vim.lsp.buf.signature_help, desc = "Interactive signature help" },
 			{ "<leader>rn", vim.lsp.buf.rename, desc = "Interactive rename" },
-			-- { "<leader>rf", vim.lsp.buf.format, desc = "Format code" },
+			{ "gd", vim.lsp.buf.definition, desc = "Go to definition" },
+			{ "gr", vim.lsp.buf.references, desc = "Go to references" },
+			{ "gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
+			{ "gI", "<cmd>tab split | lua vim.lsp.buf.implementation()<CR>", desc = "Go To implementation In New Tab" },
+			{ "ge", vim.lsp.buf.declaration, desc = "Go to declaration" },
 		},
 		opts = {
 			-- Disable automatic installation of servers
@@ -89,8 +92,17 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.emmet_language_server.setup({
-				filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss",  "typescriptreact" },
-				capabilities = capabilities
+				filetypes = {
+					"css",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"less",
+					"sass",
+					"scss",
+					"typescriptreact",
+				},
+				capabilities = capabilities,
 			})
 
 			utils.map({

@@ -17,14 +17,14 @@ return {
 			{
 				"<leader>ff",
 				function()
-					require("telescope.builtin").find_files()
+					require("telescope.builtin").find_files({ path_display = { "truncate" } })
 				end,
 				desc = "Find files",
 			},
 			{
 				"<leader>fg",
 				function()
-					require("telescope.builtin").live_grep()
+					require("telescope.builtin").live_grep({ path_display = { "truncate" } })
 				end,
 				desc = "Live grep",
 			},
@@ -124,12 +124,12 @@ return {
 	{
 		"rachartier/tiny-code-action.nvim",
 		dependencies = {
-			{"nvim-lua/plenary.nvim"},
-			{"nvim-telescope/telescope.nvim"},
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
 		},
 		event = "LspAttach",
 		config = function()
-			require('tiny-code-action').setup()
+			require("tiny-code-action").setup()
 		end,
 		keys = {
 			{
@@ -140,5 +140,5 @@ return {
 				desc = "Code actions",
 			},
 		},
-	}
+	},
 }

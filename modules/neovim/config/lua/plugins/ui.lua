@@ -2,54 +2,95 @@ local utils = require("utils")
 
 return {
 	-- Theme
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false, init = function()
-		require("catppuccin").setup({
-			integrations = {
-				cmp = true,
-				gitsigns = true,
-				treesitter = true,
-				notify = true,
-				alpha = true,
-				hop = true,
-				mason = true,
-				neotree = true,
-				noice = true,
-				treesitter = true,
-				lsp_trouble = true,
-				which_key = true,
-				barbecue = {
-					dim_dirname = true,
-					bold_basename = true,
-					dim_context = false,
-					alt_background = false,
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		lazy = false,
+		init = function()
+			require("catppuccin").setup({
+				integrations = {
+					cmp = true,
+					gitsigns = true,
+					notify = true,
+					alpha = true,
+					hop = true,
+					mason = true,
+					neotree = true,
+					noice = true,
+					treesitter = true,
+					lsp_trouble = true,
+					which_key = true,
+					barbecue = {
+						dim_dirname = true,
+						bold_basename = true,
+						dim_context = false,
+						alt_background = false,
+					},
+					native_lsp = {
+						enabled = true,
+					},
 				},
-				native_lsp = {
-					enabled = true,
-				},
-			}
-		})
-	end
+			})
+		end,
 	},
 	-- UI overhaul
-    {
-        "folke/noice.nvim",
-        lazy = false,
-        opts = {},
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        },
+	{
+		"folke/noice.nvim",
+		lazy = false,
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			require("noice").setup({
+				routes = {
+					{
+						filter = {
+							event = "msg_show",
+							kind = "",
+							find = "written",
+						},
+						opts = { skip = true },
+					},
+					{
+						filter = {
+							event = "lsp",
+							kind = "progress",
+							cond = function(message)
+								local client = vim.tbl_get(message.opts, "progress", "client")
+								return client == "ts_ls"
+							end,
+						},
+						opts = { skip = true },
+					},
+				},
+			})
+		end,
 	},
 	-- Greeter
 	{
-		'goolord/alpha-nvim',
-		config = function ()
-			require'alpha'.setup(require'alpha.themes.dashboard'.config)
-
+		"goolord/alpha-nvim",
+		config = function()
+			local alpha = require("alpha")
 			local alphaDashboard = require("alpha.themes.dashboard")
 
+			alpha.setup(require("alpha.themes.dashboard").config)
+
+			alphaDashboard.section.header.val = {
+				[[                                                    ]],
+				[[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+				[[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+				[[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+				[[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+				[[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+				[[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+				[[                                                    ]],
+			}
+
 			alphaDashboard.section.buttons.val = {
-				alphaDashboard.button("f", "󰈞  Find file",require("telescope.builtin").find_files),
+				alphaDashboard.button("f", "󰈞  Find file", require("telescope.builtin").find_files),
 				alphaDashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 				alphaDashboard.button("r", "󰷊  Recently used files", require("telescope.builtin").oldfiles),
 				alphaDashboard.button("t", "  Find text", require("telescope.builtin").live_grep),
@@ -57,13 +98,13 @@ return {
 			}
 
 			require("alpha").setup(alphaDashboard.config)
-		end
+		end,
 	},
 	-- Highlight TODO comments
-    {
+	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {};
+		opts = {},
 	},
 	-- VSCode like winbar
 	{
@@ -76,21 +117,21 @@ return {
 		},
 		opts = {},
 		init = function()
-			require("barbecue").setup {
+			require("barbecue").setup({
 				theme = "catppuccin-macchiato",
-			}
-		end
+			})
+		end,
 	},
 	-- Status line
 	{
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		lazy = false,
 		init = function()
-			require('lualine').setup {
+			require("lualine").setup({
 				options = {
-					theme = "catppuccin"
-				}
-			}
+					theme = "catppuccin",
+				},
+			})
 		end,
 	},
 	-- Indent lines
@@ -108,10 +149,28 @@ return {
 		config = function()
 			require("transparent").setup({
 				groups = {
-					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-					'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-					'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
-					'SignColumn', 'CursorLineNr', 'EndOfBuffer',
+					"Normal",
+					"NormalNC",
+					"Comment",
+					"Constant",
+					"Special",
+					"Identifier",
+					"Statement",
+					"PreProc",
+					"Type",
+					"Underlined",
+					"Todo",
+					"String",
+					"Function",
+					"Conditional",
+					"Repeat",
+					"Operator",
+					"Structure",
+					"LineNr",
+					"NonText",
+					"SignColumn",
+					"CursorLineNr",
+					"EndOfBuffer",
 				},
 			})
 		end,
@@ -134,23 +193,28 @@ return {
 			keys = {
 				o = "jump",
 				["<cr>"] = "jump_close",
-			}
+			},
 		},
 		cmd = "Trouble",
 		keys = {
-		  {
-			"<leader>t",
-			"<cmd>Trouble diagnostics toggle<cr>",
-			desc = "Buffer Diagnostics (Trouble)",
-		  }
-		}
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+		},
 	},
 	-- View definitions, references, and implementations
 	{
 		"dnlhc/glance.nvim",
 		lazy = false,
 		config = function()
-			require('glance').setup({})
+			require("glance").setup({})
 		end,
 		init = function()
 			utils.map({
@@ -158,17 +222,16 @@ return {
 			})
 		end,
 		keys = {
-			{'<leader>dd', '<CMD>Glance definitions<CR>', desc = 'Glance definitions'},
-			{'<leader>dr', '<CMD>Glance references<CR>', desc = 'Glance references'},
-			{'<leader>di', '<CMD>Glance implementations<CR>', desc = 'Glance implementations'},
-			{'<leader>dt', '<CMD>Glance type_definitions<CR>', desc = 'Glance type definitions'},
-		}
+			{ "<leader>dd", "<CMD>Glance definitions<CR>", desc = "Glance definitions" },
+			{ "<leader>dr", "<CMD>Glance references<CR>", desc = "Glance references" },
+			{ "<leader>di", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
+			{ "<leader>dt", "<CMD>Glance type_definitions<CR>", desc = "Glance type definitions" },
+		},
 	},
-    -- Icons
+	-- Icons
 	{
 		"echasnovski/mini.icons",
-		opts = {
-		},
+		opts = {},
 		lazy = true,
 		specs = {
 			{ "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
