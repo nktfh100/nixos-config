@@ -95,14 +95,7 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim" },
 		keys = {
 			{
-				"<leader>ss",
-				function()
-					require("searchbox").match_all()
-				end,
-				desc = "Search",
-			},
-			{
-				"<leader>sr",
+				"<leader>fr",
 				function()
 					require("searchbox").replace()
 				end,
@@ -111,6 +104,36 @@ return {
 		},
 		init = function()
 			map({ "<leader>s", group = "Search", icon = "" })
+		end,
+	},
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		opts = {},
+	},
+	-- Scoped buffers
+	{ "tiagovla/scope.nvim" },
+	-- Surround text objects
+	{
+		"echasnovski/mini.surround",
+		version = false,
+		config = function()
+			require("mini.surround").setup({
+				mappings = {
+					add = "<leader>sa", -- Add surrounding in Normal and Visual modes
+					delete = "<leader>sd", -- Delete surrounding
+					find = "<leader>sf", -- Find surrounding (to the right)
+					find_left = "<leader>sF", -- Find surrounding (to the left)
+					highlight = "", -- Highlight surrounding
+					replace = "<leader>sr", -- Replace surrounding
+					update_n_lines = "", -- Update `n_lines`
+
+					suffix_last = "", -- Suffix to search with "prev" method
+					suffix_next = "", -- Suffix to search with "next" method
+				},
+			})
+
+			map({ "<leader>s", group = "Surround", icon = "" })
 		end,
 	},
 	-- Time tracking

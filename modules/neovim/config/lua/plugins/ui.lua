@@ -90,6 +90,7 @@ return {
 			}
 
 			alphaDashboard.section.buttons.val = {
+				alphaDashboard.button("s", "󰸨  Load last session", require("persistence").load),
 				alphaDashboard.button("f", "󰈞  Find file", require("telescope.builtin").find_files),
 				alphaDashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
 				alphaDashboard.button("r", "󰷊  Recently used files", require("telescope.builtin").oldfiles),
@@ -208,6 +209,11 @@ return {
 				desc = "Diagnostics (Trouble)",
 			},
 		},
+		init = function()
+			utils.map({
+				{ "<leader>x", group = "Trouble", icon = "" },
+			})
+		end,
 	},
 	-- View definitions, references, and implementations
 	{

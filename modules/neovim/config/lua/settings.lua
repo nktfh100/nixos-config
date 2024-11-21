@@ -25,8 +25,8 @@ opt.shiftwidth = 2 -- Set width of an auto-indent
 opt.expandtab = false -- Use tabs instead of spaces
 
 opt.ignorecase = true -- Ignore case when searching
-opt.smartcase = true  -- Case-sensitive search if uppercase is used
-opt.incsearch = true  -- Show matches as you type
+opt.smartcase = true -- Case-sensitive search if uppercase is used
+opt.incsearch = true -- Show matches as you type
 
 -- Enable smart indentation based on file type and context
 opt.smartindent = true
