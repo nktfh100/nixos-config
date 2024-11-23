@@ -52,6 +52,9 @@ return {
 				emmet_language = {
 					mason = false,
 				},
+				prismals = {
+					mason = false,
+				},
 			},
 		},
 
@@ -89,6 +92,9 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.tailwindcss.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.prismals.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.emmet_language_server.setup({

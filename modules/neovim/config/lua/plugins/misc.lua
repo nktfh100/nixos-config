@@ -137,5 +137,21 @@ return {
 		end,
 	},
 	-- Time tracking
+	-- Gitignore generator
+	{
+		"wintermute-cell/gitignore.nvim",
+		config = function()
+			require("gitignore")
+		end,
+		keys = {
+			{
+				"<leader>gi",
+				function()
+					require("gitignore").generate()
+				end,
+				desc = "Generate Gitignore",
+			},
+		},
+	}, -- Time tracking
 	{ "wakatime/vim-wakatime", lazy = false },
 }

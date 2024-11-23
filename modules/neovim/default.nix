@@ -24,6 +24,7 @@
     lua-language-server
     emmet-language-server
     nodePackages_latest.typescript-language-server
+    nodePackages."@prisma/language-server"
     tailwindcss-language-server
     nixd
 
