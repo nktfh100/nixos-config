@@ -136,7 +136,6 @@ return {
 			map({ "<leader>s", group = "Surround", icon = "" })
 		end,
 	},
-	-- Time tracking
 	-- Gitignore generator
 	{
 		"wintermute-cell/gitignore.nvim",
@@ -152,6 +151,7 @@ return {
 				desc = "Generate Gitignore",
 			},
 		},
-	}, -- Time tracking
+	},
+	-- Time tracking
 	{ "wakatime/vim-wakatime", lazy = false },
 }
