@@ -152,6 +152,21 @@ return {
 			},
 		},
 	},
+	{
+		"atiladefreitas/lazyclip",
+		config = function()
+			require("lazyclip").setup()
+		end,
+		keys = {
+			{
+				"<leader>p",
+				function()
+					require("lazyclip").show_clipboard()
+				end,
+				desc = "Open Clipboard Manager",
+			},
+		},
+	},
 	-- Time tracking
 	{ "wakatime/vim-wakatime", lazy = false },
 }
