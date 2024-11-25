@@ -98,7 +98,7 @@
             fi
         fi
 
-        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos#$flake_name" $extra_args
+        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos?submodules=1#$flake_name" $extra_args
       }
 
       kill-port() {

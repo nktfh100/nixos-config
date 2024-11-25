@@ -66,3 +66,5 @@ opt.splitbelow = true
 
 -- Open new vertical splits to the right of the current window
 opt.splitright = true
+
+opt.spell = false

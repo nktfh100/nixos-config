@@ -117,7 +117,7 @@ return {
 
 			-- Setup nvim-cmp for completion
 			local cmp = require("cmp")
-			local cmp_select = { behavior = cmp.SelectBehavior.Select }
+			-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 			-- this is the function that loads the extra snippets to luasnip
 			-- from rafamadriz/friendly-snippets
@@ -166,6 +166,10 @@ return {
 			"neovim/nvim-lspconfig",
 		},
 		opts = {},
+	},
+	{
+		"kamykn/spelunker.vim",
+		config = function() end,
 	},
 	-- {
 	-- 	"rachartier/tiny-code-action.nvim",
