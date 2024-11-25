@@ -33,7 +33,7 @@ Steps:
     rm /etc/nixos/configuration.nix
 
     # Clone the repo to a temp folder
-    git clone https://github.com/nktfh100/nixos-config /tmp/nixos
+    git clone --recurse-submodules -j8 https://github.com/nktfh100/nixos-config /tmp/nixos
 
     # Copy repo to /etc/nixos
     cp -R /tmp/nixos /etc
