@@ -60,6 +60,7 @@
   "vim-fugitive": { "branch": "master", "commit": "320b18fba2a4f2fe3c8225c778c687e0d2620384" },
   "vim-highlightedyank": { "branch": "master", "commit": "afb0f262b490706c23e94012c2ab9fa67c0481ce" },
   "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" },
+  "vim-peekaboo": { "branch": "master", "commit": "cc4469c204099c73dd7534531fa8ba271f704831" },
   "vim-wakatime": { "branch": "master", "commit": "cf51327a9e08935569614d1cb24e779ee9f45519" },
   "which-key.nvim": { "branch": "main", "commit": "68e37e12913a66b60073906f5d3f14dee0de19f2" }
 }

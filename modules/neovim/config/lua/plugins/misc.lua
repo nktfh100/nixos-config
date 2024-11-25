@@ -167,6 +167,9 @@ return {
 			},
 		},
 	},
+	{
+		"junegunn/vim-peekaboo",
+	},
 	-- Time tracking
 	{ "wakatime/vim-wakatime", lazy = false },
 }
