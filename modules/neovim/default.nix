@@ -3,7 +3,7 @@
 {
   system.activationScripts.neovimSymLink.text = ''
     rm -f -r /home/nktfh100/.config/nvim
-    ln -Ts /etc/nixos/modules/neovim/config /home/nktfh100/.config/nvim
+    ln -Ts /etc/nixos/modules/neovim/neovim-config /home/nktfh100/.config/nvim
   '';
 
   environment.systemPackages = with pkgs; [
