@@ -114,6 +114,7 @@
     extraConfig = {
       credential.helper = "store";
       http.postBuffer = "524288000";
+      submodules.recurse = "true";
     };
   };
 }
