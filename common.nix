@@ -130,6 +130,12 @@
     ntfs3g # NTFS support for gparted
   ];
 
+  environment.variables = {
+    "EDITOR" = "nvim";
+    "VISUAL" = "nvim";
+    "NODE_OPTIONS" = "--max_old_space_size=8192";
+  };
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
