@@ -64,16 +64,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  # Enable sound with pulseaudio.
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+  nixpkgs.config.pulseaudio = true;
 
   nix = {
     settings.experimental-features = [
