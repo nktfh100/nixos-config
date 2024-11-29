@@ -10,6 +10,18 @@ Catppuccin themed!
 ![](assets/screenshot_1.png)
 
 
+# What I Use
+
+- OS: [NixOS](https://nixos.org)
+- Color Scheme: [Catppuccin Macchiato](https://catppuccin.com)
+- Desktop Environment: [GNOME](https://www.gnome.org)
+- Terminal: [Kitty](https://sw.kovidgoyal.net/kitty)
+- Shell: [Bash](https://www.gnu.org/software/bash)
+- IDE: [Neovim](https://neovim.io)
+- Browser: [Firefox](https://www.mozilla.org/en-US/firefox)
+- Smarter cd: [zoxide](https://github.com/ajeetdsouza/zoxide)
+
+
 # Install
 
 Steps:
