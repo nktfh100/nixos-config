@@ -11,7 +11,7 @@
         [Desktop Entry]
         Type=Application
         Name=Polybar
-        Exec=polybar example
+        Exec=polybar
         X-GNOME-Autostart-enabled=true
       '';
     };
