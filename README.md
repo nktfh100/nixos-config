@@ -3,11 +3,12 @@
 
 My personal NixOS configuration files.
 
-Catppuccin themed!
-
 # Images
 
-![](assets/screenshot_1.png)
+<div style="display: flex; justify-content: space-around; margin-bottom: 1rem;">
+    <img src="assets/screenshot_1.png" alt="Screenshot 1" style="width: 49%;">
+    <img src="assets/screenshot_2.png" alt="Screenshot 2" style="width: 49%;">
+</div>
 
 
 # What I Use
