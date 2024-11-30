@@ -20,7 +20,7 @@ Catppuccin themed!
 - IDE: [Neovim](https://neovim.io)
 - Browser: [Firefox](https://www.mozilla.org/en-US/firefox)
 - Smarter cd: [zoxide](https://github.com/ajeetdsouza/zoxide)
-
+- Status Bar: [polybar](https://polybar.github.io)
 
 # Install
 

@@ -45,6 +45,7 @@ in
       # useless-gaps - Not working anymore
       appindicator
       burn-my-windows
+      hide-top-bar
     ]);
 
   home-manager.users.nktfh100.gtk = {
@@ -80,6 +81,7 @@ in
         "appindicatorsupport@rgcjonas.gmail.com"
         # "useless-gaps@pimsnel.com"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
+        "hidetopbar@mathieu.bidon.ca"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -144,10 +146,14 @@ in
         "firefox.desktop"
       ];
     };
-    "org/gnome/shell/extensions/useless-gaps" = {
-      no-gap-when-maximized = true;
-      gap-size = 10;
+    "org/gnome/shell/extensions/hidetopbar" = {
+      mouse-sensitive = false;
+      show-in-overview = true;
     };
+    # "org/gnome/shell/extensions/useless-gaps" = {
+    #   no-gap-when-maximized = true;
+    #   gap-size = 10;
+    # };
     "org/gnome/desktop/sound" = {
       event-sounds = false;
     };

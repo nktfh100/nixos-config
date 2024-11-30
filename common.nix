@@ -17,6 +17,7 @@
     ./modules/spicetify.nix
     ./modules/zoxide.nix
     ./modules/neovim
+    ./modules/polybar
   ];
 
   home-manager.useGlobalPkgs = true;
