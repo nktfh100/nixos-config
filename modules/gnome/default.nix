@@ -149,6 +149,8 @@ in
     "org/gnome/shell/extensions/hidetopbar" = {
       mouse-sensitive = false;
       show-in-overview = true;
+      hot-corner = true;
+      enable-intellihide = true;
     };
     # "org/gnome/shell/extensions/useless-gaps" = {
     #   no-gap-when-maximized = true;

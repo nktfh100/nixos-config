@@ -1,16 +1,10 @@
-{
-  config,
-  pkgs,
-  unstable,
-  lib,
-  nixpkgs,
-  ...
-}:
+{ pkgs, unstable, ... }:
 
 {
   imports = [
     ./modules/boot
     ./modules/gnome
+    ./modules/pulseaudio.nix
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
@@ -64,11 +58,6 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Enable sound with pulseaudio.
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-  nixpkgs.config.pulseaudio = true;
 
   nix = {
     settings.experimental-features = [
