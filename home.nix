@@ -52,7 +52,6 @@
     python312Packages.black # Formatter
 
     # Go
-    go
     gopls # Go language server
     delve # Go debugger
   ];

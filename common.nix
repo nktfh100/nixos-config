@@ -112,6 +112,11 @@
 
     gparted
     ntfs3g # NTFS support for gparted
+
+    openssl_3_3
+
+    # TODO: When moving to 24.11 remove unstable
+    unstable.go
   ];
 
   environment.variables = {
