@@ -3,10 +3,11 @@
 let
   flavor = "macchiato";
   accent = "blue";
-in {
-  boot.loader.grub.catppuccin.enable = false;
+in
+{
+  catppuccin.grub.enable = false;
 
-  boot.plymouth.catppuccin.enable = true;
+  catppuccin.plymouth.enable = true;
 
   catppuccin = {
     enable = true;
@@ -19,15 +20,15 @@ in {
       enable = true;
       flavor = flavor;
       accent = accent;
+      gtk = {
+        enable = true;
+        gnomeShellTheme = true;
+      };
     };
     gtk = {
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.catppuccin-papirus-folders;
-      };
-      catppuccin = {
-        enable = true;
-        gnomeShellTheme = true;
       };
     };
   };
