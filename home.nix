@@ -29,9 +29,6 @@
     gh # Github CLI
     gnumake # Make
 
-    jetbrains.webstorm
-    jetbrains.pycharm-community-bin
-
     # Coding language specific
 
     # Nix

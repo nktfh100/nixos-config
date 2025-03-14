@@ -7,6 +7,7 @@
     ../../common.nix
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
+    ../../modules/tailscale.nix
   ];
 
   networking.hostName = "nktfh100-beta";
@@ -14,8 +15,7 @@
   environment.systemPackages = with pkgs; [ linux-wifi-hotspot ];
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot =
-    true; # powers up the default Bluetooth controller on boot
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   home-manager.users.nktfh100.home.packages = with pkgs; [ zoom-us ];
 
@@ -26,8 +26,10 @@
     intelBusId = "PCI:0:2:0";
   };
 
-  swapDevices = [{
-    device = "/swapfile";
-    size = 16 * 1024; # 16GB
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
 }

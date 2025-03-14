@@ -115,8 +115,7 @@
 
     openssl_3_3
 
-    # TODO: When moving to 24.11 remove unstable
-    unstable.go
+    go
   ];
 
   environment.variables = {

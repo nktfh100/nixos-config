@@ -1,9 +1,7 @@
 {
-  config,
-  pkgs,
   unstable,
   lib,
-  catppuccin,
+  pkgs,
   ...
 }:
 
@@ -25,11 +23,11 @@ in
   home-manager.users.nktfh100.home.packages =
     with pkgs;
     [
-      gnome3.gnome-tweaks
-      gnome3.dconf-editor
+      gnome-tweaks
+      dconf-editor
 
       gtk-engine-murrine
-      gnome.gnome-themes-extra
+      gnome-themes-extra
       gtk3
     ]
     ++ (with pkgs.gnomeExtensions; [
@@ -205,20 +203,21 @@ in
     };
   };
 
-  home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text = ''
-    [burn-my-windows-profile]
-    fire-enable-effect=false
-    incinerate-enable-effect=true
-    incinerate-scale=0.90000000000000002
-    incinerate-color='rgb(138,173,244)'
-    incinerate-animation-time=1073
-    incinerate-turbulence=0.31
-    profile-high-priority=true
-  '';
+  home-manager.users.nktfh100.home.file.".config/burn-my-windows/profiles/1694335536777219.conf".text =
+    ''
+      [burn-my-windows-profile]
+      fire-enable-effect=false
+      incinerate-enable-effect=true
+      incinerate-scale=0.90000000000000002
+      incinerate-color='rgb(138,173,244)'
+      incinerate-animation-time=1073
+      incinerate-turbulence=0.31
+      profile-high-priority=true
+    '';
 
   environment.gnome.excludePackages =
     (with pkgs; [ gnome-tour ])
-    ++ (with pkgs.gnome; [
+    ++ (with pkgs; [
       gnome-music
       gnome-weather
       gnome-clocks
