@@ -1,9 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 # Gaming desktop
-let
-  home-assistant-desktop = pkgs.callPackage ../../pkgs/home-assistant-desktop.nix { };
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -20,7 +17,6 @@ in
 
   home-manager.users.nktfh100.home.packages = with pkgs; [
     zoom-us
-    home-assistant-desktop
   ];
 
 }
