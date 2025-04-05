@@ -43,7 +43,7 @@ in
       # useless-gaps - Not working anymore
       appindicator
       burn-my-windows
-      hide-top-bar
+      # hide-top-bar
     ]);
 
   home-manager.users.nktfh100.gtk = {
@@ -139,18 +139,19 @@ in
       show-separators = false;
       show-sources-menu = false;
       scroll-labels = false;
+      mouse-action-left = "PLAY_PAUSE";
       blacklisted-players = [
         "google-chrome.desktop"
-        "chrome-agimnkijcaahngcdmfeangaknmldooml-Default.desktop"
         "firefox.desktop"
       ];
     };
-    "org/gnome/shell/extensions/hidetopbar" = {
-      mouse-sensitive = false;
-      show-in-overview = true;
-      hot-corner = true;
-      enable-intellihide = true;
-    };
+    # Used for polybar
+    # "org/gnome/shell/extensions/hidetopbar" = {
+    #   mouse-sensitive = false;
+    #   show-in-overview = true;
+    #   hot-corner = true;
+    #   enable-intellihide = true;
+    # };
     # "org/gnome/shell/extensions/useless-gaps" = {
     #   no-gap-when-maximized = true;
     #   gap-size = 10;
