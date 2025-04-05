@@ -85,6 +85,7 @@ in
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       enable-hot-corners = true;
+      gtk-enable-primary-paste = false;
     };
     "org/gnome/desktop/background" = lib.mkDefault {
       picture-uri = wallpaper;
