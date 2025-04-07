@@ -10,6 +10,7 @@
     wget
     neofetch
     bitwarden
+    bitwarden-cli
     google-chrome
 
     stremio # Media center
@@ -99,6 +100,11 @@
 
       kill-port() {
         sudo fuser -k $1/tcp
+      }
+
+      nvima() {
+        export GEMINI_API_KEY="$(bw get notes gemini-api-key)"
+        nvim
       }
     '';
   };
