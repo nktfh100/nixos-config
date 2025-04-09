@@ -1,66 +1,66 @@
 {
-    "editor.fontFamily": "'ComicCodeLigatures Nerd Font'",
-    "editor.fontLigatures": false,
-    "editor.formatOnSave": true,
-    "files.encoding": "utf8",
-    "files.trimTrailingWhitespace": true,
-    "glassit.alpha": 204,
-    "prettier.tabWidth": 2,
-    "prettier.useTabs": true,
-    "update.mode": "none",
-    "workbench.colorTheme": "Catppuccin Macchiato",
-    "workbench.iconTheme": "catppuccin-macchiato",
-    "files.associations": {
-        ".env": "dotenv",
-        ".env*": "dotenv"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[nix]": {
-        "editor.tabSize": 2
-    },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "[css]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "github.copilot.enable": {
-        "*": true,
-        "markdown": true,
-        "scminput": false,
-        "plaintext": false,
-        "dotenv": false,
-        "json": false
-    },
-    "importSorter.generalConfiguration.sortOnBeforeSave": true,
-    "terminal.integrated.env.linux": {},
-    "console-ninja.featureSet": "Community",
-    "editor.minimap.enabled": false,
-    "github.copilot.editor.enableAutoCompletions": true,
-    "settingsSync.ignoredExtensions": [
-        "s-nlf-fh.glassit"
-    ]
+  "editor.fontFamily": "'ComicCodeLigatures Nerd Font'",
+  "editor.fontLigatures": false,
+  "editor.formatOnSave": true,
+  "files.encoding": "utf8",
+  "files.trimTrailingWhitespace": true,
+  "glassit.alpha": 204,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": true,
+  "prettier.singleQuote": true,
+  "update.mode": "none",
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "workbench.iconTheme": "catppuccin-macchiato",
+  "files.associations": {
+    ".env": "dotenv",
+    ".env*": "dotenv"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[nix]": {
+    "editor.tabSize": 2
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "scminput": false,
+    "plaintext": false,
+    "dotenv": false,
+    "json": false
+  },
+  "importSorter.generalConfiguration.sortOnBeforeSave": true,
+  "terminal.integrated.env.linux": {},
+  "console-ninja.featureSet": "Community",
+  "editor.minimap.enabled": false,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "settingsSync.ignoredExtensions": ["s-nlf-fh.glassit"]
 }
+
