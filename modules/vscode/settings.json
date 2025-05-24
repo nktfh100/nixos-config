@@ -5,6 +5,7 @@
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
   "glassit.alpha": 204,
+  "prettier.semi": true,
   "prettier.tabWidth": 2,
   "prettier.useTabs": true,
   "prettier.singleQuote": true,
@@ -63,5 +64,6 @@
   "settingsSync.ignoredExtensions": [
     "s-nlf-fh.glassit"
   ],
-  "database-client.autoSync": false
+  "database-client.autoSync": true,
+  "editor.tabSize": 2
 }
