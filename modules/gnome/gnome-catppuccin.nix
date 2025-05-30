@@ -20,10 +20,10 @@ in
       enable = true;
       flavor = flavor;
       accent = accent;
-      gtk = {
-        enable = true;
-        gnomeShellTheme = true;
-      };
+      # gtk = {
+      # enable = true;
+      # gnomeShellTheme = true;
+      # };
     };
     gtk = {
       iconTheme = {

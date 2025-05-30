@@ -91,7 +91,8 @@
     fontDir.enable = true;
     packages = with pkgs; [
       (pkgs.callPackage ./pkgs/fonts { })
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      # (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      # nerd-fonts.FiraCode
     ];
   };
 
@@ -112,7 +113,7 @@
     gparted
     ntfs3g # NTFS support for gparted
 
-    openssl_3_3
+    # openssl_3_3
 
     go
   ];
