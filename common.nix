@@ -11,7 +11,7 @@
     ./modules/spicetify.nix
     ./modules/zoxide.nix
     ./modules/neovim
-    ./modules/hyperland
+    ./modules/hyprland
   ];
 
   home-manager.useGlobalPkgs = true;

@@ -3,7 +3,7 @@
 {
   system.activationScripts.neovimSymLink.text = ''
     rm -f -r /home/nktfh100/.config/hypr
-    ln -Ts /etc/nixos/modules/hyperland/hyperland-config /home/nktfh100/.config/hypr
+    ln -Ts /etc/nixos/modules/hyperland/hyprland-config /home/nktfh100/.config/hypr
   '';
 
   programs.hyprland.enable = true;
