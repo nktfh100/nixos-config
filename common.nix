@@ -3,7 +3,7 @@
 {
   imports = [
     ./modules/boot
-    ./modules/gnome
+    # ./modules/gnome
     ./modules/pulseaudio.nix
     ./modules/vscode
     ./modules/docker.nix
@@ -11,6 +11,7 @@
     ./modules/spicetify.nix
     ./modules/zoxide.nix
     ./modules/neovim
+    ./modules/hyperland
   ];
 
   home-manager.useGlobalPkgs = true;
