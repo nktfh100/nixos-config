@@ -95,6 +95,7 @@ in
         enable = true;
         gnomeShellTheme = true;
       };
+      nvim.enable = false;
     };
     gtk = {
       enable = true;
