@@ -3,7 +3,6 @@
 {
   imports = [
     ./modules/boot
-    # ./modules/gnome
     ./modules/pipewire.nix
     ./modules/vscode
     ./modules/docker.nix
@@ -103,7 +102,7 @@
     git
     ffmpeg_6-full
 
-    pavucontrol # PulseAudio volume control
+    # pavucontrol # PulseAudio volume control
 
     # File managment
     zip

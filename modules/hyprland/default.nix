@@ -18,39 +18,56 @@ in
     echo "\$HOSTNAME = ${config.networking.hostName}" > /home/nktfh100/.config/hypr/profile.conf
   '';
 
+  system.activationScripts.waybarSymLink.text = ''
+    rm -f -r /home/nktfh100/.config/waybar
+    ln -Ts /etc/nixos/modules/hyprland/waybar-config /home/nktfh100/.config/waybar
+  '';
+
+  system.activationScripts.rofiSymLink.text = ''
+    rm -f -r /home/nktfh100/.config/rofi
+    ln -Ts /etc/nixos/modules/hyprland/rofi-config /home/nktfh100/.config/rofi
+  '';
+
+  system.activationScripts.wlogoutSymLink.text = ''
+    rm -f -r /home/nktfh100/.config/wlogout
+    ln -Ts /etc/nixos/modules/hyprland/wlogout-config /home/nktfh100/.config/wlogout
+  '';
+
+  home-manager.users.nktfh100.home.file.".config/mako/config".text = ''
+    default-timeout=3000
+  '';
+
   programs.hyprland.enable = true;
   services.displayManager.sddm.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # Core
     hyprpolkitagent # Authorization agent for Hyprland
-    wl-clipboard # Clipboard
     mako # Notification daemon
     hypridle # Idle management
+    wl-clipboard # Clipboard
 
-    # Hardware
-    overskride # Bluetooth
+    blueman # Bluetooth manager
     udiskie # Automount USB drives
     networkmanagerapplet # Network manager applet (tray icon)
+    pwvucontrol # PulseAudio volume control
 
-    # Desktop Apps
     kitty # Terminal
     nautilus # File manager
     gnome-calculator # Calculator
-    wofi # Application launcher
+    rofi # Application launcher
+    wlogout # Logout menu
 
-    # Display & Theming
     waybar # Status bar
     hyprlock # Screen locker
     hyprpaper # Wallpaper manager
 
-    # Utils
     hyprshot # take screenshots
     hyprpicker # Color picker
     nwg-displays # Monitor configuration
     # nwg-look # GTK settings editor
 
-    # Dev tools
+    playerctl # Media player control
+
     hyprls # hyprland LSP
     tree-sitter-grammars.tree-sitter-hyprlang # For neovim syntax highlighting
   ];
