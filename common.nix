@@ -4,7 +4,7 @@
   imports = [
     ./modules/boot
     # ./modules/gnome
-    ./modules/pulseaudio.nix
+    ./modules/pipewire.nix
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
@@ -109,6 +109,7 @@
     zip
     unzip
     unrar
+    peazip
 
     gparted
     ntfs3g # NTFS support for gparted
