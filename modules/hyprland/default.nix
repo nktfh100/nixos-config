@@ -22,24 +22,35 @@ in
   services.displayManager.sddm.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kitty # Terminal
-    nautilus # File manager
-    kdePackages.gwenview # Image viewer
-    kdePackages.kcalc # Calculator
+    # Core
+    hyprpolkitagent # Authorization agent for Hyprland
     wl-clipboard # Clipboard
     mako # Notification daemon
-    hyprpolkitagent # Authorization agent for Hyprland
+    hypridle # Idle management
+
+    # Hardware
     overskride # Bluetooth
-    networkmanagerapplet # Network manager applet (tray icon)
     udiskie # Automount USB drives
+    networkmanagerapplet # Network manager applet (tray icon)
+
+    # Desktop Apps
+    kitty # Terminal
+    nautilus # File manager
+    gnome-calculator # Calculator
+    wofi # Application launcher
+
+    # Display & Theming
     waybar # Status bar
+    hyprlock # Screen locker
+    hyprpaper # Wallpaper manager
+
+    # Utils
     hyprshot # take screenshots
     hyprpicker # Color picker
-    wofi # Application launcher
     nwg-displays # Monitor configuration
-    # hyprpaper # Wallpaper manager
-
     # nwg-look # GTK settings editor
+
+    # Dev tools
     hyprls # hyprland LSP
     tree-sitter-grammars.tree-sitter-hyprlang # For neovim syntax highlighting
   ];
@@ -87,13 +98,10 @@ in
 
   home-manager.users.nktfh100.dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
-      # button-layout = ":minimize,maximize,close";
       button-layout = ":close";
     };
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      # enable-hot-corners = true;
-      # gtk-enable-primary-paste = false;
     };
   };
 
