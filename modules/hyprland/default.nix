@@ -55,7 +55,9 @@ in
     nautilus # File manager
     gnome-calculator # Calculator
     rofi # Application launcher
+    eog # Image viewer
     wlogout # Logout menu
+    gnome-system-monitor # System monitor
 
     waybar # Status bar
     hyprlock # Screen locker

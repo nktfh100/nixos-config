@@ -21,7 +21,6 @@
 			"memory",
 			"battery",
 			"temperature",
-			"network",
 			"pulseaudio",
 			"clock",
 			"custom/control"
@@ -35,32 +34,45 @@
     "hyprland/workspaces": {
 			"disable-scroll": true,
 			"all-outputs": false,
-			"tooltip": false
+			"tooltip": false,
+			"show-special": true
     },
     "tray": {
 			"spacing": 10,
 			"tooltip": false
     },
     "clock": {
-			"format": "{:%H:%M}",
+			"format": " {:%H:%M}",
 			"tooltip": false
     },
     "cpu": {
-			"format": "cpu {usage}%",
+			"format": " {usage}%",
 			"interval": 2,
 			"states": {
 				"critical": 90
-			}
+			},
+			"tooltip": false
     },
     "memory": {
-			"format": "mem {percentage}%",
+			"format": " {percentage}%",
 			"interval": 2,
 			"states": {
 				"critical": 80
-			},
+			}
     },
+		"temperature": {
+			"format": " {temperatureC}°C",
+			"interval": 5,
+			"tooltip": false,
+			"states": {
+				"warning": 70,
+				"critical": 80
+			}
+		},
     "battery": {
-			"format": "bat {capacity}%",
+			// "format": "bat {capacity}%",
+		  "format": "{icon} {capacity}%",
+			"format-icons": ["", "", "", "", ""],
 			"interval": 5,
 			"states": {
 				"warning": 20,
@@ -78,14 +90,14 @@
     "pulseaudio": {
 			"scroll-step": 5,
 			"max-volume": 150,
-			"format": "vol {volume}%",
-			"format-bluetooth": "vol {volume}%",
+			"format": "  {volume}%",
+			"format-bluetooth": " {volume}%",			
 			"nospacing": 1,
 			"on-click": "pwvucontrol",
 			"tooltip": false
     },
     "hyprland/language": {
-			"format": "{shortDescription}"
+			"format": "  {shortDescription}"
     },
     "custom/control": {
 			"format": " ",

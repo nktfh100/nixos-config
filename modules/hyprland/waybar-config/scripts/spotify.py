@@ -4,7 +4,7 @@
 import subprocess
 import json
 import html
-import datetime  # Added for time formatting
+import datetime
 
 
 def get_formatted_time():
@@ -28,7 +28,6 @@ def spotify_status():
 
 
 def parse_spotify_data(data):
-    parsed_data = {}
     artist, title = None, None
 
     lines = data.splitlines()
@@ -57,7 +56,7 @@ def main():
         to_write = parse_spotify_data(result.stdout)
         data = {"text": to_write}
     else:
-        # Show formatted time when nothing is playing
+        # Show time when nothing is playing
         data = {"text": get_formatted_time()}
 
     print(json.dumps(data))
