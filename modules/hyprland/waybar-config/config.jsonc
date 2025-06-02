@@ -19,10 +19,11 @@
 			"cpu_text",
 			"cpu",
 			"memory",
-			"battery",
 			"temperature",
 			"pulseaudio",
 			"clock",
+			"custom/system_profile",
+			"battery",
 			"custom/control"
     ],
     "custom/launcher": {
@@ -70,7 +71,6 @@
 			}
 		},
     "battery": {
-			// "format": "bat {capacity}%",
 		  "format": "{icon} {capacity}%",
 			"format-icons": ["", "", "", "", ""],
 			"interval": 5,
@@ -111,5 +111,12 @@
 			"interval": 2,
 			"on-click": "playerctl play-pause --player=spotify",
 			"on-click-right": "playerctl next --player=spotify"
-		}
+		},
+		"custom/system_profile": {
+			"exec": "python ~/.config/waybar/scripts/system_profile.py",
+			"interval": 5,
+			"return-type": "json",
+			"on-click": "python ~/.config/waybar/scripts/system_profile.py --toggle",
+			"tooltip": false
+	}
 }

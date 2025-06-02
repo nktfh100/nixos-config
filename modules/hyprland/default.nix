@@ -50,6 +50,7 @@ in
     udiskie # Automount USB drives
     networkmanagerapplet # Network manager applet (tray icon)
     pwvucontrol # PulseAudio volume control
+    brightnessctl # brightness control
 
     kitty # Terminal
     nautilus # File manager
