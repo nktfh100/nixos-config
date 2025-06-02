@@ -39,6 +39,7 @@ in
 
   programs.hyprland.enable = true;
   services.displayManager.sddm.enable = true;
+  services.blueman.enable = true; # Bluetooth manager
 
   environment.systemPackages = with pkgs; [
     hyprpolkitagent # Authorization agent for Hyprland
@@ -46,7 +47,6 @@ in
     hypridle # Idle management
     wl-clipboard # Clipboard
 
-    blueman # Bluetooth manager
     udiskie # Automount USB drives
     networkmanagerapplet # Network manager applet (tray icon)
     pwvucontrol # PulseAudio volume control

@@ -12,9 +12,6 @@
 
   networking.hostName = "nktfh100-alpha";
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
   home-manager.users.nktfh100.home.packages = with pkgs; [
     zoom-us
   ];
