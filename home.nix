@@ -12,6 +12,7 @@
     bitwarden
     bitwarden-cli
     google-chrome
+    anki-bin
 
     stremio # Media center
 
