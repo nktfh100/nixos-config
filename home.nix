@@ -13,6 +13,7 @@
     bitwarden-cli
     google-chrome
     anki-bin
+    mplayer # For anki
 
     stremio # Media center
 
