@@ -1,7 +1,7 @@
 
 # NixOS Config
 
-My personal NixOS configuration files.
+My personal NixOS configuration files I use for all my linux machines.
 
 # Images
 
@@ -15,13 +15,13 @@ My personal NixOS configuration files.
 
 - OS: [NixOS](https://nixos.org)
 - Color Scheme: [Catppuccin Macchiato](https://catppuccin.com)
-- Desktop Environment: [GNOME](https://www.gnome.org)
+- WM: [Hyprland](https://hyprland.org/)
 - Terminal: [Kitty](https://sw.kovidgoyal.net/kitty)
 - Shell: [Bash](https://www.gnu.org/software/bash)
 - IDE: [Neovim](https://neovim.io)
 - Browser: [Firefox](https://www.mozilla.org/en-US/firefox)
 - Smarter cd: [zoxide](https://github.com/ajeetdsouza/zoxide)
-- Status Bar: [polybar](https://polybar.github.io)
+- Status Bar: [Waybar](https://github.com/Alexays/Waybar)
 
 # Install
 
@@ -56,9 +56,4 @@ Steps:
 
     # Rebuild
     cd /etc/nixos && git add . && sudo nixos-rebuild switch --install-bootloader --flake .#nktfh100-$PC
-    ```
-* Reset layout
-    ```
-    gsettings reset org.gnome.desktop.input-sources xkb-options
-    gsettings reset org.gnome.desktop.input-sources sources
     ```
