@@ -116,7 +116,7 @@
     gparted
     ntfs3g # NTFS support for gparted
 
-    # openssl_3_3
+    openssl_3 # For prisma
 
     go
   ];
