@@ -13,6 +13,11 @@
 
   home-manager.users.nktfh100.home.packages = with pkgs; [
     zoom-us
+
+    # To allow multi architecture builds
+    (docker.override (args: {
+      buildxSupport = true;
+    }))
   ];
 
 }
