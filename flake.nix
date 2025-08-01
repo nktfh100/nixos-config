@@ -9,16 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    # spicetify-nix.url = "github:Gerg-L/spicetify-nix"; # Doesn't work
-    # spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     minegrub-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
   };
 
   outputs =
     {
-      self,
       nixpkgs,
-      # spicetify-nix,
+      spicetify-nix,
       ...
     }@inputs:
     let
@@ -42,7 +41,7 @@
         }
       ];
       specialArgs = {
-        # inherit spicetify-nix;
+        inherit spicetify-nix;
       };
     in
     {

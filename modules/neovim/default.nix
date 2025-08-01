@@ -9,8 +9,6 @@
   environment.systemPackages = with pkgs; [
     (unstable.neovim.override { withNodeJs = true; })
 
-    xclip # Clipboard integration
-
     lua5_1
 
     # Formatters

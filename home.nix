@@ -8,7 +8,7 @@
     # General
     htop
     wget
-    neofetch
+    fastfetch
     bitwarden
     bitwarden-cli
     google-chrome

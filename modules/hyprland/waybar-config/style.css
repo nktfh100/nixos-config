@@ -1,0 +1,129 @@
+@import "macchiato.css";
+
+* {
+  border: none;
+  min-height: 0;
+  font-family: "ComicCodeLigatures Nerd Font";
+  font-weight: 500;
+  font-size: 13px;
+  padding: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+tooltip {
+  background-color: @mantle;
+  border: 1px solid @mauve;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+tooltip label {
+  color: @text;
+}
+
+#clock,
+#tray,
+#cpu,
+#memory,
+#battery,
+#pulseaudio,
+#temperature,
+#custom-spotify,
+#custom-system_profile,
+#language,
+#cpu_text {
+  margin: 6px 3px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  background-color: @surface0;
+  border: 1px solid @surface2;
+  color: @text;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#workspaces {
+  margin: 6px 3px;
+  border-radius: 12px;
+  background-color: @surface0;
+  border: 1px solid @surface2;
+  padding: 0 4px;
+}
+
+#workspaces button {
+  padding: 2px 6px;
+  color: @text;
+  border-radius: 8px;
+  margin: 3px 2px;
+  transition: all 0.2s ease;
+  min-width: 15px;
+}
+
+#workspaces button.active {
+  background-color: @mauve;
+  color: @crust;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  color: @crust;
+}
+
+#custom-spotify {
+  background-color: @surface0;
+  border: 1px solid @mauve;
+  color: @mauve;
+  padding: 3px 15px;
+  font-weight: 600;
+}
+
+#cpu.critical,
+#memory.critical {
+  color: @red;
+  border-color: @red;
+}
+
+#battery.warning,
+#battery.critical {
+  color: @peach;
+  border-color: @peach;
+}
+
+#battery.charging {
+  color: @green;
+  border-color: @green;
+}
+
+#temperature.critical {
+  color: @red;
+  border-color: @red;
+}
+
+#custom-launcher {
+  font-size: 22px;
+  padding: 0 12px 0 10px;
+  color: @blue;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#custom-control {
+  font-size: 22px;
+  padding: 0 10px 0 8px;
+  color: @mauve;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#language {
+  min-width: 0;
+  padding: 3px 8px;
+}
+
+#tray {
+  padding: 3px 8px;
+}
+
+#pulseaudio.muted {
+  color: @red;
+}

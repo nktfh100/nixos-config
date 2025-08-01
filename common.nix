@@ -3,14 +3,14 @@
 {
   imports = [
     ./modules/boot
-    ./modules/gnome
-    ./modules/pulseaudio.nix
+    ./modules/pipewire.nix
     ./modules/vscode
     ./modules/docker.nix
     ./modules/kitty
     ./modules/spicetify.nix
     ./modules/zoxide.nix
     ./modules/neovim
+    ./modules/hyprland
   ];
 
   home-manager.useGlobalPkgs = true;
@@ -95,6 +95,9 @@
     ];
   };
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
   # services.teamviewer.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -102,17 +105,18 @@
     git
     ffmpeg_6-full
 
-    pavucontrol # PulseAudio volume control
+    # pavucontrol # PulseAudio volume control
 
     # File managment
     zip
     unzip
     unrar
+    peazip
 
     gparted
     ntfs3g # NTFS support for gparted
 
-    # openssl_3_3
+    openssl_3 # For prisma
 
     go
   ];

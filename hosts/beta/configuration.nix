@@ -14,10 +14,12 @@
 
   environment.systemPackages = with pkgs; [ linux-wifi-hotspot ];
 
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  home-manager.users.nktfh100.home.packages = with pkgs; [
+    zoom-us
+    asusctl
+  ];
 
-  home-manager.users.nktfh100.home.packages = with pkgs; [ zoom-us ];
+  services.asusd.enable = true;
 
   # https://discourse.nixos.org/t/laptop-hangs-at-started-session-c1-of-user-gdm/26834/16
   hardware.nvidia.prime = {

@@ -1,0 +1,122 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+    "margin-top": 8,
+    "margin-right": 8,
+    "margin-bottom": 0,
+    "margin-left": 8,
+    "modules-left": [
+			"custom/launcher",
+			"hyprland/workspaces"
+    ],
+    "modules-center": [
+			"custom/spotify"
+    ],
+    "modules-right": [
+			"tray",
+			"hyprland/language",
+			"cpu_text",
+			"cpu",
+			"memory",
+			"temperature",
+			"pulseaudio",
+			"clock",
+			"custom/system_profile",
+			"battery",
+			"custom/control"
+    ],
+    "custom/launcher": {
+			"format": " ",
+			"on-click": "rofi -show drun -show-icons ",
+			"on-click-right": "killall rofi",
+			"tooltip": false
+    },
+    "hyprland/workspaces": {
+			"disable-scroll": true,
+			"all-outputs": false,
+			"tooltip": false,
+			"show-special": true
+    },
+    "tray": {
+			"spacing": 10,
+			"tooltip": false
+    },
+    "clock": {
+			"format": " {:%H:%M}",
+			"tooltip": false
+    },
+    "cpu": {
+			"format": " {usage}%",
+			"interval": 2,
+			"states": {
+				"critical": 90
+			},
+			"tooltip": false
+    },
+    "memory": {
+			"format": " {percentage}%",
+			"interval": 2,
+			"states": {
+				"critical": 80
+			}
+    },
+		"temperature": {
+			"format": " {temperatureC}°C",
+			"interval": 5,
+			"tooltip": false,
+			"states": {
+				"warning": 70,
+				"critical": 80
+			}
+		},
+    "battery": {
+		  "format": "{icon} {capacity}%",
+			"format-icons": ["", "", "", "", ""],
+			"interval": 5,
+			"states": {
+				"warning": 20,
+				"critical": 10
+			},
+			"tooltip": false
+    },
+    "network": {
+			"format-wifi": "wifi {bandwidthDownBits}",
+			"format-ethernet": "enth {bandwidthDownBits}",
+			"format-disconnected": "no network",
+			"interval": 5,
+			"tooltip": false
+    },
+    "pulseaudio": {
+			"scroll-step": 5,
+			"max-volume": 150,
+			"format": "  {volume}%",
+			"format-bluetooth": " {volume}%",			
+			"nospacing": 1,
+			"on-click": "pwvucontrol",
+			"tooltip": false
+    },
+    "hyprland/language": {
+			"format": "  {shortDescription}"
+    },
+    "custom/control": {
+			"format": " ",
+			"on-click": "wlogout",
+			"tooltip": false
+    },
+		"custom/spotify": {
+			"exec": "python ~/.config/waybar/scripts/spotify.py",
+			"tooltip": false,
+			"return-type": "json",
+			"interval": 2,
+			"on-click": "playerctl play-pause --player=spotify",
+			"on-click-right": "playerctl next --player=spotify"
+		},
+		"custom/system_profile": {
+			"exec": "python ~/.config/waybar/scripts/system_profile.py",
+			"interval": 5,
+			"return-type": "json",
+			"on-click": "python ~/.config/waybar/scripts/system_profile.py --toggle",
+			"tooltip": false
+	}
+}
