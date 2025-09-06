@@ -94,20 +94,12 @@ in
       enable = true;
       flavor = flavor;
       accent = accent;
-      gtk = {
-        enable = true;
-        gnomeShellTheme = true;
-      };
       nvim.enable = false;
     };
     gtk = {
       enable = true;
       gtk3.extraConfig = {
         gtk-application-prefer-dark-theme = true;
-      };
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.catppuccin-papirus-folders;
       };
       cursorTheme = {
         name = "catppuccin-macchiato-blue-cursors";
