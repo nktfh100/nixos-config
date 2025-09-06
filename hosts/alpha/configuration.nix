@@ -7,6 +7,7 @@
     ../../common.nix
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
+    ../../modules/virtualisation.nix
   ];
 
   networking.hostName = "nktfh100-alpha";
