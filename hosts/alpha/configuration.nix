@@ -8,6 +8,7 @@
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
     ../../modules/virtualisation.nix
+    ../../modules/podman.nix
   ];
 
   networking.hostName = "nktfh100-alpha";
@@ -20,5 +21,4 @@
       buildxSupport = true;
     }))
   ];
-
 }
