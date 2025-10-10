@@ -55,8 +55,7 @@
     # services.xserver.libinput.enable = true;
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   nix = {
     settings.experimental-features = [
