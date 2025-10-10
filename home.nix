@@ -36,7 +36,7 @@
     # nixfmt-classic
 
     # JS/TS
-    nodejs_20
+    nodejs_22
     yarn
 
     # Global npm packages

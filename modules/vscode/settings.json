@@ -61,9 +61,9 @@
   "terminal.integrated.env.linux": {},
   "console-ninja.featureSet": "Community",
   "editor.minimap.enabled": false,
-  "settingsSync.ignoredExtensions": [
-    "s-nlf-fh.glassit"
-  ],
+  "settingsSync.ignoredExtensions": ["s-nlf-fh.glassit"],
   "database-client.autoSync": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "makefile.configureOnOpen": false
 }
+
