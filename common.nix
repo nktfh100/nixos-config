@@ -15,6 +15,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.nktfh100 = ./home.nix;
+  home-manager.backupFileExtension = ".nktfh100-backup";
 
   nixpkgs.config.allowUnfree = true;
 
