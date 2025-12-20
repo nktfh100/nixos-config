@@ -57,13 +57,10 @@
     "dotenv": false,
     "json": true
   },
-  "importSorter.generalConfiguration.sortOnBeforeSave": true,
   "terminal.integrated.env.linux": {},
-  "console-ninja.featureSet": "Community",
   "editor.minimap.enabled": false,
-  "settingsSync.ignoredExtensions": ["s-nlf-fh.glassit"],
   "database-client.autoSync": true,
   "editor.tabSize": 2,
-  "makefile.configureOnOpen": false
+  "makefile.configureOnOpen": false,
+  "docker.extension.enableComposeLanguageServer": false
 }
-

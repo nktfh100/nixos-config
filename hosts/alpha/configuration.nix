@@ -21,4 +21,22 @@
       buildxSupport = true;
     }))
   ];
+
+  # Force profile for razer headphones
+  services.pipewire.wireplumber.extraConfig."51-razer-barracuda" = {
+    "monitor.alsa.rules" = [
+      {
+        matches = [
+          {
+            "device.name" = "~alsa_card.usb-1532_Razer_Barracuda_X_2.4*";
+          }
+        ];
+        actions = {
+          update-props = {
+            "device.profile" = "output:iec958-stereo+input:mono-fallback";
+          };
+        };
+      }
+    ];
+  };
 }
