@@ -8,6 +8,7 @@
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
     ../../modules/tailscale.nix
+    ../../modules/virtualization.nix
   ];
 
   networking.hostName = "nktfh100-beta";

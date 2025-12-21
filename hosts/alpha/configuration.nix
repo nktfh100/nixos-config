@@ -7,7 +7,7 @@
     ../../common.nix
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
-    ../../modules/virtualisation.nix
+    ../../modules/virtualization.nix
     ../../modules/podman.nix
   ];
 
