@@ -20,11 +20,26 @@
     asusctl
   ];
 
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
+
   services.asusd.enable = true;
 
-  # https://discourse.nixos.org/t/laptop-hangs-at-started-session-c1-of-user-gdm/26834/16
   hardware.nvidia.prime = {
-    sync.enable = true;
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+    sync.enable = false;
     nvidiaBusId = "PCI:1:0:0";
     intelBusId = "PCI:0:2:0";
   };
