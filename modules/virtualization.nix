@@ -4,10 +4,6 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu = {
     package = pkgs.qemu;
-    ovmf = {
-      enable = true;
-      packages = [ pkgs.OVMF.fd ];
-    };
   };
 
   users.users.nktfh100.extraGroups = [

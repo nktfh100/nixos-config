@@ -2,16 +2,22 @@
   description = "nktfh100's nixos configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin.url = "github:catppuccin/nix/release-25.05";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
-    minegrub-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
+    minegrub-theme = {
+      url = "github:Lxtharia/minegrub-world-sel-theme";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -22,15 +28,15 @@
     }@inputs:
     let
       commonModules = [
-        (
-          { pkgs, ... }:
-          {
-            _module.args.unstable = import inputs.unstable {
-              inherit (pkgs.stdenv.targetPlatform) system;
-              config.allowUnfree = true;
-            };
-          }
-        )
+        # (
+        # { pkgs, ... }:
+        # {
+        #   _module.args.unstable = import inputs.unstable {
+        #     inherit (pkgs.stdenv.targetPlatform) system;
+        #     config.allowUnfree = true;
+        #   };
+        # }
+        # )
         inputs.home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         inputs.catppuccin.nixosModules.catppuccin

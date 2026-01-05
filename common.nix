@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -101,9 +101,9 @@
   # services.teamviewer.enable = true;
 
   environment.systemPackages = with pkgs; [
-    unstable.firefox
+    firefox
     git
-    ffmpeg_6-full
+    ffmpeg
 
     # pavucontrol # PulseAudio volume control
 

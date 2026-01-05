@@ -1,4 +1,4 @@
-{ pkgs, unstable, ... }:
+{ pkgs, ... }:
 
 {
   system.activationScripts.neovimSymLink.text = ''
@@ -7,7 +7,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    (unstable.neovim.override { withNodeJs = true; })
+    (neovim.override { withNodeJs = true; })
 
     lua5_1
 

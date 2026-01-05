@@ -9,11 +9,9 @@
     htop
     wget
     fastfetch
-    bitwarden
+    bitwarden-desktop
     bitwarden-cli
     google-chrome
-
-    stremio # Media center
 
     psmisc # To use fuser
 
@@ -114,9 +112,11 @@
 
   programs.git = {
     enable = true;
-    userName = "nktfh100";
-    userEmail = "me@malachi.io";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "nktfh100";
+        email = "me@malachi.io";
+      };
       credential.helper = "store";
       http.postBuffer = "524288000";
       submodules.recurse = "true";

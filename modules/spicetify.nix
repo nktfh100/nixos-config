@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   spicetify-nix,
   ...
 }:
@@ -15,7 +14,7 @@ in
 
   programs.spicetify = {
     enable = true;
-    spotifyPackage = unstable.spotify;
+    # spotifyPackage = unstable.spotify;
     theme = spicePkgs.themes.catppuccin;
     colorScheme = "macchiato";
     enabledExtensions = with spicePkgs.extensions; [
