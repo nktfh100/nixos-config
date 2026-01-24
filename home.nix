@@ -27,6 +27,7 @@
     docker
     gh # Github CLI
     gnumake # Make
+    antigravity-fhs
 
     # Coding language specific
 
