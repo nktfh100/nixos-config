@@ -11,6 +11,7 @@
     ./modules/zoxide.nix
     ./modules/neovim
     ./modules/hyprland
+    ./modules/tailscale.nix
   ];
 
   home-manager.useGlobalPkgs = true;
