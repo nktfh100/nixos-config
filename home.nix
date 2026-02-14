@@ -27,6 +27,8 @@
     docker
     gh # Github CLI
     gnumake # Make
+    claude-code
+    gemini-cli
     antigravity-fhs
 
     # Coding language specific
