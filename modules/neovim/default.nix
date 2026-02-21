@@ -22,14 +22,17 @@
     lua-language-server
     emmet-language-server
     nodePackages_latest.typescript-language-server
+    typos-lsp
+    prettier
     # nodePackages."@prisma/language-server"
     tailwindcss-language-server
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
     nixd
 
+    tree-sitter
+
     # Tools
     cmake
-    # cargo
     fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
     fzf
     gcc
