@@ -84,6 +84,8 @@
       dc = "docker compose";
     };
     bashrcExtra = ''
+      export SOPS_AGE_KEY_FILE=/home/nktfh100/.age/key.txt
+
       nix-rebuild() {
         local flake_name="nktfh100-$1"
         local rebuild_subcommand=$2
@@ -104,11 +106,6 @@
 
       kill-port() {
         sudo fuser -k $1/tcp
-      }
-
-      nvima() {
-        export GEMINI_API_KEY="$(bw get notes gemini-api-key)"
-        nvim
       }
     '';
   };

@@ -18,12 +18,17 @@
       url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       spicetify-nix,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -40,6 +45,7 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         inputs.catppuccin.nixosModules.catppuccin
+        inputs.sops-nix.nixosModules.sops
         {
           home-manager.users.nktfh100 = {
             imports = [ inputs.catppuccin.homeModules.catppuccin ];

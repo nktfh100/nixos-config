@@ -5,6 +5,7 @@
     ./modules/boot
     ./modules/pipewire.nix
     ./modules/vscode
+    ./modules/opencode
     ./modules/docker.nix
     ./modules/kitty
     ./modules/spicetify.nix
@@ -13,6 +14,17 @@
     ./modules/hyprland
     ./modules/tailscale.nix
   ];
+
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/home/nktfh100/.age/key.txt";
+    secrets = {
+      minimax_api_key = {
+        owner = "nktfh100";
+        mode = "0400";
+      };
+    };
+  };
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.nktfh100 = ./home.nix;

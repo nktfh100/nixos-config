@@ -19,6 +19,41 @@ My personal NixOS configuration files I use for all my linux machines.
 - Browser: [Firefox](https://www.mozilla.org/en-US/firefox)
 - Smarter cd: [zoxide](https://github.com/ajeetdsouza/zoxide)
 - Status Bar: [Waybar](https://github.com/Alexays/Waybar)
+- Secret Management: [sops-nix](https://github.com/Mic92/sops-nix)
+
+# Secrets (sops-nix)
+
+## Setup
+
+1. **Generate an age key**:
+   ```bash
+   mkdir -p ~/.age
+   nix-shell -p age --run "age-keygen -o ~/.age/key.txt"
+   ```
+
+2. **Get your age public key**:
+   ```bash
+   age-keygen -y ~/.age/key.txt
+   ```
+
+3. **Edit secrets**:
+   ```bash
+   nix-shell -p sops --run "sops secrets.yaml"
+   ```
+
+4. **The secrets are available at**:
+   - `/run/secrets/<secret-name>`
+
+## Adding New Secrets
+
+1. Edit `secrets.yaml`:
+   ```bash
+   nix-shell -p sops --run "sops secrets.yaml"
+   ```
+
+2. Add your secret
+
+3. Rebuild
 
 # Install
 
