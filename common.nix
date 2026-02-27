@@ -137,6 +137,7 @@
     "EDITOR" = "nvim";
     "VISUAL" = "nvim";
     "NODE_OPTIONS" = "--max_old_space_size=8192";
+    "SOPS_AGE_KEY_FILE" = "/home/nktfh100/.age/key.txt";
   };
 
   # Enable the OpenSSH daemon.

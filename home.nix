@@ -13,6 +13,9 @@
     bitwarden-cli
     google-chrome
 
+    jq
+    lsof
+
     psmisc # To use fuser
 
     # Video/Audio
@@ -84,8 +87,6 @@
       dc = "docker compose";
     };
     bashrcExtra = ''
-      export SOPS_AGE_KEY_FILE=/home/nktfh100/.age/key.txt
-
       nix-rebuild() {
         local flake_name="nktfh100-$1"
         local rebuild_subcommand=$2
