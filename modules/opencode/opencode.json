@@ -19,5 +19,11 @@
       "url": "https://rtfmbro.smolosoft.dev/mcp",
       "enabled": true
     }
+  },
+  "permission": {
+    "bash": {
+      "git diff *": "allow",
+      "git *": "ask"
+    }
   }
 }
