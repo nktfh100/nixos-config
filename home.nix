@@ -9,7 +9,6 @@
     htop
     wget
     fastfetch
-    bitwarden-desktop
     bitwarden-cli
     google-chrome
 

@@ -14,7 +14,6 @@
   environment.systemPackages = with pkgs; [ linux-wifi-hotspot ];
 
   home-manager.users.nktfh100.home.packages = with pkgs; [
-    zoom-us
     asusctl
   ];
 
@@ -45,7 +44,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16 * 1024; # 16GB
+      size = 8 * 1024; # 8GB
     }
   ];
 }
