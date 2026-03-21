@@ -23,6 +23,10 @@
         owner = "nktfh100";
         mode = "0400";
       };
+      tavily_api_key = {
+        owner = "nktfh100";
+        mode = "0400";
+      };
     };
   };
 

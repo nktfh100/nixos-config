@@ -1,8 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin-macchiato",
-  "model": "github-copilot/gemini-3.1-pro-preview",
-  "small_model": "minimax-coding-plan/MiniMax-M2.5",
+  "model": "github-copilot/gpt-5.3-codex",
+  "small_model": "github-copilot/claude-haiku-4.5",
   "plugin": [
     "@mohak34/opencode-notifier@latest",
     "@plannotator/opencode@latest",
@@ -10,7 +10,7 @@
   ],
   "agent": {
     "explore": {
-      "model": "minimax-coding-plan/MiniMax-M2.5"
+      "model": "github-copilot/claude-haiku-4.5"
     }
   },
   "mcp": {
@@ -18,12 +18,41 @@
       "type": "remote",
       "url": "https://rtfmbro.smolosoft.dev/mcp",
       "enabled": true
+    },
+    "tavily": {
+      "type": "local",
+      "command": ["npx", "-y", "tavily-mcp@latest"],
+      "enabled": true,
+      "environment": {
+        "TAVILY_API_KEY": "{file:/run/secrets/tavily_api_key}"
+      }
     }
   },
   "permission": {
     "bash": {
-      "git diff *": "allow",
-      "git *": "ask"
+      "git commit*": "ask",
+      "git push*": "ask",
+      "git reset*": "ask",
+      "git *": "allow"
+    }
+  },
+  "provider": {
+    "github-copilot": {
+      "models": {
+        "gpt-5.3-codex": {
+          "id": "gpt-5.3-codex",
+          "name": "GPT-5.3 Codex",
+          "family": "gpt-codex",
+          "attachment": false,
+          "reasoning": true,
+          "tool_call": true,
+          "temperature": false,
+          "release_date": "2026-02-24",
+          "modalities": { "input": ["text", "image"], "output": ["text"] },
+          "cost": { "input": 1.75, "output": 14, "cache_read": 0.175 },
+          "limit": { "context": 400000, "output": 128000 }
+        }
+      }
     }
   }
 }

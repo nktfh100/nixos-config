@@ -22,17 +22,27 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # opencode-nix = {
+    #   url = "github:dominicnunez/opencode-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =
     {
       nixpkgs,
       spicetify-nix,
-      sops-nix,
+      # opencode-nix,
       ...
     }@inputs:
     let
       commonModules = [
+        # (
+        #   { ... }:
+        #   {
+        #     nixpkgs.overlays = [ opencode-nix.overlays.default ];
+        #   }
+        # )
         # (
         # { pkgs, ... }:
         # {
