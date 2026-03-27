@@ -35,24 +35,5 @@
       "git reset*": "ask",
       "git *": "allow"
     }
-  },
-  "provider": {
-    "github-copilot": {
-      "models": {
-        "gpt-5.3-codex": {
-          "id": "gpt-5.3-codex",
-          "name": "GPT-5.3 Codex",
-          "family": "gpt-codex",
-          "attachment": false,
-          "reasoning": true,
-          "tool_call": true,
-          "temperature": false,
-          "release_date": "2026-02-24",
-          "modalities": { "input": ["text", "image"], "output": ["text"] },
-          "cost": { "input": 1.75, "output": 14, "cache_read": 0.175 },
-          "limit": { "context": 400000, "output": 128000 }
-        }
-      }
-    }
   }
 }
