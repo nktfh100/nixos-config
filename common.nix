@@ -75,6 +75,8 @@
 
   services.printing.enable = false;
 
+  services.udisks2.enable = true;
+
   nix = {
     settings.experimental-features = [
       "flakes"
