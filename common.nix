@@ -76,6 +76,7 @@
   services.printing.enable = false;
 
   services.udisks2.enable = true;
+  services.gvfs.enable = true;
 
   nix = {
     settings.experimental-features = [
@@ -85,7 +86,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 30d";
     };
   };
 

@@ -29,9 +29,6 @@
     docker
     gh # Github CLI
     gnumake # Make
-    claude-code
-    gemini-cli
-    antigravity-fhs
 
     # Coding language specific
 
@@ -84,6 +81,7 @@
       dcd = "docker compose down";
       dcsa = "docker stop $(docker ps -a -q)";
       dc = "docker compose";
+      claude = "npx @anthropic-ai/claude-code@latest";
     };
     bashrcExtra = ''
       nix-rebuild() {
