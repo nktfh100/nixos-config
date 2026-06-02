@@ -152,7 +152,7 @@
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 5353 ]; # mDNS for Chromecast discovery
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 

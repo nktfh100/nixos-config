@@ -4,6 +4,8 @@
   home.stateVersion = "24.05";
   home.username = "nktfh100";
 
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
   home.packages = with pkgs; [
     # General
     htop
@@ -65,6 +67,12 @@
   };
 
   programs.home-manager.enable = true;
+
+  programs.claude-code = {
+    enable = true;
+    package = null; # use the npx alias instead of the nixpkgs claude-code package
+    skillsDir = ./claude/skills;
+  };
 
   programs.command-not-found.enable = true;
 

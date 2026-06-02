@@ -45,6 +45,7 @@ in
     mako # Notification daemon
     hypridle # Idle management
     wl-clipboard # Clipboard
+    wl-clip-persist # Keep clipboard contents after source app closes/loses selection
 
     udiskie # Automount USB drives
     networkmanagerapplet # Network manager applet (tray icon)
