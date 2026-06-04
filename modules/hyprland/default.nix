@@ -7,29 +7,30 @@
 let
   flavor = "macchiato";
   accent = "blue";
+  homeDir = config.users.users.nktfh100.home;
 in
 {
   system.activationScripts.hyprlandSymLink.text = ''
-    rm -f -r /home/nktfh100/.config/hypr
-    ln -Ts /etc/nixos/modules/hyprland/hyprland-config /home/nktfh100/.config/hypr
+    rm -f -r ${homeDir}/.config/hypr
+    ln -Ts /etc/nixos/modules/hyprland/hyprland-config ${homeDir}/.config/hypr
 
-    touch /home/nktfh100/.config/hypr/profile.conf
-    echo "\$HOSTNAME = ${config.networking.hostName}" > /home/nktfh100/.config/hypr/profile.conf
+    touch ${homeDir}/.config/hypr/profile.conf
+    echo "\$HOSTNAME = ${config.networking.hostName}" > ${homeDir}/.config/hypr/profile.conf
   '';
 
   system.activationScripts.waybarSymLink.text = ''
-    rm -f -r /home/nktfh100/.config/waybar
-    ln -Ts /etc/nixos/modules/hyprland/waybar-config /home/nktfh100/.config/waybar
+    rm -f -r ${homeDir}/.config/waybar
+    ln -Ts /etc/nixos/modules/hyprland/waybar-config ${homeDir}/.config/waybar
   '';
 
   system.activationScripts.rofiSymLink.text = ''
-    rm -f -r /home/nktfh100/.config/rofi
-    ln -Ts /etc/nixos/modules/hyprland/rofi-config /home/nktfh100/.config/rofi
+    rm -f -r ${homeDir}/.config/rofi
+    ln -Ts /etc/nixos/modules/hyprland/rofi-config ${homeDir}/.config/rofi
   '';
 
   system.activationScripts.wlogoutSymLink.text = ''
-    rm -f -r /home/nktfh100/.config/wlogout
-    ln -Ts /etc/nixos/modules/hyprland/wlogout-config /home/nktfh100/.config/wlogout
+    rm -f -r ${homeDir}/.config/wlogout
+    ln -Ts /etc/nixos/modules/hyprland/wlogout-config ${homeDir}/.config/wlogout
   '';
 
   home-manager.users.nktfh100.home.file.".config/mako/config".text = ''
@@ -38,7 +39,7 @@ in
 
   programs.hyprland.enable = true;
   services.displayManager.sddm.enable = true;
-  services.blueman.enable = true; # Bluetooth manager
+  services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
     hyprpolkitagent # Authorization agent for Hyprland
@@ -88,7 +89,6 @@ in
 
   # To fix: "Only the Qt 6 version of SDDM is supported by this port!"
   services.displayManager.sddm.package = pkgs.kdePackages.sddm;
-
   home-manager.users.nktfh100 = {
     catppuccin = {
       enable = true;

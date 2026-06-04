@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -17,7 +17,7 @@
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/home/nktfh100/.age/key.txt";
+    age.keyFile = "${config.users.users.nktfh100.home}/.age/key.txt";
     secrets = {
       minimax_api_key = {
         owner = "nktfh100";
@@ -74,6 +74,12 @@
   };
 
   services.printing.enable = false;
+
+  # Don't suspend when the laptop lid is closed (e.g. long-running overnight jobs).
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore"; # on battery
+    HandleLidSwitchExternalPower = "ignore"; # on AC power
+  };
 
   services.udisks2.enable = true;
   services.gvfs.enable = true;
@@ -144,7 +150,7 @@
     "EDITOR" = "nvim";
     "VISUAL" = "nvim";
     "NODE_OPTIONS" = "--max_old_space_size=8192";
-    "SOPS_AGE_KEY_FILE" = "/home/nktfh100/.age/key.txt";
+    "SOPS_AGE_KEY_FILE" = "${config.users.users.nktfh100.home}/.age/key.txt";
   };
 
   # Enable the OpenSSH daemon.

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,36 +22,36 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # opencode-nix = {
-    #   url = "github:dominicnunez/opencode-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    opencode-nix = {
+      url = "github:dominicnunez/opencode-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       spicetify-nix,
-      # opencode-nix,
+      opencode-nix,
       ...
     }@inputs:
     let
       commonModules = [
-        # (
-        #   { ... }:
-        #   {
-        #     nixpkgs.overlays = [ opencode-nix.overlays.default ];
-        #   }
-        # )
-        # (
-        # { pkgs, ... }:
-        # {
-        #   _module.args.unstable = import inputs.unstable {
-        #     inherit (pkgs.stdenv.targetPlatform) system;
-        #     config.allowUnfree = true;
-        #   };
-        # }
-        # )
+        (
+          { ... }:
+          {
+            nixpkgs.overlays = [ opencode-nix.overlays.default ];
+          }
+        )
+        (
+          { pkgs, ... }:
+          {
+            _module.args.unstable = import inputs.unstable {
+              inherit (pkgs.stdenv.targetPlatform) system;
+              config.allowUnfree = true;
+            };
+          }
+        )
         inputs.home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         inputs.catppuccin.nixosModules.catppuccin
@@ -76,18 +76,6 @@
       nixosConfigurations.nktfh100-beta = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = commonModules ++ [ ./hosts/beta/configuration.nix ];
-        specialArgs = specialArgs;
-      };
-
-      nixosConfigurations.nktfh100-gamma = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = commonModules ++ [ ./hosts/gamma/configuration.nix ];
-        specialArgs = specialArgs;
-      };
-
-      nixosConfigurations.nktfh100-delta = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = commonModules ++ [ ./hosts/delta/configuration.nix ];
         specialArgs = specialArgs;
       };
     };

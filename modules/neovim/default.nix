@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
+  # symlink to allow live edits without rebuilding.
   system.activationScripts.neovimSymLink.text = ''
-    rm -f -r /home/nktfh100/.config/nvim
-    ln -Ts /etc/nixos/modules/neovim/neovim-config /home/nktfh100/.config/nvim
+    rm -f -r ${config.users.users.nktfh100.home}/.config/nvim
+    ln -Ts /etc/nixos/modules/neovim/neovim-config ${config.users.users.nktfh100.home}/.config/nvim
   '';
 
   environment.systemPackages = with pkgs; [

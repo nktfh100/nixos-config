@@ -72,6 +72,7 @@
     enable = true;
     package = null; # use the npx alias instead of the nixpkgs claude-code package
     skillsDir = ./claude/skills;
+    memory.source = ./claude/CLAUDE.md;
   };
 
   programs.command-not-found.enable = true;
