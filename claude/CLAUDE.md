@@ -6,6 +6,9 @@ These are my personal, cross-project preferences. They apply to every session.
 
 - Be concise and direct. Skip filler and restating the question.
 - When something is ambiguous, ask before making large assumptions.
+- Avoid technical jargon; use simpler, everyday terms instead.
+- Keep written output as short as possible — I hate reading too much text. This applies especially to plans.
+- I'm a visual learner: prefer visuals (diagrams, tables, ASCII sketches) over text whenever they can explain something.
 
 ## Code Style
 
