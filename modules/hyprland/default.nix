@@ -38,6 +38,7 @@ in
   '';
 
   programs.hyprland.enable = true;
+  programs.hyprland.withUWSM = true;
   services.displayManager.sddm.enable = true;
   services.blueman.enable = true;
 

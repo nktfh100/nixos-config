@@ -13,7 +13,7 @@
     lua5_1
 
     # Formatters
-    nixfmt-rfc-style # Nix
+    nixfmt # Nix
     black # Python
     prettierd # JS/TS
     shfmt # Shell
@@ -22,7 +22,7 @@
     # LSP
     lua-language-server
     emmet-language-server
-    nodePackages_latest.typescript-language-server
+    typescript-language-server
     typos-lsp
     prettier
     # nodePackages."@prisma/language-server"

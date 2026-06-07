@@ -38,11 +38,8 @@
     # nixfmt-classic
 
     # JS/TS
-    nodejs_22
+    nodejs_24
     yarn
-
-    # Global npm packages
-    nodePackages_latest.vercel
 
     # Python
     python312
@@ -71,8 +68,8 @@
   programs.claude-code = {
     enable = true;
     package = null; # use the npx alias instead of the nixpkgs claude-code package
-    skillsDir = ./claude/skills;
-    memory.source = ./claude/CLAUDE.md;
+    skills = ./claude/skills;
+    context = ./claude/CLAUDE.md;
   };
 
   programs.command-not-found.enable = true;

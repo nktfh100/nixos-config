@@ -15,10 +15,10 @@ def is_laptop():
 
 def get_current_profile():
     try:
-        output = subprocess.check_output(["asusctl", "profile", "-p"], text=True)
+        output = subprocess.check_output(["asusctl", "profile", "get"], text=True)
         for line in output.splitlines():
             if line.startswith("Active profile"):
-                return line.split("is ")[1].strip()
+                return line.split(":")[1].strip()
     except Exception:
         return "Unknown"
 
@@ -26,7 +26,7 @@ def get_current_profile():
 def toggle_profile():
     current = get_current_profile()
     next_profile = "Performance" if current == "Quiet" else "Quiet"
-    subprocess.run(["asusctl", "profile", "-P", next_profile])
+    subprocess.run(["asusctl", "profile", "set", next_profile])
 
 
 def output_json(profile):
