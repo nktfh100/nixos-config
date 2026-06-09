@@ -8,6 +8,22 @@ let
   flavor = "macchiato";
   accent = "blue";
   homeDir = config.users.users.nktfh100.home;
+
+  layoutNotify = pkgs.writeShellApplication {
+    name = "hypr-layout-notify";
+    runtimeInputs = [
+      pkgs.socat
+      pkgs.libnotify
+    ];
+    text = ''
+      socket="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+      socat -U - "UNIX-CONNECT:$socket" | while read -r line; do
+        case "$line" in
+          activelayout*) notify-send -t 1500 -h string:x-canonical-private-synchronous:layout "⌨  ''${line##*,}" ;;
+        esac
+      done
+    '';
+  };
 in
 {
   system.activationScripts.hyprlandSymLink.text = ''
@@ -43,6 +59,8 @@ in
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
+    layoutNotify # Popup showing the new keyboard layout on switch
+
     hyprpolkitagent # Authorization agent for Hyprland
     mako # Notification daemon
     hypridle # Idle management

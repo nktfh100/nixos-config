@@ -31,6 +31,9 @@
 
   services.asusd.enable = true;
 
+  # Let the dGPU fully power down when no app is using it
+  hardware.nvidia.powerManagement.finegrained = true;
+
   hardware.nvidia.prime = {
     offload = {
       enable = true;

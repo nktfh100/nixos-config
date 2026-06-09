@@ -16,6 +16,7 @@
     "modules-right": [
 			"tray",
 			"hyprland/language",
+			"custom/gpu",
 			"cpu_text",
 			"cpu",
 			"memory",
@@ -98,6 +99,11 @@
     },
     "hyprland/language": {
 			"format": "  {shortDescription}"
+    },
+    "custom/gpu": {
+			"exec": "bash ~/.config/waybar/scripts/gpu.sh",
+			"return-type": "json",
+			"interval": 5
     },
     "custom/control": {
 			"format": " ",

@@ -33,6 +33,7 @@ tooltip label {
 #temperature,
 #custom-spotify,
 #custom-system_profile,
+#custom-gpu,
 #language,
 #cpu_text {
   margin: 6px 3px;
@@ -126,4 +127,14 @@ tooltip label {
 
 #pulseaudio.muted {
   color: @red;
+}
+
+#custom-gpu.gpu-off {
+  color: @green;
+  border-color: @green;
+}
+
+#custom-gpu.gpu-on {
+  color: @peach;
+  border-color: @peach;
 }
