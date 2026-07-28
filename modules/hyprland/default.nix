@@ -24,6 +24,21 @@ let
       done
     '';
   };
+
+  tuigreetCommand = pkgs.lib.concatStringsSep " " [
+    "${pkgs.tuigreet}/bin/tuigreet"
+    "--time"
+    "--user-menu"
+    "--remember"
+    "--remember-user-session"
+    "--asterisks"
+    "--greeting 'Welcome back, nktfh100'"
+    "--window-padding 2"
+    "--container-padding 2"
+    "--prompt-padding 1"
+    "--sessions /run/current-system/sw/share/wayland-sessions"
+    "--theme 'border=blue;title=blue;greet=magenta;prompt=blue;time=blue;action=blue;button=magenta;container=black;input=cyan'"
+  ];
 in
 {
   system.activationScripts.hyprlandSymLink.text = ''
@@ -55,7 +70,14 @@ in
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
-  services.displayManager.sddm.enable = true;
+  services.greetd = {
+    enable = true;
+    settings.default_session = {
+      user = "greeter";
+      command = tuigreetCommand;
+    };
+  };
+  systemd.tmpfiles.rules = [ "d /var/cache/tuigreet 0755 greeter greeter - -" ];
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -106,8 +128,6 @@ in
     plymouth.enable = true;
   };
 
-  # To fix: "Only the Qt 6 version of SDDM is supported by this port!"
-  services.displayManager.sddm.package = pkgs.kdePackages.sddm;
   home-manager.users.nktfh100 = {
     catppuccin = {
       enable = true;

@@ -45,6 +45,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.enableIPv6 = false;
+
   # Set your time zone.
   time.timeZone = "Asia/Jerusalem";
 
@@ -86,19 +88,16 @@
 
   zramSwap.enable = true;
 
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.sddm.enableGnomeKeyring = true;
-
   nix = {
     settings.experimental-features = [
       "flakes"
       "nix-command"
     ];
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
+    settings.extra-substituters = [ "https://zed.cachix.org" ];
+    settings.extra-trusted-public-keys = [
+      "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
+    ];
+    gc.automatic = false;
   };
 
   users.mutableUsers = false;
@@ -129,6 +128,8 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  services.flatpak.enable = true;
+
   # services.teamviewer.enable = true;
   environment.systemPackages = with pkgs; [
     firefox
@@ -156,13 +157,14 @@
     "VISUAL" = "nvim";
     "NODE_OPTIONS" = "--max_old_space_size=8192";
     "SOPS_AGE_KEY_FILE" = "${config.users.users.nktfh100.home}/.age/key.txt";
+    "CLAUDE_CODE_NO_FLICKER" = "1";
   };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 3000 ];
   networking.firewall.allowedUDPPorts = [ 5353 ]; # mDNS for Chromecast discovery
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

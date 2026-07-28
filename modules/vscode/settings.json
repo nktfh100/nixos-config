@@ -62,5 +62,7 @@
   "database-client.autoSync": true,
   "editor.tabSize": 2,
   "makefile.configureOnOpen": false,
-  "docker.extension.enableComposeLanguageServer": false
+  "docker.extension.enableComposeLanguageServer": false,
+  "workbench.editor.enablePreview": false
 }
+

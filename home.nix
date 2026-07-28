@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.stateVersion = "24.05";
@@ -69,7 +69,9 @@
     enable = true;
     package = null; # use the npx alias instead of the nixpkgs claude-code package
     skills = ./claude/skills;
+    commandsDir = ./claude/commands;
     context = ./claude/CLAUDE.md;
+    settings = lib.importJSON ./claude/settings.json;
   };
 
   programs.command-not-found.enable = true;
@@ -79,6 +81,7 @@
     shellAliases = {
       la = "ls -a";
       nix-code = "code /etc/nixos";
+      zed = "zeditor";
       nix-garbage = "sudo nix-env --delete-generations old && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
       py = "python";
       dcb = "docker compose build";

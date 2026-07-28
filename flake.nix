@@ -26,6 +26,7 @@
       url = "github:dominicnunez/opencode-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zed-editor.url = "github:zed-industries/zed";
   };
 
   outputs =
@@ -50,6 +51,8 @@
               inherit (pkgs.stdenv.targetPlatform) system;
               config.allowUnfree = true;
             };
+            _module.args.zedFlake =
+              inputs.zed-editor.packages.${pkgs.stdenv.targetPlatform.system}.default;
           }
         )
         inputs.home-manager.nixosModules.home-manager
