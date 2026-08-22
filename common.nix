@@ -27,6 +27,10 @@
         owner = "nktfh100";
         mode = "0400";
       };
+      claude_oauth_token = {
+        owner = "nktfh100";
+        mode = "0400";
+      };
     };
   };
 
@@ -93,9 +97,13 @@
       "flakes"
       "nix-command"
     ];
-    settings.extra-substituters = [ "https://zed.cachix.org" ];
+    settings.extra-substituters = [
+      "https://zed.cachix.org"
+      "https://ryoppippi.cachix.org"
+    ];
     settings.extra-trusted-public-keys = [
       "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
+      "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
     ];
     gc.automatic = false;
   };
@@ -148,6 +156,8 @@
     ntfs3g # NTFS support for gparted
 
     openssl_3 # For prisma
+
+    claude-code
 
     go
   ];

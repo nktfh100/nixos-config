@@ -28,3 +28,7 @@ These are my personal, cross-project preferences. They apply to every session.
 
 - Never commit or push unless explicitly asked.
 - When fixing a bug, explain the root cause, not just the fix.
+
+## Output style
+
+@~/.claude/skills/i-have-adhd/SKILL.md

@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  i-have-adhd,
+  ...
+}:
 
 {
   home.stateVersion = "24.05";
@@ -31,6 +36,7 @@
     docker
     gh # Github CLI
     gnumake # Make
+    godot
 
     # Coding language specific
 
@@ -67,8 +73,14 @@
 
   programs.claude-code = {
     enable = true;
-    package = null; # use the npx alias instead of the nixpkgs claude-code package
-    skills = ./claude/skills;
+    package = null; # binary installed system-wide via the nix-claude-code overlay
+    skills = "${pkgs.symlinkJoin {
+      name = "claude-skills";
+      paths = [
+        ./claude/skills
+        "${i-have-adhd}/skills"
+      ];
+    }}";
     commandsDir = ./claude/commands;
     context = ./claude/CLAUDE.md;
     settings = lib.importJSON ./claude/settings.json;
@@ -80,6 +92,7 @@
     enable = true;
     shellAliases = {
       la = "ls -a";
+      claude-2 = "CLAUDE_CODE_OAUTH_TOKEN=$(cat /run/secrets/claude_oauth_token) CLAUDE_CONFIG_DIR=~/.claude-2 claude";
       nix-code = "code /etc/nixos";
       zed = "zeditor";
       nix-garbage = "sudo nix-env --delete-generations old && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
@@ -90,7 +103,6 @@
       dcd = "docker compose down";
       dcsa = "docker stop $(docker ps -a -q)";
       dc = "docker compose";
-      claude = "npx @anthropic-ai/claude-code@latest";
     };
     bashrcExtra = ''
       nix-rebuild() {

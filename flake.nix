@@ -26,7 +26,12 @@
       url = "github:dominicnunez/opencode-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-claude-code.url = "github:ryoppippi/nix-claude-code";
     zed-editor.url = "github:zed-industries/zed";
+    i-have-adhd = {
+      url = "github:ayghri/i-have-adhd";
+      flake = false;
+    };
   };
 
   outputs =
@@ -34,6 +39,7 @@
       nixpkgs,
       spicetify-nix,
       opencode-nix,
+      nix-claude-code,
       ...
     }@inputs:
     let
@@ -41,7 +47,10 @@
         (
           { ... }:
           {
-            nixpkgs.overlays = [ opencode-nix.overlays.default ];
+            nixpkgs.overlays = [
+              opencode-nix.overlays.default
+              nix-claude-code.overlays.default
+            ];
           }
         )
         (
@@ -60,6 +69,7 @@
         inputs.catppuccin.nixosModules.catppuccin
         inputs.sops-nix.nixosModules.sops
         {
+          home-manager.extraSpecialArgs = { inherit (inputs) i-have-adhd; };
           home-manager.users.nktfh100 = {
             imports = [ inputs.catppuccin.homeModules.catppuccin ];
           };
