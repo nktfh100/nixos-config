@@ -12,6 +12,7 @@
 
   virtualisation.docker = {
     enable = true;
+    daemon.settings."live-restore" = false;
     autoPrune = {
       enable = true;
       dates = "weekly";

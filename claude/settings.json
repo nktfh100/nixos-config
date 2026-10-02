@@ -34,6 +34,7 @@
     }
   },
   "effortLevel": "high",
+  "outputStyle": "Concise",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
@@ -42,6 +43,7 @@
   "skipAutoPermissionPrompt": true,
   "attribution": {
     "commit": "",
-    "pr": ""
+    "pr": "",
+    "sessionUrl": false
   }
 }

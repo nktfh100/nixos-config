@@ -1,0 +1,5 @@
+interface:
+  display_name: "Web Screenshot"
+  short_description: "Screenshot a web page to visually verify frontend work"
+policy:
+  allow_implicit_invocation: true

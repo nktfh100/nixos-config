@@ -1,0 +1,5 @@
+/result
+/result-*
+*.nktfh100-backup*
+__pycache__/
+*.py[cod]

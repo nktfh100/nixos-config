@@ -98,7 +98,7 @@ in
     nautilus # File manager
     gnome-calculator # Calculator
     rofi # Application launcher
-    eog # Image viewer
+    imv
     wlogout # Logout menu
     gnome-system-monitor # System monitor
 

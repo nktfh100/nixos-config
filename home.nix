@@ -1,7 +1,7 @@
 {
   pkgs,
   lib,
-  i-have-adhd,
+  unstable,
   ...
 }:
 
@@ -18,6 +18,7 @@
     fastfetch
     bitwarden-cli
     google-chrome
+    (callPackage ./pkgs/webshot { })
 
     jq
     lsof
@@ -36,7 +37,7 @@
     docker
     gh # Github CLI
     gnumake # Make
-    godot
+    unstable.godot
 
     # Coding language specific
 
@@ -67,6 +68,17 @@
     "x-scheme-handler/about" = [ "firefox.desktop" ];
     "x-scheme-handler/unknown" = [ "firefox.desktop" ];
     "video/mp4" = [ "vlc.desktop" ];
+    "image/png" = [ "imv.desktop" ];
+    "image/jpeg" = [ "imv.desktop" ];
+    "image/gif" = [ "imv.desktop" ];
+    "image/webp" = [ "imv.desktop" ];
+    "image/bmp" = [ "imv.desktop" ];
+    "image/tiff" = [ "imv.desktop" ];
+    "image/svg+xml" = [ "imv.desktop" ];
+    "image/avif" = [ "imv.desktop" ];
+    "image/heic" = [ "imv.desktop" ];
+    "image/heif" = [ "imv.desktop" ];
+    "image/jxl" = [ "imv.desktop" ];
   };
 
   programs.home-manager.enable = true;
@@ -74,16 +86,24 @@
   programs.claude-code = {
     enable = true;
     package = null; # binary installed system-wide via the nix-claude-code overlay
-    skills = "${pkgs.symlinkJoin {
-      name = "claude-skills";
-      paths = [
-        ./claude/skills
-        "${i-have-adhd}/skills"
-      ];
-    }}";
+    skills = ./claude/skills;
     commandsDir = ./claude/commands;
     context = ./claude/CLAUDE.md;
     settings = lib.importJSON ./claude/settings.json;
+  };
+
+  programs.codex = {
+    enable = true;
+    package = null;
+    context = ./claude/CLAUDE.md;
+    skills = ./claude/skills;
+  };
+
+  home.file = {
+    ".codex/prompts" = {
+      source = ./claude/commands;
+      recursive = true;
+    };
   };
 
   programs.command-not-found.enable = true;
@@ -95,7 +115,7 @@
       claude-2 = "CLAUDE_CODE_OAUTH_TOKEN=$(cat /run/secrets/claude_oauth_token) CLAUDE_CONFIG_DIR=~/.claude-2 claude";
       nix-code = "code /etc/nixos";
       zed = "zeditor";
-      nix-garbage = "sudo nix-env --delete-generations old && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
+      nix-garbage = "nix-env --delete-generations 30d && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
       py = "python";
       dcb = "docker compose build";
       dcu = "docker compose up";

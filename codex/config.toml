@@ -1,0 +1,15 @@
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "danger-full-access"
+
+[tui]
+alternate_screen = "always"
+vim_mode_default = true
+status_line = [
+  "model-with-reasoning",
+  "git-branch",
+  "context-remaining",
+  "five-hour-limit",
+  "weekly-limit",
+]
+status_line_use_colors = true

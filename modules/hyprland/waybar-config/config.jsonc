@@ -22,7 +22,7 @@
 			"memory",
 			"temperature",
 			"pulseaudio",
-			"clock",
+			"custom/clock",
 			"custom/system_profile",
 			"battery",
 			"custom/control"
@@ -43,8 +43,10 @@
 			"spacing": 10,
 			"tooltip": false
     },
-    "clock": {
-			"format": " {:%H:%M}",
+    "custom/clock": {
+			// the time, only while spotify is playing
+			"exec": "playerctl --player=spotify status 2>/dev/null | grep -q Playing && date '+ %H:%M'",
+			"interval": 5,
 			"tooltip": false
     },
     "cpu": {

@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  unstable,
+  ...
+}:
 
 {
   imports = [
@@ -151,6 +156,7 @@
     unzip
     unrar
     peazip
+    poppler-utils
 
     gparted
     ntfs3g # NTFS support for gparted
@@ -158,9 +164,12 @@
     openssl_3 # For prisma
 
     claude-code
+    codex
 
     go
   ];
+
+  environment.etc."codex/config.toml".source = ./codex/config.toml;
 
   environment.variables = {
     "EDITOR" = "nvim";
@@ -174,7 +183,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  networking.firewall.allowedTCPPorts = [
+    3000
+    8000
+  ];
   networking.firewall.allowedUDPPorts = [ 5353 ]; # mDNS for Chromecast discovery
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

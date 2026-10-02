@@ -24,7 +24,7 @@ tooltip label {
   color: @text;
 }
 
-#clock,
+#custom-clock,
 #tray,
 #cpu,
 #memory,

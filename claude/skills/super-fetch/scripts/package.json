@@ -1,0 +1,14 @@
+{
+  "name": "super-fetch",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "linkedom": "^0.18.11",
+    "patchright": "^1.52.5",
+    "playwright-core": "^1.59.1",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "turndown": "^7.2.1"
+  }
+}
