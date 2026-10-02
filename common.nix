@@ -161,7 +161,7 @@
     gparted
     ntfs3g # NTFS support for gparted
 
-    openssl_3 # For prisma
+    openssl # For prisma
 
     claude-code
     codex

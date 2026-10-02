@@ -23,7 +23,6 @@ in
       wikify
       featureShuffle
       shuffle
-      betterGenres
     ];
   };
 }
