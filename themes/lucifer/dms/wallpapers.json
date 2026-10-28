@@ -1,0 +1,19 @@
+[
+  {
+    "id": "infernal",
+    "title": "Infernal",
+    "path": "/etc/nixos/wallpapers/infernal.png"
+  },
+  {
+    "id": "lucifer-3d-morningstar-ward",
+    "title": "Morningstar Ward",
+    "series": "Lucifer",
+    "path": "/etc/nixos/wallpapers/morningstar.png"
+  },
+  {
+    "id": "lucifer-05-penthouse",
+    "title": "Penthouse",
+    "series": "Lucifer",
+    "path": "/etc/nixos/wallpapers/penthouse.png"
+  }
+]

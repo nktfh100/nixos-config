@@ -1,0 +1,25 @@
+{
+  "lineLayout": "expanded",
+  "showSeparators": false,
+  "gitStatus": {
+    "enabled": true,
+    "showDirty": true,
+    "showAheadBehind": false,
+    "showFileStats": false
+  },
+  "display": {
+    "showTools": false,
+    "showAgents": true,
+    "showTodos": true,
+    "showSkills": true,
+    "showMcp": true,
+    "showCost": false,
+    "showDuration": true,
+    "showSessionName": true,
+    "showEffortLevel": true,
+    "showUsage": true,
+    "usageBarEnabled": true,
+    "usageCompact": false,
+    "sevenDayThreshold": 0
+  }
+}

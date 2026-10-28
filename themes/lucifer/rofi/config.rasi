@@ -1,0 +1,25 @@
+configuration {
+    modi: "drun,run,window";
+    show-icons: true;
+    display-drun: "";
+    drun-display-format: "{name}";
+    font: "Alegreya Sans 12";
+}
+* { background-color: transparent; text-color: #f7edf0; border-color: #634555; }
+window { width: 840px; background-color: #201820ff; border: 2px; border-color: #bd1d39; border-radius: 12px; padding: 0px; }
+mainbox { orientation: horizontal; spacing: 0px; children: [ artwork, content ]; }
+artwork { expand: false; width: 250px; background-image: url("/etc/nixos/themes/lucifer/rofi/artwork.png", height); border: 0 1px 0 0; border-color: #634555; }
+content { padding: 28px; spacing: 20px; children: [ inputbar, message, listview ]; }
+inputbar { spacing: 12px; padding: 4px 4px 18px; border: 0 0 2px; border-color: #f32746; children: [ entry ]; }
+entry { placeholder: ""; cursor: text; }
+listview { lines: 7; columns: 1; spacing: 6px; fixed-height: true; scrollbar: false; }
+element { padding: 13px; spacing: 14px; border-radius: 6px; cursor: pointer; }
+element selected.normal, element selected.active { background-color: #a41430; text-color: #fff2f0; }
+element normal.active { text-color: #ff6475; }
+element selected.urgent { background-color: #a41430; }
+element-icon { size: 25px; cursor: inherit; }
+element-text { vertical-align: 0.5; text-color: inherit; cursor: inherit; }
+message { padding: 10px; border-radius: 6px; background-color: #352831; }
+textbox { text-color: #d0bdc6; }
+element normal.normal, element alternate.normal, element alternate.active { background-color: transparent; text-color: #f7edf0; }
+element normal.urgent, element alternate.urgent { background-color: transparent; text-color: #ff6470; }

@@ -17,6 +17,8 @@
     ./modules/zoxide.nix
     ./modules/neovim
     ./modules/hyprland
+    ./modules/dms
+    ./themes
     ./modules/tailscale.nix
   ];
 
@@ -24,15 +26,7 @@
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "${config.users.users.nktfh100.home}/.age/key.txt";
     secrets = {
-      minimax_api_key = {
-        owner = "nktfh100";
-        mode = "0400";
-      };
       tavily_api_key = {
-        owner = "nktfh100";
-        mode = "0400";
-      };
-      claude_oauth_token = {
         owner = "nktfh100";
         mode = "0400";
       };
@@ -41,7 +35,6 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.nktfh100 = ./home.nix;
-  home-manager.backupFileExtension = ".nktfh100-backup";
 
   nixpkgs.config.allowUnfree = true;
 
@@ -71,7 +64,7 @@
     LC_NUMERIC = "he_IL.UTF-8";
     LC_PAPER = "he_IL.UTF-8";
     LC_TELEPHONE = "he_IL.UTF-8";
-    LC_TIME = "he_IL.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
   # Enable the X11 windowing system.
@@ -86,10 +79,10 @@
 
   services.printing.enable = false;
 
-  # Don't suspend when the laptop lid is closed (e.g. long-running overnight jobs).
   services.logind.settings.Login = {
-    HandleLidSwitch = "ignore"; # on battery
-    HandleLidSwitchExternalPower = "ignore"; # on AC power
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "suspend";
   };
 
   services.udisks2.enable = true;
@@ -102,12 +95,8 @@
       "flakes"
       "nix-command"
     ];
-    settings.extra-substituters = [
-      "https://zed.cachix.org"
-      "https://ryoppippi.cachix.org"
-    ];
+    settings.extra-substituters = [ "https://ryoppippi.cachix.org" ];
     settings.extra-trusted-public-keys = [
-      "zed.cachix.org-1:/pHQ6dpMsAZk2DiP4WCL0p9YDNKWj2Q5FL20bNmw1cU="
       "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
     ];
     gc.automatic = false;
@@ -145,9 +134,9 @@
 
   # services.teamviewer.enable = true;
   environment.systemPackages = with pkgs; [
-    firefox
     git
     ffmpeg
+    proton-vpn
 
     # pavucontrol # PulseAudio volume control
 
@@ -163,13 +152,8 @@
 
     openssl # For prisma
 
-    claude-code
-    codex
-
     go
   ];
-
-  environment.etc."codex/config.toml".source = ./codex/config.toml;
 
   environment.variables = {
     "EDITOR" = "nvim";

@@ -16,7 +16,6 @@ in
     enable = true;
     # spotifyPackage = unstable.spotify;
     theme = spicePkgs.themes.catppuccin;
-    colorScheme = "macchiato";
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay
       songStats

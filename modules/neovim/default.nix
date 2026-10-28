@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   # symlink to allow live edits without rebuilding.
@@ -8,7 +13,13 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    (neovim.override { withNodeJs = true; })
+    (neovim.override {
+      withNodeJs = true;
+      wrapperArgs = lib.optionals (config.my.theme == "lucifer") [
+        "--add-flags"
+        ''-c "lua dofile('${../../themes/lucifer/neovim.lua}')"''
+      ];
+    })
 
     lua5_1
 

@@ -1,0 +1,15 @@
+#navigator-toolbox { --toolbar-bgcolor: #292029; --toolbar-color: #f7edf0; --lwt-accent-color: #201820; --lwt-text-color: #f7edf0; --toolbar-field-background-color: #201820; --toolbar-field-color: #f7edf0; --toolbar-field-focus-background-color: #352831; --toolbar-field-focus-color: #f7edf0; --lwt-tab-text: #f7edf0; --lwt-selected-tab-background-color: #42303c; background: #201820 !important; border-bottom: 1px solid #634555 !important; }
+#TabsToolbar, #nav-bar, #PersonalToolbar { background-color: #201820 !important; color: #f7edf0 !important; }
+#nav-bar { background-color: #292029 !important; }
+.tab-background[selected] { background: #42303c !important; border-top: 2px solid #ff5364 !important; box-shadow: none !important; }
+#urlbar-background, #searchbar { background: #201820 !important; border: 1px solid #634555 !important; border-radius: 8px !important; }
+#urlbar[focused] > #urlbar-background { border-color: #ff5364 !important; }
+#urlbar-input { color: #f7edf0 !important; }
+#sidebar-box { background: #292029 !important; color: #f7edf0 !important; }
+.tabbrowser-tab, .tab-label, .tab-close-button { color: #f7edf0 !important; }
+.tabbrowser-tab:not([selected]) .tab-label { color: #d0bdc6 !important; }
+
+.tab-background[selected] { background: linear-gradient(115deg,#543b49,#352831) !important; border-top: 2px solid #ff5364 !important; box-shadow: 0 2px 12px #9c123440 !important; }
+.tab-background { transition: background-color 220ms ease, box-shadow 220ms ease !important; }
+#navigator-toolbox { border-bottom: 1px solid #b71938 !important; }
+#urlbar[focused] > #urlbar-background { box-shadow: 0 0 14px #d91b3a28 !important; }

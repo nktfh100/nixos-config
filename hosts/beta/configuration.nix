@@ -7,6 +7,7 @@
     ../../common.nix
     ../../modules/nvidia.nix
     ../../modules/boot/grub.nix
+    ./battery.nix
   ];
 
   networking.hostName = "nktfh100-beta";
@@ -16,18 +17,6 @@
   home-manager.users.nktfh100.home.packages = with pkgs; [
     asusctl
   ];
-
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
 
   services.asusd.enable = true;
 

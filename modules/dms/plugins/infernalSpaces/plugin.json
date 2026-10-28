@@ -1,0 +1,10 @@
+{
+  "id": "infernalSpaces",
+  "name": "Special workspaces",
+  "description": "Show occupied S and DEV workspaces in the bar.",
+  "version": "1.0.0",
+  "author": "nktfh100",
+  "icon": "workspaces",
+  "type": "widget",
+  "component": "./InfernalSpaces.qml"
+}

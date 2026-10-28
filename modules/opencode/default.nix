@@ -2,8 +2,7 @@
 
 {
   home-manager.users.nktfh100.home.file.".config/opencode/opencode.json".source = ./opencode.json;
-  home-manager.users.nktfh100.home.file.".config/opencode/tui.json".source = ./tui.json;
-  home-manager.users.nktfh100.home.file.".config/opencode/AGENTS.md".source = ../../claude/CLAUDE.md;
+  home-manager.users.nktfh100.home.file.".config/opencode/AGENTS.md".source = ../../ai/AGENTS.md;
 
   home-manager.users.nktfh100.home.packages = with pkgs; [ opencode ];
 

@@ -1,0 +1,50 @@
+desktop-color: "#000000"
+desktop-image: "background.png"
+title-text: ""
+message-color: "#f7edf0"
+message-bg-color: "#000000"
+terminal-font: "Unifont Regular 16"
+terminal-left: "10%"
+terminal-top: "20%"
+terminal-width: "80%"
+terminal-height: "60%"
++ boot_menu {
+    left = 18%
+    top = 51%
+    width = 64%
+    height = 31%
+    item_font = "DejaVu Sans Regular 24"
+    item_color = "#cbb8c3"
+    selected_item_color = "#f7edf0"
+    selected_item_pixmap_style = "selected_*.png"
+    item_height = 48
+    item_padding = 14
+    item_spacing = 8
+    icon_width = 0
+    icon_height = 0
+    item_icon_space = 0
+    scrollbar = false
+}
++ progress_bar {
+    id = "__timeout__"
+    left = 18%
+    top = 85%
+    width = 64%
+    height = 24
+    font = "DejaVu Sans Regular 16"
+    text = "@TIMEOUT_NOTIFICATION_MIDDLE@"
+    text_color = "#f7edf0"
+    fg_color = "#722c3c"
+    bg_color = "#1c1c1c"
+    border_color = "#1c1c1c"
+}
++ label {
+    top = 94%
+    left = 20%
+    width = 60%
+    height = 25
+    text = "UP / DOWN  select     ENTER  boot     E  edit     ESC  back"
+    font = "DejaVu Sans Regular 16"
+    color = "#cbb8c3"
+    align = "center"
+}

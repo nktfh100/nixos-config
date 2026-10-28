@@ -1,0 +1,27 @@
+:root {
+    --accent-color: #ff5364;
+    --accent-bg-color: #ff5364;
+    --accent-fg-color: #201820;
+    --window-bg-color: #201820;
+    --window-fg-color: #f7edf0;
+    --view-bg-color: #241b24;
+    --view-fg-color: #f7edf0;
+    --headerbar-bg-color: #292029;
+    --headerbar-fg-color: #f7edf0;
+    --headerbar-backdrop-color: #201820;
+    --card-bg-color: #352831;
+    --card-fg-color: #f7edf0;
+    --dialog-bg-color: #292029;
+    --dialog-fg-color: #f7edf0;
+    --popover-bg-color: #292029;
+    --popover-fg-color: #f7edf0;
+    --sidebar-bg-color: #292029;
+    --sidebar-fg-color: #f7edf0;
+    --sidebar-backdrop-color: #241b24;
+    --destructive-color: #ff6470;
+    --destructive-bg-color: #a01632;
+    --destructive-fg-color: #f7edf0;
+    --success-color: #a6da95;
+    --warning-color: #eed49f;
+    --error-color: #ff6470;
+}

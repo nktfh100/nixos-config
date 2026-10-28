@@ -1,0 +1,10 @@
+{
+  "id": "claudeUsage",
+  "name": "Claude usage",
+  "description": "Weekly and 5-hour Claude limits with a pace forecast.",
+  "version": "1.0.0",
+  "author": "nktfh100",
+  "icon": "auto_awesome",
+  "type": "widget",
+  "component": "./ClaudeUsage.qml"
+}

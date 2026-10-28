@@ -1,0 +1,10 @@
+* { box-shadow: none; font-family: "Alegreya Sans"; font-size: 14px; }
+window { background-image: linear-gradient(rgba(32,24,32,.56),rgba(32,24,32,.84)), url("/etc/nixos/wallpapers/infernal.png"); background-size: cover; background-position: center; }
+button { color: #f7edf0; background-color: rgba(53,40,49,.96); border: 1px solid #7e1933; border-bottom: 3px solid #b21b37; border-radius: 12px; background-repeat: no-repeat; background-position: center; background-size: 74px; margin: 8px; transition: all 240ms ease; }
+button:hover, button:focus, button:active { background-color: rgba(103,13,37,.94); border-color: #ff6475; box-shadow: 0 0 30px rgba(227,22,61,.3); outline-style: none; }
+#lock { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/lock.png"); }
+#logout { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/logout.png"); }
+#suspend { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/suspend.png"); }
+#hibernate { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/hibernate.png"); }
+#shutdown { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/shutdown.png"); }
+#reboot { background-image: url("/etc/nixos/themes/lucifer/wlogout/icons/reboot.png"); }

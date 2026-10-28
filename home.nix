@@ -17,7 +17,7 @@
     wget
     fastfetch
     bitwarden-cli
-    google-chrome
+    (google-chrome.override { commandLineArgs = "--force-dark-mode"; })
     (callPackage ./pkgs/webshot { })
 
     jq
@@ -85,25 +85,28 @@
 
   programs.claude-code = {
     enable = true;
-    package = null; # binary installed system-wide via the nix-claude-code overlay
-    skills = ./claude/skills;
-    commandsDir = ./claude/commands;
-    context = ./claude/CLAUDE.md;
+    package = pkgs.claude-code;
+    skills = ./ai/skills;
+    commandsDir = ./ai/commands;
+    agentsDir = ./ai/agents;
+    context = ./ai/AGENTS.md;
     settings = lib.importJSON ./claude/settings.json;
-  };
-
-  programs.codex = {
-    enable = true;
-    package = null;
-    context = ./claude/CLAUDE.md;
-    skills = ./claude/skills;
+    mcpServers.rea = {
+      command = "${pkgs.nodejs_24}/bin/npx";
+      args = [
+        "-y"
+        "rea-agents@6.7.0"
+        "mcp"
+      ];
+      env = {
+        GHIDRA_INSTALL_DIR = "${unstable.ghidra}/lib/ghidra";
+        JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
+      };
+    };
   };
 
   home.file = {
-    ".codex/prompts" = {
-      source = ./claude/commands;
-      recursive = true;
-    };
+    ".claude/plugins/claude-hud/config.json".source = ./claude/claude-hud.json;
   };
 
   programs.command-not-found.enable = true;
@@ -112,9 +115,7 @@
     enable = true;
     shellAliases = {
       la = "ls -a";
-      claude-2 = "CLAUDE_CODE_OAUTH_TOKEN=$(cat /run/secrets/claude_oauth_token) CLAUDE_CONFIG_DIR=~/.claude-2 claude";
       nix-code = "code /etc/nixos";
-      zed = "zeditor";
       nix-garbage = "nix-env --delete-generations 30d && sudo nix-store --gc && sudo nix-collect-garbage -d && sudo nix store optimise && sudo rm -rf ~/.local/share/Trash/*";
       py = "python";
       dcb = "docker compose build";
@@ -140,7 +141,7 @@
             fi
         fi
 
-        cd /etc/nixos && git add .  && cd - > /dev/null && sudo nixos-rebuild "$rebuild_subcommand" --flake "/etc/nixos?submodules=1#$flake_name" $extra_args
+        sudo nixos-rebuild "$rebuild_subcommand" --flake "path:/etc/nixos#$flake_name" $extra_args
       }
 
       kill-port() {

@@ -4,14 +4,11 @@
   "editor.formatOnSave": true,
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
-  "glassit.alpha": 204,
   "prettier.semi": true,
   "prettier.tabWidth": 2,
   "prettier.useTabs": true,
   "prettier.singleQuote": true,
   "update.mode": "none",
-  "workbench.colorTheme": "Catppuccin Macchiato",
-  "workbench.iconTheme": "catppuccin-macchiato",
   "files.associations": {
     ".env": "dotenv",
     ".env*": "dotenv"
@@ -65,4 +62,3 @@
   "docker.extension.enableComposeLanguageServer": false,
   "workbench.editor.enablePreview": false
 }
-

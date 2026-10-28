@@ -1,0 +1,11 @@
+{
+  "id": "infernal",
+  "name": "Infernal controls",
+  "description": "Animated controls, circular media, notification history and wallpaper shelf.",
+  "version": "1.0.0",
+  "author": "nktfh100",
+  "icon": "settings_input_component",
+  "type": "widget",
+  "component": "./Infernal.qml",
+  "permissions": ["settings_read", "settings_write"]
+}

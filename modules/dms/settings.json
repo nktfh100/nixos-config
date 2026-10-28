@@ -1,0 +1,131 @@
+{
+  "configVersion": 18,
+  "currentThemeName": "custom",
+  "fontFamily": "Alegreya Sans",
+  "monoFontFamily": "ComicCodeLigatures Nerd Font",
+  "fontWeight": 400,
+  "cornerRadius": 14,
+  "popupTransparency": 0.80,
+  "blurEnabled": true,
+  "animationSpeed": 4,
+  "customAnimationDuration": 320,
+  "animationVariant": 2,
+  "motionEffect": 2,
+  "springBounce": 0.3,
+  "weatherEnabled": false,
+  "showDock": false,
+  "soundsEnabled": false,
+  "runUserMatugenTemplates": false,
+  "showSeconds": false,
+  "clockFormat": "24h",
+  "clockDateFormat": "ddd, d MMM",
+  "dashTabs": [
+    {
+      "id": "overview",
+      "enabled": true
+    },
+    {
+      "id": "media",
+      "enabled": true
+    },
+    {
+      "id": "wallpaper",
+      "enabled": false
+    },
+    {
+      "id": "weather",
+      "enabled": true
+    },
+    {
+      "id": "settings",
+      "enabled": true
+    }
+  ],
+  "barConfigs": [
+    {
+      "id": "main",
+      "name": "Main",
+      "enabled": true,
+      "position": 0,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "leftWidgets": [
+        "infernalSpaces",
+        "systemTray"
+      ],
+      "centerWidgets": [
+        "infernalMedia",
+        "clock"
+      ],
+      "rightWidgets": [
+        "claudeUsage",
+        "keyboard_layout_name",
+        "infernal"
+      ],
+      "height": 42,
+      "spacing": 6,
+      "innerPadding": 4,
+      "barLengthPadding": 18,
+      "bottomGap": 14,
+      "attachToScreenEdge": false,
+      "transparency": 0,
+      "widgetTransparency": 0.75,
+      "followInterfaceStyle": false,
+      "widgetFollowInterfaceStyle": false,
+      "noBackground": false,
+      "widgetPadding": 8,
+      "borderEnabled": false,
+      "widgetOutlineEnabled": true,
+      "widgetOutlineColor": "primary",
+      "widgetOutlineOpacity": 0.35,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1.0,
+      "iconScale": 1.0,
+      "visible": true,
+      "autoHide": false,
+      "popupGapsAuto": false,
+      "popupGapsManual": 12,
+      "shadowIntensity": 0,
+      "shadowOpacity": 0
+    }
+  ],
+  "matugenTemplateGtk": false,
+  "matugenTemplateNiri": false,
+  "matugenTemplateHyprland": false,
+  "matugenTemplateMangowc": false,
+  "matugenTemplateQt5ct": false,
+  "matugenTemplateQt6ct": false,
+  "matugenTemplateFcitx5": false,
+  "matugenTemplateQtengine": false,
+  "matugenTemplateFirefox": false,
+  "matugenTemplatePywalfox": false,
+  "matugenTemplateZenBrowser": false,
+  "matugenTemplateVesktop": false,
+  "matugenTemplateVencord": false,
+  "matugenTemplateEquibop": false,
+  "matugenTemplateGhostty": false,
+  "matugenTemplateKitty": false,
+  "matugenTemplateFoot": false,
+  "matugenTemplateAlacritty": false,
+  "matugenTemplateNeovim": false,
+  "matugenTemplateWezterm": false,
+  "matugenTemplateDgop": false,
+  "matugenTemplateKcolorscheme": false,
+  "matugenTemplateVscode": false,
+  "matugenTemplateEmacs": false,
+  "matugenTemplateZed": false,
+  "matugenTemplateNeovimSetBackground": false,
+  "screenPreferences": {
+    "wallpaper": []
+  },
+  "acLockTimeout": 900,
+  "acMonitorTimeout": 930,
+  "acSuspendTimeout": 1200,
+  "batteryLockTimeout": 900,
+  "batteryMonitorTimeout": 930,
+  "batterySuspendTimeout": 1200,
+  "keyboardLayoutNameCompactMode": true,
+  "keyboardLayoutNameShowIcon": true
+}

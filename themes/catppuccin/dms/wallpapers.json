@@ -1,0 +1,17 @@
+[
+  {
+    "id": "macchiato",
+    "title": "Macchiato Nix",
+    "path": "/etc/nixos/wallpapers/nix-black.png"
+  },
+  {
+    "id": "cat-pacman",
+    "title": "Cat Pacman",
+    "path": "/etc/nixos/wallpapers/cat_pacman.png"
+  },
+  {
+    "id": "cat-sound",
+    "title": "Cat Sound",
+    "path": "/etc/nixos/wallpapers/cat-sound.png"
+  }
+]

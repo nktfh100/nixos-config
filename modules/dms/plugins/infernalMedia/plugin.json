@@ -1,0 +1,10 @@
+{
+  "id": "infernalMedia",
+  "name": "Infernal radio",
+  "description": "A winged record with music playback controls for the center bar.",
+  "version": "1.0.0",
+  "author": "nktfh100",
+  "icon": "album",
+  "type": "widget",
+  "component": "./InfernalMedia.qml"
+}

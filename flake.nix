@@ -27,11 +27,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-claude-code.url = "github:ryoppippi/nix-claude-code";
-    codex-cli-nix = {
-      url = "github:sadjow/codex-cli-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    dankcalendar = {
+      url = "github:AvengeMedia/dankcalendar";
+      inputs.nixpkgs.follows = "unstable";
     };
-    zed-editor.url = "github:zed-industries/zed";
   };
 
   outputs =
@@ -40,7 +39,6 @@
       spicetify-nix,
       opencode-nix,
       nix-claude-code,
-      codex-cli-nix,
       ...
     }@inputs:
     let
@@ -51,7 +49,6 @@
             nixpkgs.overlays = [
               opencode-nix.overlays.default
               nix-claude-code.overlays.default
-              codex-cli-nix.overlays.default
             ];
           }
         )
@@ -62,14 +59,13 @@
               inherit (pkgs.stdenv.targetPlatform) system;
               config.allowUnfree = true;
             };
-            _module.args.zedFlake =
-              inputs.zed-editor.packages.${pkgs.stdenv.targetPlatform.system}.default;
           }
         )
         inputs.home-manager.nixosModules.home-manager
         inputs.minegrub-theme.nixosModules.default
         inputs.catppuccin.nixosModules.catppuccin
         inputs.sops-nix.nixosModules.sops
+        inputs.dankcalendar.nixosModules.dank-calendar
         (
           { unstable, ... }:
           {
