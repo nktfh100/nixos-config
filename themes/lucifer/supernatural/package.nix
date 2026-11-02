@@ -1,10 +1,10 @@
 { unstable }:
 unstable.hyprlandPlugins.mkHyprlandPlugin {
   pluginName = "HyprWindowShade";
-  version = "2026-10-03-4414596";
+  version = "2026-10-29-b62fc3d";
   src = unstable.fetchzip {
-    url = "https://github.com/ManofJELLO/HyprWindowShade/archive/4414596c2fbb64cb5bb4aa7342900051338fed7a.tar.gz";
-    sha256 = "0a4abd94f4yc0a9wf5scmx9a5asxi7m4bw43rzlf120pfqpfww0m";
+    url = "https://github.com/ManofJELLO/HyprWindowShade/archive/b62fc3d8d04514d7b51e61c281a34231b04e95e3.tar.gz";
+    sha256 = "0g1xpd6sy751kzp00g2lwxn085jdcx8lh5hl8a6x9196fvl11h10";
   };
   buildInputs = [ unstable.libglvnd ];
   installPhase = ''
