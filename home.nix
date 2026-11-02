@@ -91,23 +91,17 @@
     agentsDir = ./ai/agents;
     context = ./ai/AGENTS.md;
     settings = lib.importJSON ./claude/settings.json;
-    mcpServers.rea = {
-      command = "${pkgs.nodejs_24}/bin/npx";
-      args = [
-        "-y"
-        "rea-agents@6.7.0"
-        "mcp"
-      ];
-      env = {
-        GHIDRA_INSTALL_DIR = "${unstable.ghidra}/lib/ghidra";
-        JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
-      };
-    };
   };
 
   home.file = {
     ".claude/plugins/claude-hud/config.json".source = ./claude/claude-hud.json;
   };
+
+  # Auto-delete trash items older than 3 days
+  systemd.user.tmpfiles.rules = [
+    "e %h/.local/share/Trash/files - - - 3d"
+    "e %h/.local/share/Trash/info - - - 3d"
+  ];
 
   programs.command-not-found.enable = true;
 

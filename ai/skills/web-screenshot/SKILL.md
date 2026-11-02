@@ -3,7 +3,7 @@ name: web-screenshot
 description: Take screenshots of a web page or local dev server to visually verify web/frontend work, and catch console errors and failed requests at the same time. Use whenever the user asks to screenshot, "check how it looks", verify UI changes visually, test responsive/mobile layouts, or confirm a page renders — and proactively after making visual changes to a web app.
 ---
 
-Use the `webshot` command. It is already installed, drives the system Chrome headlessly, and needs no setup.
+Use `webshot`. It is already installed and drives the system Chrome headlessly.
 
 ```bash
 webshot <url> [-s SIZE]... [--full] [--selector CSS] [--wait-for CSS] [--click CSS]... [--dark] [-o DIR] [--name PREFIX]
@@ -11,42 +11,51 @@ webshot <url> [-s SIZE]... [--full] [--selector CSS] [--wait-for CSS] [--click C
 
 | Flag | What it does |
 | --- | --- |
-| `-s SIZE` | `desktop` (1440x900, default), `laptop`, `tablet`, `mobile`, or `WIDTHxHEIGHT`. Repeat for several sizes in one run |
-| `--full` | Capture the whole scrollable page instead of just the first screen |
+| `-s SIZE` | `desktop` (1440x900, default), `laptop`, `tablet`, `mobile`, or `WIDTHxHEIGHT`. Repeatable |
+| `--full` | Whole scrollable page (scrolls first so lazy images load). Very tall shots get shrunk when viewed, so prefer `--selector` for one section |
 | `--selector CSS` | Capture only one element |
-| `--wait-for CSS` | Wait until that element is visible before capturing |
-| `--click CSS` | Click something first (open a menu, modal, tab). Repeatable, runs in order |
+| `--wait-for CSS` | Wait for an element to be visible first |
+| `--click CSS` | Click first (menu, modal, tab). Repeatable, runs in order |
+| `--before FILE` | Python file with `before(page)` for custom flows (login, forms). See below |
+| `--save-session FILE` / `--session FILE` | Save cookies + localStorage after the run / start a later run with them |
 | `--dark` | Emulate dark mode |
-| `--delay MS` | Extra wait before capturing (default 300) — raise for animations |
-| `-o DIR` | Where to save (default: a new temp dir; the path is printed) |
-| `--name PREFIX` | File name prefix, useful for before/after shots |
+| `--delay MS` | Extra wait before capturing (default 300). CSS animations are already frozen at their end |
+| `-o DIR` / `--name PREFIX` | Output dir (default: new temp dir) and file prefix, e.g. for before/after |
+| `--server-timeout S` | How long to wait for the URL to answer (default 60) |
 
-For each size it prints the saved file path, HTTP status, page title, and every console error/warning, uncaught exception, failed request and 4xx/5xx response.
+For each size it prints the PNG path, HTTP status, title, and every console error/warning, uncaught exception, failed request and 4xx/5xx response. If a `--click`/`--wait-for` fails, it is reported and the screenshot is still taken. Exit code 1 means something is in the report.
 
 ## Workflow
 
-1. **Make sure a server is running.** If the project's dev server isn't already up, start it **in the background** — never in the foreground, or you will hang forever:
-   - Claude Code: Bash with `run_in_background: true`, e.g. `npm run dev`
-   - Other agents: `nohup npm run dev > /tmp/dev-server.log 2>&1 &`
+1. **Server running?** If not, start the dev server in the background (Bash `run_in_background: true`; never foreground). Read its output for the real port. `webshot` waits for the URL to answer, so call it right away.
+2. **Shoot:** `webshot http://localhost:5173 -s desktop -s mobile`
+3. **Look at every PNG** with the `Read` tool (Codex: `view_image`), and read the text report. A page that looks right but logs errors is not done.
+4. Fix, re-shoot, look again. Tell the user what you saw.
+5. Stop any server you started.
 
-   Check the server's output for the real port rather than guessing. `webshot` waits up to 60s for the URL to start answering, so you can call it right after starting the server.
-2. **Take the shot:** `webshot http://localhost:5173 -s desktop -s mobile`
-3. **Look at the image.** Taking it is not verifying it. Open every PNG it printed:
-   - Claude Code: the `Read` tool on the file path
-   - Codex: the `view_image` tool on the file path
-4. **Read the text report too.** A page that looks right but logs errors is not done.
-5. Fix what's wrong, re-shoot, look again. Tell the user what you saw, not just that you took a screenshot.
-6. Stop any dev server you started once you're finished.
-
-Static HTML with no server: `webshot file:///absolute/path/index.html`.
+Static files: `webshot file:///absolute/path/index.html`.
 
 ## Don'ts
 
-- Don't run `npx playwright install`, `playwright install-deps`, or pip/npm-install a browser. Downloaded browsers do not run on NixOS; `webshot` already works.
-- Don't open a visible browser window or use `xdg-open` to "check" a page — you can't see it.
-- Don't write your own one-off Playwright/Puppeteer screenshot script. If you truly need a custom flow (logging in, filling a form), use the project's own Playwright with `executablePath: "google-chrome-stable"` instead of a downloaded browser.
-- Don't report success from the terminal output alone — always view the image.
+- Don't `npx playwright install` or download any browser — they don't run on NixOS.
+- Don't open a visible browser or `xdg-open` to "check" a page.
+- Don't write a one-off Playwright script. Use `--before` instead.
 
-## Pages behind a login
+## Login and other custom flows
 
-`webshot` starts with a fresh browser each time, so it sees the logged-out page. Ask the user for a test account or a dev-only auth bypass rather than guessing.
+Each run starts logged out. Write a `before(page)` function (any [Playwright Python](https://playwright.dev/python/docs/api/class-page) code) that ends on the page you want shot. Keep it in `/tmp`, not the project:
+
+```python
+# /tmp/login.py, e.g. for a mock OAuth server
+def before(page):
+    page.get_by_placeholder("Enter any user/subject").fill("test-user")
+    page.get_by_role("button", name="Sign-in").click()
+    page.wait_for_url("http://localhost:3000/**")
+```
+
+```bash
+webshot http://localhost:3000 --before /tmp/login.py --save-session /tmp/session.json   # log in once
+webshot http://localhost:3000/settings --session /tmp/session.json -s mobile            # reuse after
+```
+
+`before` runs after the first page load; webshot waits for the page to settle again afterwards. Errors logged before it runs (e.g. 401s on the login redirect) are dropped. Don't use `wait_for_load_state("networkidle")` in it — apps with live connections never go idle. Use `wait_for_url` or wait for an element. If a reused session lands on the login page again, it expired: rerun with `--before`. No test account or mock login? Ask the user.
