@@ -20,6 +20,14 @@ state_file = state_dir / "wallpaper.json"
 control_socket = runtime / "theme-wallpaper-control.sock"
 
 
+def set_animations(enabled):
+    subprocess.run(
+        ["hyprctl", "eval", f"hl.config({{ animations = {{ enabled = {str(enabled).lower()} }} }})"],
+        check=False,
+        stdout=subprocess.DEVNULL,
+    )
+
+
 def send(path, value):
     with socket.socket(socket.AF_UNIX) as client:
         client.settimeout(12)
@@ -107,11 +115,7 @@ def serve():
             apply()
             last_reduced = read_motion()
             if last_reduced:
-                subprocess.run(
-                    ["hyprctl", "keyword", "animations:enabled", "false"],
-                    check=False,
-                    stdout=subprocess.DEVNULL,
-                )
+                set_animations(False)
             while True:
                 server.settimeout(10 if (runtime / "battery-desktop.json").exists() else 1)
                 if child and child.poll() is not None:
@@ -119,16 +123,7 @@ def serve():
                 reduced = read_motion()
                 if reduced != last_reduced:
                     last_reduced = reduced
-                    subprocess.run(
-                        [
-                            "hyprctl",
-                            "keyword",
-                            "animations:enabled",
-                            "false" if reduced else "true",
-                        ],
-                        check=False,
-                        stdout=subprocess.DEVNULL,
-                    )
+                    set_animations(not reduced)
                 try:
                     client, _ = server.accept()
                 except socket.timeout:
@@ -146,16 +141,7 @@ def serve():
                         elif action == "reduce":
                             on_battery = (runtime / "battery-desktop.json").exists()
                             last_reduced = read_motion() if on_battery else value == "on"
-                            subprocess.run(
-                                [
-                                    "hyprctl",
-                                    "keyword",
-                                    "animations:enabled",
-                                    "false" if on_battery or last_reduced else "true",
-                                ],
-                                check=False,
-                                stdout=subprocess.DEVNULL,
-                            )
+                            set_animations(not (on_battery or last_reduced))
                         elif action != "status":
                             raise ValueError("Unknown action")
                         client.sendall(json.dumps(state).encode())

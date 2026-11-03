@@ -26,39 +26,21 @@ let
     "--sessions /run/current-system/sw/share/wayland-sessions"
     "--theme '${greeterTheme}'"
   ];
+  shaderPath = kind: effect: "${./lucifer/supernatural + "/${kind}/${effect}.glsl"}";
+  luciferShaders = pkgs.writeText "shaders.lua" "return ${
+    lib.generators.toLua { } (
+      { close = shaderPath "close" config.my.lucifer.closeEffect; }
+      // lib.optionalAttrs (config.my.lucifer.openEffect != "none") {
+        open = shaderPath "open" config.my.lucifer.openEffect;
+      }
+    )
+  }";
   hyprConfig = pkgs.runCommand "${config.my.theme}-hypr-${config.networking.hostName}" { } ''
-    mkdir -p $out/hosts $out/scripts
-    cp -r ${./. + "/${config.my.theme}/hypr"}/. $out/
-    cp ${../modules/hyprland/hyprland-config/hyprland.conf} $out/hyprland.conf
-    cp ${../modules/hyprland/hyprland-config/environment.conf} $out/environment.conf
-    cp ${../modules/hyprland/hyprland-config/input.conf} $out/input.conf
-    cp ${../hosts/alpha/hyprland.conf} $out/hosts/nktfh100-alpha.conf
-    cp ${../hosts/beta/hyprland.conf} $out/hosts/nktfh100-beta.conf
-    cp ${../modules/hyprland/hyprland-config/scripts/cycle_ws.py} $out/scripts/cycle_ws.py
-    chmod -R u+w $out
-    echo '$HOSTNAME = ${config.networking.hostName}' > $out/profile.conf
-    ${lib.optionalString (config.networking.hostName == "nktfh100-beta") ''
-      substituteInPlace $out/environment.conf \
-        --replace-fail 'env = LIBVA_DRIVER_NAME,nvidia' 'env = LIBVA_DRIVER_NAME,iHD' \
-        --replace-fail 'env = __GLX_VENDOR_LIBRARY_NAME,nvidia' ""
-    ''}
-    ${lib.optionalString (config.my.theme == "lucifer") ''
-      substituteInPlace $out/autostart.conf \
-        --replace-fail /etc/nixos/themes/lucifer/supernatural/close/demon-close.glsl ${
-          ./lucifer/supernatural/close + "/${config.my.lucifer.closeEffect}.glsl"
-        }
-      ${lib.optionalString (config.my.lucifer.openEffect != "none") ''
-                echo 'windowrule = match:class .*, tag +shader_open_default:${
-                  ./lucifer/supernatural/open + "/${config.my.lucifer.openEffect}.glsl"
-                }' >> $out/autostart.conf
-                cat >> $out/animations.conf <<'EOF'
-        animations {
-            animation = windowsIn, 0
-            animation = fadeIn, 0
-        }
-        EOF
-      ''}
-    ''}
+    mkdir -p $out
+    cp ${./. + "/${config.my.theme}/hypr"}/*.lua $out/
+    cp ${../modules/hyprland/hyprland-config}/*.lua $out/
+    cp ${../hosts + "/${lib.removePrefix "nktfh100-" config.networking.hostName}/hyprland.lua"} $out/host.lua
+    ${lib.optionalString (config.my.theme == "lucifer") "cp ${luciferShaders} $out/shaders.lua"}
   '';
   rofiConfig =
     if config.my.theme == "lucifer" then

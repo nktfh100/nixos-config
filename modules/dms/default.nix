@@ -136,9 +136,9 @@ let
     ];
     text = ''
       if hyprctl clients -j | jq -e 'any(.[]; .workspace.name == "special:S")' >/dev/null; then
-        hyprctl dispatch togglespecialworkspace S
+        hyprctl dispatch 'hl.dsp.workspace.toggle_special("S")'
       else
-        hyprctl dispatch exec '[workspace special:S] kitty --class theme-summon'
+        hyprctl dispatch 'hl.dsp.exec_cmd("kitty --class theme-summon", { workspace = "special:S" })'
       fi
     '';
   };

@@ -60,9 +60,6 @@ in
     # nwg-look # GTK settings editor
 
     playerctl # Media player control
-
-    hyprls # hyprland LSP
-    tree-sitter-grammars.tree-sitter-hyprlang # For neovim syntax highlighting
   ];
 
   # hint Electron apps to use Wayland:

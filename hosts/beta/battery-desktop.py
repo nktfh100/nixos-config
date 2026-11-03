@@ -6,7 +6,7 @@ import subprocess
 import sys
 import time
 
-OPTIONS = ("animations:enabled", "decoration:blur:enabled", "decoration:shadow:enabled")
+OPTIONS = ("animations.enabled", "decoration.blur.enabled", "decoration.shadow.enabled")
 
 
 def command(*args):
@@ -15,9 +15,13 @@ def command(*args):
         raise RuntimeError(
             f"{args[0]}: {result.stderr.strip() or result.stdout.strip()}"
         )
-    if args[0] == "hyprctl" and args[1] == "keyword" and result.stdout.strip() != "ok":
+    if args[0] == "hyprctl" and args[1] == "eval" and result.stdout.strip() != "ok":
         raise RuntimeError(result.stdout.strip())
     return result.stdout.strip()
+
+
+def set_option(key, value):
+    command("hyprctl", "eval", f'hl.config({{ ["{key}"] = {str(value).lower()} }})')
 
 
 def on_battery(root=Path("/sys/class/power_supply")):
@@ -70,7 +74,7 @@ class DesktopPolicy:
         self.saved = {
             "signature": self.signature,
             "options": {
-                key: json.loads(command("hyprctl", "getoption", key, "-j"))["int"]
+                key: json.loads(command("hyprctl", "getoption", key, "-j"))["bool"]
                 for key in OPTIONS
             },
             "reduceMotion": json.loads(
@@ -110,12 +114,13 @@ class DesktopPolicy:
                 continue
             if abs(monitor["refreshRate"] - refresh) < 0.1:
                 continue
-            selector = f'desc:{monitor["description"]}'
-            mode = (
-                f'{selector},{monitor["width"]}x{monitor["height"]}@{refresh},'
-                f'{monitor["x"]}x{monitor["y"]},{monitor["scale"]}'
+            rule = (
+                f'output = {json.dumps("desc:" + monitor["description"])}, '
+                f'mode = "{monitor["width"]}x{monitor["height"]}@{refresh}", '
+                f'position = "{monitor["x"]}x{monitor["y"]}", '
+                f'scale = {monitor["scale"]}'
             )
-            command("hyprctl", "keyword", "monitor", mode)
+            command("hyprctl", "eval", f"hl.monitor({{ {rule} }})")
 
     def apply(self, battery):
         if self.motion_to_restore is not None:
@@ -137,7 +142,7 @@ class DesktopPolicy:
                 command("lucifer-smoke-mode", "off")
             command(self.dms, "ipc", "call", "settings", "set", "reduceMotion", "true")
             for key in OPTIONS:
-                command("hyprctl", "keyword", key, "false")
+                set_option(key, False)
             if not self.saved["brightnessApplied"]:
                 cap = int(command("brightnessctl", "max")) // 5
                 brightness = max(1, min(self.saved["brightness"], cap))
@@ -159,7 +164,7 @@ class DesktopPolicy:
                 str(self.saved["reduceMotion"]).lower(),
             )
             for key, value in self.saved["options"].items():
-                command("hyprctl", "keyword", key, str(bool(value)).lower())
+                set_option(key, value)
             command("brightnessctl", "set", str(self.saved["brightness"]))
             command("asusctl", "leds", "set", self.saved["led"])
             self.apply_refresh(False)
